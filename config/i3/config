@@ -162,6 +162,7 @@ bindsym $mod+Shift+s exec systemctl suspend
 exec --no-startup-id nm-applet
 exec --no-startup-id redshift-gtk
 exec --no-startup-id clipit
+exec --no-startup-id xsetroot --bg 002244
 
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
