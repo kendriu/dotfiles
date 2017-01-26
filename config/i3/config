@@ -155,6 +155,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3blocks
+	tray_output primary
 }
 bindsym $mod+x exec i3lock -c 000000
 bindsym $mod+Shift+s exec systemctl suspend
