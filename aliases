@@ -22,5 +22,8 @@ alias ez="emacsclient $HOME/.zshrc"
 alias e="emacsclient"
 alias em="TERM=xterm emacs -nw"
 
+eval "$(thefuck --alias ups)"
+
+
 # Local aliases
 [[ -f ~/.aliases.local ]] && source ~/.aliases.local
