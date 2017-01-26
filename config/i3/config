@@ -167,7 +167,7 @@ exec --no-startup-id xsetroot --bg 002244
 
 bindsym XF86AudioRaiseVolume exec "amixer -q sset Master,0 5+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q sset Master,0 5- unmute"
-bindsym XF86AudioMute exec "amixer -q sset Master,0 toggle"
+bindsym XF86AudioMute exec "amixer -q -D pulse sset Master,0 toggle"
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 
 workspace 1 output HDMI-1
