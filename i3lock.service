@@ -1,6 +1,8 @@
 
 [Unit]
 Description=Lock the screen on resume from suspend
+Before=sleep.target
+Before=suspend.target
 
 [Service]
 User=kendriu
