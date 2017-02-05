@@ -1,7 +1,6 @@
 # Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export LC_ALL=pl_PL.UTF-8
+export ZSH=/usr/share/oh-my-zsh/
+export PATH="$PATH:$HOME"
 export TERM="xterm-256color"
 export EDITOR="vim"
 export GOPATH=$HOME/sources/go
@@ -10,7 +9,8 @@ export GOPATH=$HOME/sources/go
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+#ZSH_THEME="agnoster"
+ZSH_THEME="simple"
 
 DEFAULT_USER="kendriu"
 
@@ -52,13 +52,12 @@ DEFAULT_USER="kendriu"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate tmux tmuxinator vagrant vi-mode wd zsh-completions zsh-syntax-highlighting)
+plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -70,14 +69,18 @@ export PATH="/opt/OpenPrinting-Gutenprint/sbin:/opt/OpenPrinting-Gutenprint/bin:
 # else
 #   export EDITOR='mvim'
 # fi
+#
+ZSH_CACHE_DIR=$HOME/.oh-my-zsh-cache
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
 
 # Compilation flags
 export ARCHFLAGS="-arch x86_64"
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
-source /usr/local/bin/virtualenvwrapper.sh
-fpath=(/usr/local/share/zsh-completions $fpath)
+source /usr/bin/virtualenvwrapper.sh
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local

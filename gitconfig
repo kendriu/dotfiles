@@ -2,3 +2,6 @@
 	excludesfile = ~/.gitignore
 [include]
   path = ~/.gitconfig.local
+[user]
+	name = Andrzej Skupien
+	email = askupien@egnyte.com
