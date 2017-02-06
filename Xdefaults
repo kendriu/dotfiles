@@ -7,9 +7,10 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
+
 URxvt*geometry:                90x30
-URxvt*font: xft:Inconsolata:pixelsize=17:antialias=true:hinting=true
-URxvt*boldFont: xft:Inconsolata:bold:pixelsize=17:antialias=false:hinting=true
+URxvt*font: xft:Inconsolata for Powerline:pixelsize=17:antialias=true:hinting=true
+URxvt*boldFont: xft:Inconsolata for Powerline:bold:pixelsize=17:antialias=false:hinting=true
 URxvt*depth:                32
 URxvt*borderless: 1
 URxvt*scrollBar:            false

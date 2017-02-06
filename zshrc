@@ -10,7 +10,7 @@ export GOPATH=$HOME/sources/go
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="agnoster"
-ZSH_THEME="simple"
+ZSH_THEME="agnoster"
 
 DEFAULT_USER="kendriu"
 
@@ -55,6 +55,7 @@ DEFAULT_USER="kendriu"
 plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # User configuration
 
