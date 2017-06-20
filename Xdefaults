@@ -23,7 +23,17 @@ URxvt*letterSpace: -1
 !URxvt.modifier: super
 
 !! perl extensions
-URxvt.perl-ext:             default,url-select,clipboard
+URxvt.perl-ext:             default,url-select,clipboard,font-size
+
+! `font-size` plugin
+URxvt.keysym.Control-minus: perl:font-size:decrease
+URxvt.keysym.Control-equal: perl:font-size:increase
+! The default font increase step size is 1. This is for portability across all
+! fonts (some fonts do not support particular font sizes). Because changing font
+! size only really makes sense for anti-aliased fonts (Terminus is bitmapped),
+! and because anti-aliased fonts support any size, it makes sense to just use a
+! size step of 4 for faster transitions between font size changes.
+URxvt.font-size.step: 4
 
 ! url-select (part of urxvt-perls package)
 URxvt.keysym.M-u:           perl:url-select:select_next

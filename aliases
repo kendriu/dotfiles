@@ -1,7 +1,10 @@
+#arch
+alias pa="pac && pac -a && paccache -vr"
 #docker
 alias dcc="docker ps -a -q | xargs docker rm -f 2>/dev/null"
 alias dcn="docker network ls -q | xargs docker network rm 2>/dev/null"
 alias dcv="docker volume ls -q | xargs docker volume rm 2>/dev/null"
+alias dr="systemctl restart docker"
 function drs () {docker run -i -t --entrypoint /bin/sh $1}
 
 #git
@@ -9,7 +12,7 @@ alias gcam="gca -m"
 alias gdb="git branch --merged | grep -v "\\\*" | xargs -n 1 git branch -d"
 alias gpu="git rev-parse --abbrev-ref HEAD | xargs git push --set-upstream origin"
 alias gpf="git push --force"
-alias glrb="git checkout master && git pull && git checkout - && git rebase master"
+alias glrb="git checkout develop && git pull && git checkout - && git rebase develop"
 function gqc () {gcam "$1" && gp}
 
 #other

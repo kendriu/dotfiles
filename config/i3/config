@@ -44,7 +44,7 @@ bindsym $mod+Shift+q kill
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 bindsym $mod+Shift+d exec rofi -show run
-bindsym $mod+d exec --no-startup-id "rofi -show combi -modi ssh,combi -combi-modi window,drun -lines 30"
+bindsym $mod+d exec --no-startup-id "rofi -show drun -modi ssh,window -lines 30"
 
 # change focus
 bindsym $mod+h focus left
@@ -158,18 +158,24 @@ bar {
         status_command i3blocks
 	tray_output primary
 }
-bindsym $mod+x exec i3lock -c 000000
-bindsym $mod+Shift+s exec systemctl suspend
+set $lock i3lock -n -c 000000
+bindsym $mod+x exec --no-startup-id $lock
+bindsym $mod+Shift+s exec $lock
 
 exec --no-startup-id redshift-gtk
 exec --no-startup-id clipit
 exec --no-startup-id xsetroot --bg 002244
 exec --no-startup-id "pulseaudio --start"
 
+
 bindsym XF86AudioRaiseVolume exec "amixer -q set Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q set Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -q set Master toggle"
 bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+
+# Sreen brightness controls
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 workspace 1 output HDMI-1
 workspace 2 output HDMI-1
@@ -184,9 +190,30 @@ workspace 10 output HDMI-1
 
 bindsym $mod+t exec  ~/.screenlayout/docked.sh
 bindsym $mod+Shift+t exec ~/.screenlayout/single.sh
-bindsym $mod+Ctrl+t exec ~/.screenlayout/tetris.sh
+bindsym $mod+Ctrl+t exec ~/.screenlayout/meeting.sh
 
 
 workspace_auto_back_and_forth yes
 
 for_window [class="zoom"] floating enable
+for_window [title=".*Oracle VM VirtualBox$"] floating enable
+
+# move floating windows with keys
+bindsym $mod+m mode "move" focus floating
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}

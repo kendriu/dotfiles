@@ -2,7 +2,7 @@
 export ZSH=/usr/share/oh-my-zsh/
 export PATH="$PATH:$HOME"
 export TERM="xterm-256color"
-export EDITOR="vim"
+export EDITOR="nvim"
 export GOPATH=$HOME/sources/go
 
 # Set name of the theme to load.
