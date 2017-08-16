@@ -6,6 +6,7 @@ alias dcn="docker network ls -q | xargs docker network rm 2>/dev/null"
 alias dcv="docker volume ls -q | xargs docker volume rm 2>/dev/null"
 alias dr="systemctl restart docker"
 function drs () {docker run -i -t --entrypoint /bin/sh $1}
+alias dca="docker-clean all && dr"
 
 #git
 alias gcam="gca -m"
@@ -13,6 +14,7 @@ alias gdb="git branch --merged | grep -v "\\\*" | xargs -n 1 git branch -d"
 alias gpu="git rev-parse --abbrev-ref HEAD | xargs git push --set-upstream origin"
 alias gpf="git push --force"
 alias glrb="git checkout develop && git pull && git checkout - && git rebase develop"
+alias gW="git branch | egrep -v \"develop|master\" | xargs git branch -D"
 function gqc () {gcam "$1" && gp}
 
 #other
@@ -27,7 +29,7 @@ alias em="TERM=xterm emacs -nw"
 alias open="xdg-open"
 alias vim="nvim"
 
-eval "$(thefuck --alias ups)"
+eval "$(thefuck --alias f)"
 
 
 # Local aliases

@@ -52,7 +52,7 @@ DEFAULT_USER="kendriu"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting)
+plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting svn-fast-info)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

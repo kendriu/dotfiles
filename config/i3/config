@@ -177,16 +177,16 @@ bindsym XF86AudioPlay exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer
 bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
-workspace 1 output HDMI-1
-workspace 2 output HDMI-1
-workspace 3 output HDMI-1
-workspace 4 output HDMI-1
-workspace 5 output HDMI-1
-workspace 6 output eDP-1
-workspace 7 output eDP-1
-workspace 8 output eDP-1
-workspace 9 output eDP-1
-workspace 10 output HDMI-1
+workspace 1 output HDMI1
+workspace 2 output HDMI1
+workspace 3 output HDMI1
+workspace 4 output HDMI1
+workspace 5 output HDMI1
+workspace 6 output eDP1
+workspace 7 output eDP1
+workspace 8 output eDP1
+workspace 9 output eDP1
+workspace 10 output HDMI1
 
 bindsym $mod+t exec  ~/.screenlayout/docked.sh
 bindsym $mod+Shift+t exec ~/.screenlayout/single.sh
@@ -217,3 +217,10 @@ mode "move" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+# screenshots
+bindsym $mod+Print exec \
+    import -window $( \
+        i3-msg -t get_tree | \
+        jq 'recurse(.nodes[]) | select(.focused).window' \
+    ) png:- | \
+    xclip -selection clipboard -t image/png
