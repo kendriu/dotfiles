@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH=/usr/share/oh-my-zsh/
-export PATH="$PATH:$HOME"
+export PATH="$PATH:$HOME:$HOME/bin"
 export TERM="xterm-256color"
 export EDITOR="nvim"
 export GOPATH=$HOME/sources/go
@@ -52,10 +52,12 @@ DEFAULT_USER="kendriu"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(common-aliases dirhistory docker fabric gitfast python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting svn-fast-info)
+plugins=(common-aliases dirhistory docker fabric gitfast  python sudo textmate vagrant vi-mode wd zsh-completions zsh-syntax-highlighting history-substring-search)
 
 source $ZSH/oh-my-zsh.sh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+setopt HIST_IGNORE_ALL_DUPS
 
 # User configuration
 
@@ -88,3 +90,10 @@ source /usr/bin/virtualenvwrapper.sh
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+function toxc(){
+	tox -- $1 --cov $1 --cov-report=html $2
+}

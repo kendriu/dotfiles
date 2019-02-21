@@ -18,6 +18,9 @@ tramp
 # flymake-mode
 *_flymake.*
 
+# flycheck-mode
+*flycheck_*
+
 # eshell files
 /eshell/history
 /eshell/lastdir
@@ -42,3 +45,18 @@ tramp
 Session.vim
 .netrwhist
 *~
+
+# ruby
+.ruby-gemset
+
+/builds
+.mypy_cache
+mypy.ini
+# visual studio code
+.vscode
+
+#pycharm
+.idea
+
+#pyenv
+.python-version

@@ -192,9 +192,6 @@ bindsym $mod+t exec  ~/.screenlayout/docked.sh
 bindsym $mod+Shift+t exec ~/.screenlayout/single.sh
 bindsym $mod+Ctrl+t exec ~/.screenlayout/meeting.sh
 
-
-workspace_auto_back_and_forth yes
-
 for_window [class="zoom"] floating enable
 for_window [title=".*Oracle VM VirtualBox$"] floating enable
 
@@ -224,3 +221,14 @@ bindsym $mod+Print exec \
         jq 'recurse(.nodes[]) | select(.focused).window' \
     ) png:- | \
     xclip -selection clipboard -t image/png
+
+# austostart & assign apps
+exec --no-startup-id i3-msg 'workspace 3; exec i3-sensible-terminal; exec i3-sensible-terminal'
+
+assign [class="^spotify$"] 6
+for_window [class="Spotify"] move to workspace 6
+exec --no-startup-id i3-msg 'workspace 6; exec /usr/bin/spotify'
+
+assign [class="^rambox$"] 10
+for_window [class="rambox"] move to workspace 10
+exec --no-startup-id i3-msg 'workspace 10; exec /usr/bin/rambox'
