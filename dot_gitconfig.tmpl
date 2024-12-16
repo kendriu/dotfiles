@@ -1,0 +1,24 @@
+[user]
+	name = Andrzej Skupien
+{{- if ne .chezmoi.hostname "MB-928298" }}
+	email = kendriu@gmail.com
+{{- end }}
+{{- if eq .chezmoi.hostname "MB-928298" }}
+	email = andrzej.skupien@vastdata.com
+{{- end }}
+
+[core]
+    pager=delta
+	excludesFile = ~/.gitignore
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    dark = true
+    side-by-side = true
+
+[merge]
+	conflictstyle = zdiff3
+
