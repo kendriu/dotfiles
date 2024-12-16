@@ -1,0 +1,3 @@
+{{- if ne .chezmoi.hostname "MB-928298" }}
+~/.ssh/config
+{{- end }}
