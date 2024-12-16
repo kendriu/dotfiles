@@ -56,7 +56,7 @@ plugins=(common-aliases dirhistory docker jira python sudo wd git)
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
-export PATH="/opt/homebrew/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$HOME/bin:$HOME/go/bin"
+export PATH="/opt/homebrew/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -96,9 +96,6 @@ alias v="nvim"
 alias vd="neovide"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # uv
 export PATH="/Users/kendriu/.local/bin:$PATH"
