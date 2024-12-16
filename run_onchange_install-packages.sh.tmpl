@@ -1,0 +1,29 @@
+#!/bin/bash
+brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew "chezmoi"
+    brew "gcc"
+    brew "git"
+    brew "ripgrep"
+    brew "git-delta"
+    brew "luarocks"
+    brew "neovim"
+    brew "pygments"
+    brew "zsh-syntax-highlighting"
+    cask "brave-browser"
+    cask "chatgpt"
+    cask "flycut"
+    cask "font-jetbrains-mono-nerd-font"
+    cask "iterm2"
+    cask "jetbrains-toolbox"
+    cask "keepingyouawake"
+    cask "neovide"
+    cask "wezterm"
+    {{- if ne .chezmoi.hostname "work-laptop" }}
+        brew "awscli"
+        brew "net-snmp"
+        brew "portaudio"
+        brew "postgresql@14"
+    {{- end }}
+EOF
+
+brew bundle cleanup --force
