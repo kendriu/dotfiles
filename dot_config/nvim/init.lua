@@ -1,4 +1,5 @@
 require 'core.options'
+require 'core.neovide'
 require 'core.keymaps'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
