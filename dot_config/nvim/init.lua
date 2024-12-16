@@ -33,4 +33,5 @@ require 'plugins.neotree',
 require 'plugins.telescope',
 require 'plugins.treesitter',
 require 'plugins.lsp',
+require 'plugins.chezmoi',
 })
