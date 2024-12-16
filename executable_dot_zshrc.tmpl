@@ -98,3 +98,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 # uv
 export PATH="/Users/kendriu/.local/bin:$PATH"
 . "$HOME/.cargo/env"
+
+{{- if ne .chezmoi.hostname "work-laptop" }}
+export PATH=$PATH:/Users/andrzej.skupien/sources/infra/user-scripts
+{{- end }}
+
