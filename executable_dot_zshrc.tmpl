@@ -52,7 +52,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew common-aliases dirhistory docker jira python sudo wd git)
+plugins=(common-aliases dirhistory docker jira python sudo wd git)
 
 source $HOME/.oh-my-zsh/oh-my-zsh.sh
 
@@ -73,7 +73,12 @@ export PATH="/opt/homebrew/bin:$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fpath=(/usr/local/share/zsh-completions $fpath)
+if type brew &>/dev/null; then
+FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+autoload -Uz compinit
+compinit
+fi
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -99,7 +104,8 @@ export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH="/Users/kendriu/.local/bin:$PATH"
 . "$HOME/.cargo/env"
 
-{{- if ne .chezmoi.hostname "work-laptop" }}
+{{- if eq .chezmoi.hostname "MB-928298" }}
 export PATH=$PATH:/Users/andrzej.skupien/sources/infra/user-scripts
 {{- end }}
 
+eval "$(/opt/homebrew/bin/brew shellenv)"

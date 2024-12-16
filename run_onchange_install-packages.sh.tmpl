@@ -1,5 +1,6 @@
 #!/bin/bash
-brew bundle --no-lock --file=/dev/stdin <<EOF
+
+arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "chezmoi"
     brew "gcc"
     brew "git"
@@ -9,6 +10,7 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "neovim"
     brew "pygments"
     brew "zsh-syntax-highlighting"
+    brew "zsh-completions"
     cask "brave-browser"
     cask "chatgpt"
     cask "flycut"
@@ -16,9 +18,8 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
     cask "iterm2"
     cask "jetbrains-toolbox"
     cask "keepingyouawake"
-    cask "neovide"
     cask "wezterm"
-    {{- if ne .chezmoi.hostname "work-laptop" }}
+    {{- if eq .chezmoi.hostname "MB-928298" }}
         brew "awscli"
         brew "net-snmp"
         brew "portaudio"
@@ -26,4 +27,3 @@ brew bundle --no-lock --file=/dev/stdin <<EOF
     {{- end }}
 EOF
 
-brew bundle cleanup --force
