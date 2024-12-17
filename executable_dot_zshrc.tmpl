@@ -74,9 +74,8 @@ export PATH="/opt/homebrew/bin:$PATH"
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if type brew &>/dev/null; then
-FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
-
-autoload -Uz compinit
+    FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+    autoload -Uz compinit
 compinit
 fi
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
@@ -85,15 +84,15 @@ fi
 # For a full list of active aliases, run `alias`.
 alias fa="alias | grep"
 alias rz=". $HOME/.zshrc"
-alias vz="nvim $HOME/.zshrc"
-alias vdz="neovide $HOME/.zshrc"
-alias vn="nvim $HOME/.config/nvim/init.lua"
-alias vdn="neovide $HOME/.config/nvim/init.lua"
+alias ez="chezmoi edit -va ~/.zshrc"
 
 # neovim
 alias vim="nvim"
 alias v="nvim"
 alias vd="neovide"
+
+# just
+alias j="just -f .local/justfile"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
