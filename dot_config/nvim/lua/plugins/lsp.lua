@@ -9,7 +9,7 @@ return {
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ "j-hui/fidget.nvim", opts = {} },
+		{ "j-hui/fidget.nvim",       opts = {} },
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
@@ -137,14 +137,12 @@ return {
 		})
 
 		-- Change diagnostic symbols in the sign column (gutter)
-		-- if vim.g.have_nerd_font then
-		--   local signs = { ERROR = '', WARN = '', INFO = '', HINT = '' }
-		--   local diagnostic_signs = {}
-		--   for type, icon in pairs(signs) do
-		--     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-		--   end
-		--   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-		-- end
+		local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+		local diagnostic_signs = {}
+		for type, icon in pairs(signs) do
+			diagnostic_signs[vim.diagnostic.severity[type]] = icon
+		end
+		vim.diagnostic.config({ signs = { text = diagnostic_signs } })
 
 		-- LSP servers and clients are able to communicate to each other what features they support.
 		--  By default, Neovim doesn't support everything that is in the LSP specification.
