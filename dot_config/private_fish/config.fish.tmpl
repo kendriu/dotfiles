@@ -15,12 +15,17 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 function cat --wraps bat
     bat $argv
 end
+
 # nvim
 abbr v vim
 abbr vim nvim
 
 # fish
-abbr cf chezmoi edit -va ~/.config/fish/config.fish
+function cf
+    set fish_trace 1
+    chezmoi edit -va ~/.config/fish/config.fish
+    fish
+end
 abbr rz fish
 
 # eza 
@@ -50,9 +55,14 @@ function cb -d "Change brew file & install"
 
 end
 
+# git
+abbr gst git status
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
     fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
     abbr c ./comet.sh -R DEVVM:orion 
+    abbr gp git prop
 {{- end }}
+
