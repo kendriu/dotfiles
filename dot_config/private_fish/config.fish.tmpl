@@ -19,7 +19,7 @@ end
 eval (batpipe)
 
 # nvim
-abbr v vim
+abbr v nvim
 abbr vim nvim
 function cv
     cd ~/.config/nvim
@@ -51,7 +51,7 @@ function c-sync
     set fish_trace 1
     cd ~/.local/share/chezmoi/
     git add .
-    git commit -m"$argv"
+    git commit -m"Sync"
     git push
 end
 
