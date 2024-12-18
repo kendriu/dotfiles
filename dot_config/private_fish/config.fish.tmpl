@@ -12,7 +12,7 @@ fish_add_path /opt/homebrew/opt/rustup/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # nvim
-abbr v nvim
+abbr v vim
 abbr vim nvim
 
 # fish
@@ -20,7 +20,7 @@ abbr cf chezmoi edit -va ~/.config/fish/config.fish
 abbr rz fish
 
 # chezmoi
-abbr c chezmoi
+abbr ch chezmoi
 abbr ca chezmoi apply -v
 
 # brew
@@ -40,3 +40,8 @@ function c-sync
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+{{- if eq .chezmoi.hostname "MB-928298" }}
+    fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
+    abbr c ./comet.sh -R DEVVM:orion 
+{{- end }}
