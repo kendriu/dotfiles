@@ -1,6 +1,7 @@
 #!/bin/bash
 
 arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
+    brew "bat-extras"
     brew "bat"
     brew "chezmoi"
     brew "eza"
