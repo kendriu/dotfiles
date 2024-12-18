@@ -11,6 +11,10 @@ fish_add_path /opt/homebrew/opt/rustup/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# bat
+function cat --wraps bat
+    bat $argv
+end
 # nvim
 abbr v vim
 abbr vim nvim
@@ -19,17 +23,15 @@ abbr vim nvim
 abbr cf chezmoi edit -va ~/.config/fish/config.fish
 abbr rz fish
 
+# eza 
+abbr l ls
+function ls --wraps eza
+    eza --icons=auto $argv
+end
+
 # chezmoi
 abbr ch chezmoi
 abbr ca chezmoi apply -v
-
-# brew
-function cb -d "Change brew file & install"
-    set fish_trace 1
-    nvim ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl 
-    chezmoi apply -v
-
-end
 
 function c-sync
     set fish_trace 1
@@ -37,6 +39,14 @@ function c-sync
     git add .
     git commit -m"$argv"
     git push
+end
+
+# brew
+function cb -d "Change brew file & install"
+    set fish_trace 1
+    nvim ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl 
+    chezmoi apply -v
+
 end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
