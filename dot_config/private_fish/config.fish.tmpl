@@ -19,6 +19,12 @@ end
 # nvim
 abbr v vim
 abbr vim nvim
+function cv
+    cd ~/.config/nvim
+    set fish_trace 1
+    nvim
+    chezmoi add -v ~/.config/nvim
+end
 
 # fish
 function cf
