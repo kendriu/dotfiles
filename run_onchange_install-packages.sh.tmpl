@@ -1,8 +1,8 @@
 #!/bin/bash
 
 arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
-    brew "bat-extras"
     brew "bat"
+    brew "bat-extras"
     brew "chezmoi"
     brew "eza"
     brew "fish"
@@ -13,7 +13,6 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "luarocks"
     brew "neovim"
     brew "npm"
-    brew "pygments"
     brew "ripgrep"
     brew "rustup"
     brew "terminal-notifier"

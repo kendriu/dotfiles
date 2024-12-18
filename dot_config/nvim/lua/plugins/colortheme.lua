@@ -1,9 +1,9 @@
 return {
 	"loctvl842/monokai-pro.nvim",
-	opts = {},
-	-- config = function()
-	-- 	require("monokai-pro").setup({
-	-- 		filter = "pro",
-	-- 	})
-	-- end,
+	priority = 1000,
+	lazy = false,
+	config = function()
+		require("monokai-pro").setup()
+		vim.cmd([[colorscheme monokai-pro]])
+	end,
 }
