@@ -1,5 +1,4 @@
 export LANG=us_US.utf-8
-export EDITOR=nvim
 
 if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
 fundle plugin 'jethrokuan/z'
@@ -13,12 +12,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # bat
+export BAT_THEME="Monokai Extended"
+export PAGER="bat"
+export MANPAGER="bat"
 function cat --wraps bat
     bat $argv
 end
 eval (batpipe)
 
 # nvim
+export EDITOR=nvim
 abbr v nvim
 abbr vim nvim
 function cv
@@ -45,7 +48,8 @@ end
 # chezmoi
 abbr ch chezmoi
 abbr chc cd ~/.local/share/chezmoi/
-abbr ca chezmoi apply -v
+abbr cha chezmoi apply -v
+abbr chz chezmoi update -v
 
 function c-sync
     set fish_trace 1
@@ -65,6 +69,7 @@ end
 
 # git
 abbr gst git status
+abbr gl git pull
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
