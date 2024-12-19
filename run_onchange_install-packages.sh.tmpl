@@ -15,6 +15,7 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "npm"
     brew "ripgrep"
     brew "rustup"
+    brew "starship"
     brew "terminal-notifier"
     brew "uv"
     cask "brave-browser"
@@ -27,6 +28,7 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     cask "wezterm"
     {{- if eq .chezmoi.hostname "MB-928298" }}
         brew "awscli"
+        brew "fswatch"
         brew "net-snmp"
         brew "portaudio"
         brew "postgresql@14"

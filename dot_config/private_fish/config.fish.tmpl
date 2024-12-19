@@ -71,11 +71,32 @@ end
 abbr gst git status
 abbr gl git pull
 
+# ssh
+abbr cssh chezmoi edit -va ~/.ssh/config
+
+# starship
+#starship init fish | source
+
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
     fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
     abbr c ./comet.sh -R DEVVM:orion 
     abbr gp git prop
+
+    function r --wraps rsync
+        fswatch --recursive --one-per-batch  $argv[1] | while read line
+            rsync -ah --stats --delete-after \
+                --filter=":- $argv[1]/.gitignore" \
+                --filter=':- ~/.gitignore' \
+
+                $argv
+            set_color yellow
+            date
+            set_color normal
+            terminal-notifier -title "Orion" -message "Synced"  
+        end
+    end
 {{- end }}
 
