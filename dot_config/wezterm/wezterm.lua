@@ -25,6 +25,11 @@ config = {
 			mods = "CMD",
 			action = wezterm.action.SplitHorizontal({}),
 		},
+		{
+			key = "d",
+			mods = "CMD|SHIFT",
+			action = wezterm.action.SplitVertical({}),
+		},
 	},
 }
 return config
