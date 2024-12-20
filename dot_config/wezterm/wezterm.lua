@@ -20,6 +20,11 @@ config = {
 				win:maximize()
 			end),
 		},
+		{
+			key = "d",
+			mods = "CMD",
+			action = wezterm.action.SplitHorizontal({}),
+		},
 	},
 }
 return config
