@@ -12,5 +12,14 @@ config = {
 	color_scheme = "Monokai Pro (Gogh)",
 	font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular" }),
 	font_size = 13,
+	keys = {
+		{
+			key = "Enter",
+			mods = "CTRL",
+			action = wezterm.action_callback(function(win, pane)
+				win:maximize()
+			end),
+		},
+	},
 }
 return config
