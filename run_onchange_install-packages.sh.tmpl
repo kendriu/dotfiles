@@ -6,6 +6,7 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "chezmoi"
     brew "eza"
     brew "fish"
+    brew "black"
     brew "gcc"
     brew "git"
     brew "git-delta"
@@ -18,7 +19,6 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     brew "starship"
     brew "terminal-notifier"
     brew "uv"
-    cask "brave-browser"
     cask "chatgpt"
     cask "flycut"
     cask "font-jetbrains-mono-nerd-font"
@@ -26,6 +26,7 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     cask "obsidian"
     cask "jetbrains-toolbox"
     cask "keepingyouawake"
+    cask "vivaldi"
     cask "wezterm"
     {{- if eq .chezmoi.hostname "MB-928298" }}
         brew "awscli"

@@ -4,6 +4,7 @@ return {
 		"nvimtools/none-ls-extras.nvim",
 		"jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
 		"nvim-lua/plenary.nvim",
+		"joechrisellis/lsp-format-modifications.nvim",
 	},
 	config = function()
 		local null_ls = require("null-ls")
@@ -14,9 +15,9 @@ return {
 			ensure_installed = {
 				"checkmake",
 				"just",
-				"ruff",
 				"shfmt",
 				"stylua", -- lua formatter
+				"black",
 			},
 			automatic_installation = true,
 		})
@@ -26,21 +27,30 @@ return {
 			formatting.just,
 			formatting.shfmt.with({ args = { "-i", "4" } }),
 			formatting.stylua,
-			require("none-ls.formatting.ruff").with({ extra_args = { "--extend-select", "I" } }),
-			require("none-ls.formatting.ruff_format"),
+			formatting.black,
+			formatting.blackd,
 		}
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 		null_ls.setup({
 			sources = sources,
 			on_attach = function(client, bufnr)
+				vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
+					local lsp_format_modifications = require("lsp-format-modifications")
+					lsp_format_modifications.format_modifications(client, bufnr)
+				end, {})
 				if client.supports_method("textDocument/formatting") then
 					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 					vim.api.nvim_create_autocmd("BufWritePre", {
 						group = augroup,
 						buffer = bufnr,
 						callback = function()
-							vim.lsp.buf.format({ async = false })
+							local lsp_format_modifications = require("lsp-format-modifications")
+							local result = lsp_format_modifications.format_modifications(client, bufnr)
+							if result.success == false then
+								-- not git repository - format entire file
+								vim.lsp.buf.format({ async = false })
+							end
 						end,
 					})
 				end
