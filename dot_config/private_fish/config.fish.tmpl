@@ -74,12 +74,17 @@ end
 # git
 abbr gst git status
 abbr gl git pull
+abbr glog git log --oneline --decorate --graph
+abbr gcan! git commit --verbose --all --no-edit --amend
 
 # ssh
 abbr cssh chezmoi edit -va ~/.ssh/config
 
 # starship
 #starship init fish | source
+
+# misc
+abbr a source .venv/bin/activate.fish
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
