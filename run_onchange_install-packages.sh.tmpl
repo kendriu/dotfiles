@@ -30,6 +30,7 @@ arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
     cask "wezterm"
     {{- if eq .chezmoi.hostname "MB-928298" }}
         brew "awscli"
+        brew "coreutils"
         brew "fswatch"
         brew "net-snmp"
         brew "portaudio"

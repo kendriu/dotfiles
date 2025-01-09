@@ -76,18 +76,15 @@ abbr gst git status
 abbr gl git pull
 abbr glog git log --oneline --decorate --graph
 abbr gcan! git commit --verbose --all --no-edit --amend
-abbr gpu git push --set-upstream  --force-with-lease origin (git rev-parse --abbrev-ref HEAD)
 
 # ssh
 abbr cssh chezmoi edit -va ~/.ssh/config
 
 # starship
-#starship init fish | source
+##starship init fish | source
 
 # misc
 abbr a source .venv/bin/activate.fish
-
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
