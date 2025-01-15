@@ -1,4 +1,4 @@
-export LANG=us_US.utf-8
+set -gx LANG us_US.utf-8
 set fish_greeting
 
 if not functions -q fundle; eval (curl -sfL https://git.io/fundle-install); end
@@ -13,16 +13,16 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 
 # bat
-export BAT_THEME="Monokai Extended"
-export PAGER="bat"
-export MANPAGER="bat"
+set -gx BAT_THEME "Monokai Extended"
+set -gx PAGER "bat"
+set -gx MANPAGER "bat"
 function cat --wraps bat
     bat $argv
 end
 eval (batpipe)
 
 # nvim
-export EDITOR=nvim
+set -gx EDITOR nvim
 abbr v nvim
 abbr vim nvim
 function cv
@@ -89,6 +89,7 @@ abbr a source .venv/bin/activate.fish
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
     fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
+    set -gx USE_QPIPES yes
     abbr c ./comet.sh -R DEVVM:orion 
     abbr gp git prop
 
@@ -97,7 +98,6 @@ abbr a source .venv/bin/activate.fish
             rsync -ah --stats --delete-after \
                 --filter=":- $argv[1]/.gitignore" \
                 --filter=':- ~/.gitignore' \
-
                 $argv
             set_color yellow
             date
