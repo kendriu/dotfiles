@@ -11,7 +11,6 @@ fish_add_path /opt/homebrew/opt/rustup/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-
 # bat
 set -gx BAT_THEME "Monokai Extended"
 set -gx PAGER "bat"
@@ -89,9 +88,19 @@ abbr a source .venv/bin/activate.fish
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
     fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
+
     set -gx USE_QPIPES yes
+    set -gx MAIN "TEAM/infra-5.3"
+
     abbr c ./comet.sh -R DEVVM:orion 
-    abbr gp git prop
+    function gp
+        set first_commit (git cherry $MAIN | head -1 | cut -d" " -f2) 
+        set message (git log --format=%B -n 1 $first_commit | string trim)
+        echo "Calling: git prop $MAIN BUILD \"$message\""
+        git prop $MAIN BUILD \"$message\"
+        echo "Calling: git pipe $MAIN COMET"
+        git pipe $MAIN COMET
+    end
 
     function r --wraps rsync
         fswatch --recursive --one-per-batch  $argv[1] | while read line
