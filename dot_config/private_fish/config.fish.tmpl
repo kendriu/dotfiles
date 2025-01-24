@@ -96,8 +96,8 @@ abbr a source .venv/bin/activate.fish
     function gp
         set first_commit (git cherry $MAIN | head -1 | cut -d" " -f2) 
         set message (git log --format=%B -n 1 $first_commit | string trim)
-        echo "Calling: git prop $MAIN BUILD \"$message\""
-        git prop $MAIN BUILD \"$message\"
+        echo "Calling: git prop $MAIN BUILD $message"
+        git prop $MAIN BUILD $message
         echo "Calling: git pipe $MAIN COMET"
         git pipe $MAIN COMET
     end
