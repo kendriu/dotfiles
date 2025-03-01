@@ -18,6 +18,7 @@ return {
 				"shfmt",
 				"stylua", -- lua formatter
 				"black",
+				"rustfmt",
 			},
 			automatic_installation = true,
 		})
@@ -29,6 +30,7 @@ return {
 			formatting.stylua,
 			formatting.black,
 			formatting.blackd,
+			require("none-ls.formatting.rustfmt"),
 		}
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 

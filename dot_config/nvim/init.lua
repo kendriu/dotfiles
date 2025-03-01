@@ -39,4 +39,6 @@ require("lazy").setup({
 	require("plugins.autoformatting"),
 	require("plugins.gitsigns"),
 	require("plugins.misc"),
+	require("plugins.docs"),
+	require("plugins.nav"),
 })
