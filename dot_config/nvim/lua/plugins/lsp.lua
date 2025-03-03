@@ -9,7 +9,7 @@ return {
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ "j-hui/fidget.nvim",       opts = {} },
+		{ "j-hui/fidget.nvim", opts = {} },
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
@@ -201,9 +201,24 @@ return {
 						description = "Ruff: Format imports",
 					},
 				},
-				settings = {
-					lint = {
-						select = { "ALL" },
+				init_options = {
+					settings = {
+						lineLength = 140,
+						lint = {
+							select = { "ALL" },
+							ignore = {
+								"ANN", -- flake8-annotations
+								"COM812", -- invalid-trailing-comma
+								"D", -- pydocstyle
+								"EM", -- flake8-errmsg
+								"FIX002", -- line-contains-todo
+								"N802", -- invalid function name
+								"PTH", -- flake8-use-pathlib
+								"S101", -- assert
+								"TD", -- flake8-todos
+								"TRY002", -- raise-vanilla-class
+							},
+						},
 					},
 				},
 			},
@@ -330,9 +345,9 @@ return {
 				border = "single", -- "rounded", "double", "solid", "none"
 				-- or an array with eight chars building up the border in a clockwise fashion
 				-- starting with the top-left corner. eg: { "?", "?" ,"?", "?", "?", "?", "?", "?" }.
-				size = "50%",                 -- Or table format example: { height = "40%", width = "100%"}
+				size = "50%", -- Or table format example: { height = "40%", width = "100%"}
 				position = { row = "50%", col = "100%" }, -- Or table format example: { row = "100%", col = "0%"}
-				scrolloff = nil,              -- scrolloff value within navbuddy window
+				scrolloff = nil, -- scrolloff value within navbuddy window
 				sections = {
 					left = {
 						size = "20%",

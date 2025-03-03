@@ -63,10 +63,10 @@ return {
 				-- }
 				multilines = {
 					-- Enable multiline diagnostic messages
-					enabled = true,
+					enabled = false,
 
 					-- Always show messages on all lines for multiline diagnostics
-					always_show = true,
+					always_show = false,
 				},
 
 				-- Display all diagnostic messages on the cursor line
@@ -131,8 +131,10 @@ return {
 				-- You should not change this unless the plugin does not work with your configuration
 				overwrite_events = nil,
 			},
-			disabled_ft = {},                     -- List of filetypes to disable the plugin
+			disabled_ft = {}, -- List of filetypes to disable the plugin
 		})
 		vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
+		local tiny = require("tiny-inline-diagnostic")
+		vim.keymap.set("n", "<leader>xt", tiny.toggle, { desc = "Toggle diagnostics" })
 	end,
 }
