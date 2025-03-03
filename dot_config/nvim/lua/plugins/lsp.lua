@@ -9,7 +9,7 @@ return {
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-		{ "j-hui/fidget.nvim", opts = {} },
+		{ "j-hui/fidget.nvim",       opts = {} },
 
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
@@ -172,7 +172,8 @@ return {
 		local servers = {
 			-- clangd = {},
 			-- gopls = {},
-			pyright = {},
+			jedi_language_server = {},
+			-- pyright = {},
 			ruff = {
 				-- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
 				-- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
@@ -198,6 +199,11 @@ return {
 							})
 						end,
 						description = "Ruff: Format imports",
+					},
+				},
+				settings = {
+					lint = {
+						select = { "ALL" },
 					},
 				},
 			},
@@ -324,9 +330,9 @@ return {
 				border = "single", -- "rounded", "double", "solid", "none"
 				-- or an array with eight chars building up the border in a clockwise fashion
 				-- starting with the top-left corner. eg: { "?", "?" ,"?", "?", "?", "?", "?", "?" }.
-				size = "50%", -- Or table format example: { height = "40%", width = "100%"}
+				size = "50%",                 -- Or table format example: { height = "40%", width = "100%"}
 				position = { row = "50%", col = "100%" }, -- Or table format example: { row = "100%", col = "0%"}
-				scrolloff = nil, -- scrolloff value within navbuddy window
+				scrolloff = nil,              -- scrolloff value within navbuddy window
 				sections = {
 					left = {
 						size = "20%",
