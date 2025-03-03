@@ -88,18 +88,36 @@ abbr a source .venv/bin/activate.fish
 
 {{- if eq .chezmoi.hostname "MB-928298" }}
     fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
+    fish_add_path /usr/local/bin/
 
     set -gx USE_QPIPES yes
-    set -gx MAIN "TEAM/infra-5.3"
+    set -gx MAIN "TEAM/block-5.3"
+    set -gx NEXT "TEAM/infra-5.4"
 
     abbr c ./comet.sh -R DEVVM:orion 
+    abbr gm git checkout $MAIN
+    abbr glm git pull origin $MAIN
+    abbr j just -f ./.local/justfile
+
+    function glrm
+        git switch $MAIN
+        git pull origin $MAIN
+        git switch -
+        git rebase $MAIN
+
+    end
+
     function gp
-        set first_commit (git cherry $MAIN | head -1 | cut -d" " -f2) 
+        set root $MAIN
+        set first_commit (git cherry $root | head -n 1 | cut -d" " -f2) 
         set message (git log --format=%B -n 1 $first_commit | string trim)
-        echo "Calling: git prop $MAIN BUILD $message"
-        git prop $MAIN BUILD $message
-        echo "Calling: git pipe $MAIN COMET"
-        git pipe $MAIN COMET
+        set last_message (git log -1 --pretty=%B)
+        git commit --amend -m "$last_message" -m"ci-jobs: COMET"
+
+        git prop $root BUILD $message
+        git commit --amend -m "$last_message"
+
+        git prop
     end
 
     function r --wraps rsync
