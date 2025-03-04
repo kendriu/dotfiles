@@ -23,7 +23,9 @@ return {
 			},
 		},
 	},
-	vim.keymap.set("n", "<leader>n", ":Navbuddy<CR>"),
+	keys = {
+		{ "<leader>n", ":Navbuddy<CR>" },
+	},
 	config = function()
 		-- Brief aside: **What is LSP?**
 		--
