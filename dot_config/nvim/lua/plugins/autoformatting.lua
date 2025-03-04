@@ -29,7 +29,9 @@ return {
 			formatting.shfmt.with({ args = { "-i", "4" } }),
 			formatting.stylua,
 			require("none-ls.formatting.rustfmt"),
-			require("none-ls.formatting.ruff_format"),
+			require("none-ls.formatting.ruff_format").with({
+				args = { "format", "-n", "--line-length", "140", "--stdin-filename", "$FILENAME", "-" },
+			}),
 		}
 		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 

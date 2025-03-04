@@ -214,9 +214,11 @@ return {
 								"FIX002", -- line-contains-todo
 								"N802", -- invalid function name
 								"PTH", -- flake8-use-pathlib
+								"Q000", -- double quotes preffered
 								"S101", -- assert
 								"TD", -- flake8-todos
 								"TRY002", -- raise-vanilla-class
+								"N803", -- argument name should be lowercase
 							},
 						},
 					},
