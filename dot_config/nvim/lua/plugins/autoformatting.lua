@@ -1,23 +1,7 @@
 return {
 	"stevearc/conform.nvim",
-	dependencies = {
-		"nvimtools/none-ls.nvim",
-		"jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
-	},
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		require("mason-null-ls").setup({
-			ensure_installed = {
-				"just",
-				"shfmt",
-				"stylua", -- lua formatter
-				"ruff",
-				"rustfmt",
-				"prettier",
-				"isort",
-			},
-			automatic_installation = true,
-		})
 
 		local conform = require("conform")
 		local default_format_options = {
@@ -72,7 +56,8 @@ return {
 				just = { "just" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				python = { "isort", "ruff_format" },
+				python = { "ruff_organize_imports", "ruff_format" },
+				toml = { "taplo" },
 				sh = { "shfmt" },
 				yaml = { "prettier" },
 			},

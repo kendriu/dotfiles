@@ -48,6 +48,8 @@ require("lazy").setup({
 	require("plugins.flash"),
 	require("plugins.hardtime"),
 	require("plugins.signature"),
+	-- automatically check for plugin updates
+	checker = { enabled = true },
 })
 
 -- TODO:
