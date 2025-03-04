@@ -64,5 +64,7 @@ require("lazy").setup({
 --  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua
 --  *  https://dotfyle.com/plugins/rafamadriz/friendly-snippets
 --  * https://dotfyle.com/plugins/folke/todo-comments.nvim
+--  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+--  * https://github.com/nvim-pack/nvim-spectre
 --  Configure Trouble with Telescope
 --
