@@ -1,22 +1,21 @@
 return {
-
 	"folke/trouble.nvim",
 	opts = {}, -- for default options, refer to the configuration section for custom setup.
 	cmd = "Trouble",
 	keys = {
 		{
-			"<leader>xx",
-			"<cmd>Trouble diagnostics toggle<cr>",
+			"<leader>xX",
+			"<cmd>Trouble diagnostics toggle focus=true win.position=right win.size=0.4<cr>",
 			desc = "Diagnostics (Trouble)",
 		},
 		{
-			"<leader>xX",
-			"<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+			"<leader>xx",
+			"<cmd>Trouble diagnostics toggle focus=true filter.buf=0 win.position=right win.size=0.4<cr>",
 			desc = "Buffer Diagnostics (Trouble)",
 		},
 		{
 			"<leader>cs",
-			"<cmd>Trouble symbols toggle focus=false<cr>",
+			"<cmd>Trouble symbols toggle focus=true win.position=right win.size=0.4<cr>",
 			desc = "Symbols (Trouble)",
 		},
 		{
@@ -33,6 +32,12 @@ return {
 			"<leader>xQ",
 			"<cmd>Trouble qflist toggle<cr>",
 			desc = "Quickfix List (Trouble)",
+		},
+
+		{
+			"<leader>xt",
+			"<cmd>Trouble todo toggle focus=true filter={tag = {TODO,FIX,FIXME}} win.position=right win.size=0.4<cr>",
+			desc = "TODO (Trouble)",
 		},
 	},
 }

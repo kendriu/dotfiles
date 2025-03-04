@@ -172,8 +172,20 @@ return {
 		local servers = {
 			-- clangd = {},
 			-- gopls = {},
-			jedi_language_server = {},
-			-- pyright = {},
+			-- jedi_language_server = {},
+			pyright = {
+				settings = {
+					pyright = {
+						disableOrganizeImports = true, -- Using Ruff
+					},
+					python = {
+						analysis = {
+							ignore = { "*" }, -- Using Ruff
+							typeCheckingMode = "off", -- Using mypy
+						},
+					},
+				},
+			},
 			ruff = {
 				-- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
 				-- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218

@@ -27,10 +27,10 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	require("plugins.alpha"),
 	require("plugins.autocompletion"),
+	require("plugins.autoformatting"),
 	require("plugins.bufferline"),
 	require("plugins.chezmoi"),
 	require("plugins.colortheme"),
-	require("plugins.conform"),
 	require("plugins.delimiters"),
 	require("plugins.diagnostics"),
 	require("plugins.docs"),
@@ -44,4 +44,8 @@ require("lazy").setup({
 	require("plugins.telescope"),
 	require("plugins.treesitter"),
 	require("plugins.trouble"),
+	require("plugins.todo"),
+	require("plugins.flash"),
+	require("plugins.hardtime"),
+	require("plugins.signature"),
 })

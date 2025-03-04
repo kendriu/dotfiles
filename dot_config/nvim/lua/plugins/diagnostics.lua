@@ -135,6 +135,6 @@ return {
 		})
 		vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
 		local tiny = require("tiny-inline-diagnostic")
-		vim.keymap.set("n", "<leader>xt", tiny.toggle, { desc = "Toggle diagnostics" })
+		-- vim.keymap.set("n", "<leader>xt", tiny.toggle, { desc = "Toggle diagnostics" })
 	end,
 }

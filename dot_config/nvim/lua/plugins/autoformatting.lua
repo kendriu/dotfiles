@@ -1,63 +1,93 @@
 return {
-	"nvimtools/none-ls.nvim",
+	"stevearc/conform.nvim",
 	dependencies = {
-		"nvimtools/none-ls-extras.nvim",
+		"nvimtools/none-ls.nvim",
 		"jayp0521/mason-null-ls.nvim", -- ensure dependencies are installed
-		"nvim-lua/plenary.nvim",
-		"joechrisellis/lsp-format-modifications.nvim",
 	},
+	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-		local null_ls = require("null-ls")
-		local formatting = null_ls.builtins.formatting -- to setup formatters
-		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
-		-- list of formatters & linters for mason to install
 		require("mason-null-ls").setup({
 			ensure_installed = {
-				"checkmake",
 				"just",
 				"shfmt",
 				"stylua", -- lua formatter
 				"ruff",
 				"rustfmt",
+				"prettier",
+				"isort",
 			},
 			automatic_installation = true,
 		})
 
-		local sources = {
-			diagnostics.checkmake,
-			formatting.just,
-			formatting.shfmt.with({ args = { "-i", "4" } }),
-			formatting.stylua,
-			require("none-ls.formatting.rustfmt"),
-			require("none-ls.formatting.ruff_format").with({
-				args = { "format", "-n", "--line-length", "140", "--stdin-filename", "$FILENAME", "-" },
-			}),
+		local conform = require("conform")
+		local default_format_options = {
+			lsp_fallback = true,
+			async = false,
+			timeout = 500,
 		}
-		local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+		local format_hunks = function()
+			local ignore_filetypes = { "lua" }
+			if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+				vim.notify("range formatting for " .. vim.bo.filetype .. " not working properly.")
+				return default_format_options
+			end
 
-		null_ls.setup({
-			sources = sources,
-			on_attach = function(client, bufnr)
-				vim.api.nvim_buf_create_user_command(bufnr, "FormatModifications", function()
-					local lsp_format_modifications = require("lsp-format-modifications")
-					lsp_format_modifications.format_modifications(client, bufnr)
-				end, {})
-				if client.supports_method("textDocument/formatting") then
-					vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					vim.api.nvim_create_autocmd("BufWritePre", {
-						group = augroup,
-						buffer = bufnr,
-						callback = function()
-							local lsp_format_modifications = require("lsp-format-modifications")
-							local result = lsp_format_modifications.format_modifications(client, bufnr)
-							if result.success == false then
-								-- not git repository - format entire file
-								vim.lsp.buf.format({ async = false })
-							end
-						end,
-					})
+			local hunks = require("gitsigns").get_hunks()
+			if hunks == nil then
+				return default_format_options
+			end
+
+			local format = require("conform").format
+
+			local function format_range()
+				if next(hunks) == nil then
+					vim.notify("done formatting git hunks", "info", { title = "formatting" })
+					return
 				end
+				local hunk = nil
+				while next(hunks) ~= nil and (hunk == nil or hunk.type == "delete") do
+					hunk = table.remove(hunks)
+				end
+
+				if hunk ~= nil and hunk.type ~= "delete" then
+					local start = hunk.added.start
+					local last = start + hunk.added.count
+					-- nvim_buf_get_lines uses zero-based indexing -> subtract from last
+					local last_hunk_line = vim.api.nvim_buf_get_lines(0, last - 2, last - 1, true)[1]
+					local range = { start = { start, 0 }, ["end"] = { last - 1, last_hunk_line:len() } }
+					format({ range = range, async = true, lsp_fallback = true }, function()
+						vim.defer_fn(function()
+							format_range()
+						end, 1)
+					end)
+				end
+			end
+
+			format_range()
+		end
+
+		conform.setup({
+			formatters_by_ft = {
+				json = { "prettier" },
+				just = { "just" },
+				lua = { "stylua" },
+				markdown = { "prettier" },
+				python = { "isort", "ruff_format" },
+				sh = { "shfmt" },
+				yaml = { "prettier" },
+			},
+			format_on_save = function()
+				return format_hunks()
 			end,
 		})
+		conform.formatters.ruff_format = {
+			-- inherit = false,
+			-- command = "shfmt",
+			args = { "format", "--force-exclude", "--line-length", "140", "--stdin-filename", "$FILENAME", "-" },
+			-- prepend_args = { "--line-length", "140" },
+		}
+		conform.formatters.isort = {
+			prepend_args = { "--line-length", "140" },
+		}
 	end,
 }
