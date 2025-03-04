@@ -1,7 +1,8 @@
 #!/bin/bash
 
-arch -arm64 brew bundle --no-lock --file=/dev/stdin <<EOF
+arch -arm64 brew bundle --file=/dev/stdin <<EOF
     brew "bat"
+    brew "fish-lsp"
     brew "bat-extras"
     brew "chezmoi"
     brew "eza"
