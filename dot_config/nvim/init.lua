@@ -67,4 +67,4 @@ require("lazy").setup({
 --  * https://github.com/nvim-pack/nvim-spectre
 --  * https://github.com/folke/snacks.nvim
 --  Configure Trouble with Telescope
---
+--  * https://github.com/ggandor/leap.nvim
