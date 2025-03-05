@@ -48,8 +48,8 @@ require("lazy").setup({
 	require("plugins.flash"),
 	require("plugins.hardtime"),
 	require("plugins.signature"),
-	-- automatically check for plugin updates
-	checker = { enabled = true },
+	require("plugins.session"),
+	checker = { enabled = true }, -- automatically check for plugin updates
 })
 
 -- TODO:
@@ -66,5 +66,4 @@ require("lazy").setup({
 --  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 --  * https://github.com/nvim-pack/nvim-spectre
 --  * https://github.com/folke/snacks.nvim
---  Configure Trouble with Telescope
 --  * https://github.com/ggandor/leap.nvim
