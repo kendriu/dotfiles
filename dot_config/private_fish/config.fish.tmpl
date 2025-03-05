@@ -29,16 +29,16 @@ function cv
     cd ~/.config/nvim
     set fish_trace 1
     nvim
-    chezmoi add -v ~/.config/nvim
+    chezmoi add ~/.config/nvim
 end
 
 # wezterm
-abbr cw chezmoi edit -va ~/.config/wezterm/wezterm.lua
+abbr cw chezmoi edit -a ~/.config/wezterm/wezterm.lua
 
 # fish
 function cf
     set fish_trace 1
-    chezmoi edit -va ~/.config/fish/config.fish
+    chezmoi edit -a ~/.config/fish/config.fish
     fish
 end
 abbr rz fish
@@ -67,7 +67,7 @@ end
 function cb -d "Change brew file & install"
     set fish_trace 1
     nvim ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl
-    chezmoi apply -v
+    chezmoi apply 
 
 end
 
@@ -78,7 +78,7 @@ abbr glog git log --oneline --decorate --graph
 abbr gcan! git commit --verbose --all --no-edit --amend
 
 # ssh
-abbr cssh chezmoi edit -va ~/.ssh/config
+abbr cssh chezmoi edit -a ~/.ssh/config
 
 # starship
 ##starship init fish | source

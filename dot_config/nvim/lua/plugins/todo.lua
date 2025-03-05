@@ -66,4 +66,20 @@ return {
 			-- pattern = [[\b(KEYWORDS)\b]], -- match without the extra colon. You'll likely get false positives
 		},
 	},
+	keys = {
+		{
+			"]t",
+			function()
+				require("todo-comments").jump_next({ keywords = { "TODO", "FIX", "FIXME" } })
+			end,
+			desc = "Next todo comment",
+		},
+		{
+			"[t",
+			function()
+				require("todo-comments").jump_prev({ keywords = { "TODO", "FIX", "FIXME" } })
+			end,
+			desc = "Previous todo comment",
+		},
+	},
 }

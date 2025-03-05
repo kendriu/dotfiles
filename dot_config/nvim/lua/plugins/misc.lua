@@ -51,9 +51,4 @@ return {
 		opts = {},
 		config = true,
 	},
-
-	{
-		"karb94/neoscroll.nvim",
-		opts = {},
-	},
 }

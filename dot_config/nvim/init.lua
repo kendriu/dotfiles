@@ -57,14 +57,14 @@ require("lazy").setup({
 --  * https://github.com/desdic/agrolens.nvim?tab=readme-ov-file
 --  * https://github.com/sudormrfbin/cheatsheet.nvim
 --  * https://github.com/klen/nvim-test
---  *https://github.com/RRethy/vim-illuminate
+--  * https://github.com/RRethy/vim-illuminate
 --  * https://github.com/nvim-neotest/neotest
 --  * https://github.com/Bekaboo/deadcolumn.nvim
 --  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua
---  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua
---  *  https://dotfyle.com/plugins/rafamadriz/friendly-snippets
+--  * https://dotfyle.com/plugins/rafamadriz/friendly-snippets
 --  * https://dotfyle.com/plugins/folke/todo-comments.nvim
 --  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 --  * https://github.com/nvim-pack/nvim-spectre
+--  * https://github.com/folke/snacks.nvim
 --  Configure Trouble with Telescope
 --
