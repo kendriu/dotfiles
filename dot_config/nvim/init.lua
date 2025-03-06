@@ -25,31 +25,14 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
-	require("plugins.alpha"),
-	require("plugins.autocompletion"),
-	require("plugins.autoformatting"),
-	require("plugins.bufferline"),
-	require("plugins.chezmoi"),
-	require("plugins.colortheme"),
-	require("plugins.delimiters"),
-	require("plugins.diagnostics"),
-	require("plugins.docs"),
-	require("plugins.gitsigns"),
-	require("plugins.ibl"),
-	require("plugins.indent-object"),
-	require("plugins.lsp"),
-	require("plugins.lualine"),
-	require("plugins.misc"),
-	require("plugins.neotree"),
-	require("plugins.telescope"),
-	require("plugins.treesitter"),
-	require("plugins.trouble"),
-	require("plugins.todo"),
-	require("plugins.flash"),
-	require("plugins.hardtime"),
-	require("plugins.signature"),
-	require("plugins.session"),
-	checker = { enabled = true }, -- automatically check for plugin updates
+	spec = {
+		{ import = "plugins" },
+	},
+	checker = { enabled = false }, -- automatically check for plugin updates
+	install = {
+		-- try to load one of these colorschemes when starting an installation during startup
+		colorscheme = { "monokai-pro" },
+	},
 })
 
 -- TODO:
@@ -67,3 +50,4 @@ require("lazy").setup({
 --  * https://github.com/nvim-pack/nvim-spectre
 --  * https://github.com/folke/snacks.nvim
 --  * https://github.com/ggandor/leap.nvim
+--  * https://github.com/ms-jpq/chadtree?tab=readme-ov-file

@@ -10,7 +10,8 @@ return {
 		--- @param txt string
 		--- @param keybind string? optional
 		--- @param keybind_opts table? optional
-		local function button(sc, txt, keybind, keybind_opts)
+		--- @param hl_opts table? optional
+		local function button(sc, txt, keybind, keybind_opts, hl_opts)
 			local leader = "SPC"
 			local sc_ = sc:gsub("%s", ""):gsub(leader, "<leader>")
 
@@ -22,6 +23,7 @@ return {
 				align_shortcut = "left",
 				hl_shortcut = { { "Operator", 0, 1 }, { "Number", 1, #sc + 1 }, { "Operator", #sc + 1, #sc + 2 } },
 				shrink_margin = false,
+				hl = { hl_opts },
 			}
 			if keybind then
 				keybind_opts = vim.F.if_nil(keybind_opts, { noremap = true, silent = true, nowait = true })
@@ -40,12 +42,27 @@ return {
 				opts = opts,
 			}
 		end
-		local bottom_buttons = startify.section.bottom_buttons.val
-		local add_button = function(b)
-			table.insert(bottom_buttons, #bottom_buttons, b)
-		end
-		add_button(button("l", "Load Last Session", "<cmd> SessionManager load_last_session <cr>"))
-		add_button(button("L", "Load Session", "<cmd> SessionManager load_session <cr>"))
+
+		local utils = require("session_manager.utils")
+		local dir = utils.get_sessions()[1].dir.filename
+
+		local lls_txt = "Load Last Session "
+		local session_group = {
+			type = "group",
+			val = {
+				button(
+					"l",
+					lls_txt .. dir,
+					"<cmd> SessionManager load_last_session <cr>",
+					{},
+					{ "Comment", #lls_txt, #lls_txt + #dir }
+				),
+				button("L", "Load Session", "<cmd> SessionManager load_session <cr>"),
+			},
+		}
+		local startify_config = startify.config
+		table.insert(startify_config.layout, #startify_config.layout - 1, session_group)
+		table.insert(startify_config.layout, #startify_config.layout - 1, { type = "padding", val = 1 })
 		require("alpha").setup(startify.config)
 	end,
 }

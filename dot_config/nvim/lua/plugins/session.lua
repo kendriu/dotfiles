@@ -4,18 +4,10 @@ return {
 	opts = {},
 	lazy = false,
 	keys = {
-		{
-			"<leader>ml",
-			function()
-				local session_manager = require("session_manager")
-				if session_manager.current_dir_session_exists() then
-					session_manager.load_current_dir_session()
-				else
-					print("No sessions found")
-				end
-			end,
-			desc = "Load Cur Dir Session",
-		},
+		{ "<leader>ml", "<cmd> SessionManager load_last_session<cr>", desc = "Load [l]ast session" },
+		{ "<leader>mL", "<cmd> SessionManager load_session<cr>", desc = "[L]oad session" },
+		{ "<leader>ms", "<cmd> SessionManager save_current_session<cr>", desc = "[S]ave current session" },
+		{ "<leader>md", "<cmd> SessionManager delete_session<cr>", desc = "[D]elete session" },
 	},
 	config = function()
 		local Path = require("plenary.path")
@@ -33,9 +25,9 @@ return {
 				"gitrebase",
 			},
 			autosave_ignore_buftypes = {}, -- All buffers of these bufer types will be closed before the session is saved.
-			autosave_only_in_session = false, -- Always autosaves session. If true, only autosaves after a session is active.
+			autosave_only_in_session = true, -- Always autosaves session. If true, only autosaves after a session is active.
 			max_path_length = 80, -- Shorten the display path if length exceeds this threshold. Use 0 if don't want to shorten the path at all.
-			load_include_current = false, -- The currently loaded session appears in the load_session UI.
+			load_include_current = true, -- The currently loaded session appears in the load_session UI.
 		})
 	end,
 }
