@@ -232,6 +232,7 @@ return {
 								"S101", -- assert
 								"TD", -- flake8-todos
 								"TRY002", -- raise-vanilla-class
+								"TRY003", -- raise-vanilla-args (TRY003)
 							},
 						},
 					},

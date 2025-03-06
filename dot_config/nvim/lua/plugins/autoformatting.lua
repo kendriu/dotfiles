@@ -2,7 +2,6 @@ return {
 	"stevearc/conform.nvim",
 	event = { "BufReadPre", "BufNewFile" },
 	config = function()
-
 		local conform = require("conform")
 		local default_format_options = {
 			lsp_fallback = true,
@@ -56,7 +55,7 @@ return {
 				just = { "just" },
 				lua = { "stylua" },
 				markdown = { "prettier" },
-				python = { "ruff_organize_imports", "ruff_format" },
+				python = { "ruff_format" },
 				toml = { "taplo" },
 				sh = { "shfmt" },
 				yaml = { "prettier" },
@@ -66,10 +65,26 @@ return {
 			end,
 		})
 		conform.formatters.ruff_format = {
-			-- inherit = false,
-			-- command = "shfmt",
 			args = { "format", "--force-exclude", "--line-length", "140", "--stdin-filename", "$FILENAME", "-" },
-			-- prepend_args = { "--line-length", "140" },
+			range_args = function(self, ctx)
+				return {
+					"format",
+					"--force-exclude",
+					"--line-length",
+					"140",
+					"--range",
+					string.format(
+						"%d:%d-%d:%d",
+						ctx.range.start[1],
+						ctx.range.start[2] + 1,
+						ctx.range["end"][1],
+						ctx.range["end"][2] + 1
+					),
+					"--stdin-filename",
+					"$FILENAME",
+					"-",
+				}
+			end,
 		}
 		conform.formatters.isort = {
 			prepend_args = { "--line-length", "140" },

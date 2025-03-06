@@ -51,3 +51,4 @@ require("lazy").setup({
 --  * https://github.com/folke/snacks.nvim
 --  * https://github.com/ggandor/leap.nvim
 --  * https://github.com/ms-jpq/chadtree?tab=readme-ov-file
+--  * https://cmp.saghen.dev/installation -- blink
