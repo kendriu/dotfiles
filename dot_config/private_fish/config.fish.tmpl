@@ -30,6 +30,7 @@ function cv
     cd ~/.config/nvim
     set fish_trace 1
     nvim
+    chezmoi --force forget ~/.config/nvim
     chezmoi add ~/.config/nvim
 end
 
