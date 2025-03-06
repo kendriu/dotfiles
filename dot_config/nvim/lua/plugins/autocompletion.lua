@@ -50,7 +50,7 @@ return {
 			["<C-f>"] = { "scroll_documentation_down", "fallback" },
 			["<C-b>"] = { "scroll_documentation_up", "fallback" },
 
-			["<C-s>"] = { "show_signature", "hide_signature", "fallback" },
+			["<C-y>"] = { "show_signature", "hide_signature", "fallback" },
 		},
 
 		appearance = {
@@ -62,7 +62,9 @@ return {
 			-- Adjusts spacing to ensure icons are aligned
 			nerd_font_variant = "mono",
 		},
-
+		signature = {
+			enabled = true,
+		},
 		completion = {
 			ghost_text = {
 				enabled = true,
