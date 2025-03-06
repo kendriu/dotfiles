@@ -2,11 +2,11 @@
 
 arch -arm64 brew bundle --file=/dev/stdin <<EOF
     brew "bat"
-    brew "fish-lsp"
     brew "bat-extras"
     brew "chezmoi"
     brew "eza"
     brew "fish"
+    brew "fish-lsp"
     brew "gcc"
     brew "git"
     brew "git-delta"
@@ -23,9 +23,10 @@ arch -arm64 brew bundle --file=/dev/stdin <<EOF
     cask "flycut"
     cask "font-jetbrains-mono-nerd-font"
     cask "iterm2"
-    cask "obsidian"
     cask "jetbrains-toolbox"
     cask "keepingyouawake"
+    cask "neovide"
+    cask "obsidian"
     cask "vivaldi"
     cask "wezterm"
     {{- if eq .chezmoi.hostname "MB-928298" }}
