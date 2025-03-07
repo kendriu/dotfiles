@@ -1,4 +1,5 @@
 return {
+	-- https://github.com/folke/snacks.nvim
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
@@ -28,3 +29,4 @@ return {
 	},
 	vim.api.nvim_set_hl(0, "SnacksPickerDir", { link = "SpecialComment" }),
 }
+-- TODO: https://www.reddit.com/r/neovim/comments/1iljttg/people_who_use_snacksnivm_how_do_you_modularize/
