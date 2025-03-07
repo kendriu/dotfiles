@@ -3,18 +3,22 @@ return {
 	{
 		-- detect tabstop and shiftwidth automatically
 		"tpope/vim-sleuth",
+		event = { "BufReadPre", "BufNewFile" },
 	},
 	{
 		-- Powerful Git integration for Vim
 		"tpope/vim-fugitive",
+		event = "VeryLazy",
 	},
 	{
 		-- GitHub integration for vim-fugitive
 		"tpope/vim-rhubarb",
+		event = "VeryLazy",
 	},
 	{
 		-- Hints keybinds
 		"folke/which-key.nvim",
+		event = "VeryLazy",
 		opts = {
 			-- win = {
 			--   border = {
@@ -34,28 +38,21 @@ return {
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		config = true,
 		opts = {},
-	},
-	{
-		-- Highlight todo, notes, etc in comments
-		"folke/todo-comments.nvim",
-		event = "VimEnter",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		opts = { signs = false },
 	},
 	{
 		"kylechui/nvim-surround",
-		version = "*", -- Use for stability; omit to use `main` branch for the latest features
-		event = "VeryLazy",
-		opts = {},
-		config = true,
+		event = { "BufReadPre", "BufNewFile" },
 	},
+	-- {
+	-- 	"jmbuhr/otter.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-treesitter/nvim-treesitter",
+	-- 	},
+	-- 	opts = {},
+	-- },
 	{
-		"jmbuhr/otter.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-		},
-		opts = {},
+		"sQVe/sort.nvim",
+		cmd = "Sort",
 	},
 }

@@ -1,8 +1,7 @@
 return {
 	"Shatur/neovim-session-manager",
 	dependencies = { "nvim-lua/plenary.nvim" },
-	opts = {},
-	lazy = false,
+	cmd = "SessionManager",
 	keys = {
 		{ "<leader>ml", "<cmd> SessionManager load_last_session<cr>", desc = "Load [l]ast session" },
 		{ "<leader>mL", "<cmd> SessionManager load_session<cr>", desc = "[L]oad session" },

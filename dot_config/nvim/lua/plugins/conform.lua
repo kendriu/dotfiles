@@ -1,6 +1,6 @@
 return {
 	"stevearc/conform.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = { "BufWritePre" },
 	config = function()
 		local conform = require("conform")
 		local default_format_options = {
@@ -9,9 +9,10 @@ return {
 			timeout = 500,
 		}
 		local format_hunks = function()
-			local ignore_filetypes = { "lua" }
+			local ignore_filetypes = {
+				--	"lua",
+			}
 			if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-				vim.notify("range formatting for " .. vim.bo.filetype .. " not working properly.")
 				return default_format_options
 			end
 
@@ -24,7 +25,6 @@ return {
 
 			local function format_range()
 				if next(hunks) == nil then
-					vim.notify("done formatting git hunks", "info", { title = "formatting" })
 					return
 				end
 				local hunk = nil
@@ -59,6 +59,9 @@ return {
 				toml = { "taplo" },
 				sh = { "shfmt" },
 				yaml = { "prettier" },
+			},
+			default_format_opts = {
+				lsp_format = "fallback",
 			},
 			format_on_save = function()
 				return format_hunks()

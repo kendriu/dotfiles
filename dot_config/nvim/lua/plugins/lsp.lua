@@ -1,6 +1,7 @@
 return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
 		{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -15,7 +16,6 @@ return {
 		"neovim/nvim-lspconfig",
 		"SmiteshP/nvim-navic",
 	},
-	vim.keymap.set("n", "<leader>n", ":Navbuddy<CR>"),
 	config = function()
 		-- Brief aside: **What is LSP?**
 		--

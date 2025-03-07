@@ -5,5 +5,6 @@ return {
 	config = function()
 		require("monokai-pro").setup()
 		vim.cmd([[colorscheme monokai-pro]])
+		vim.api.nvim_set_hl(0, "NonText", { link = "SpecialComment" })
 	end,
 }

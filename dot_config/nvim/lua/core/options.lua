@@ -1,6 +1,5 @@
 vim.opt.number = true -- Make line numbers default
 vim.opt.relativenumber = true -- Set relative numbered lines
-vim.opt.signcolumn = "yes" -- Always show signcolumn
 vim.opt.clipboard = "unnamedplus" -- Sync clipboard between OS and Neovim
 vim.opt.wrap = true -- Display lines as one long line
 vim.opt.linebreak = true -- Companion to wrap don't split words
