@@ -22,3 +22,13 @@ vim.opt.splitright = true -- force all vertical splits to go to the right of cur
 vim.opt.textwidth = 140
 
 vim.g.python3_host_prog = "/Users/andrzej.skupien/neovim_python/.venv/bin/python"
+
+local group = vim.api.nvim_create_augroup("", { clear = true })
+
+vim.api.nvim_create_autocmd("filetype", {
+	pattern = "conf",
+	callback = function()
+		vim.bo.filetype = "yaml"
+	end,
+	group = group,
+})

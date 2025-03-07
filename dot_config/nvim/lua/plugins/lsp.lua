@@ -162,18 +162,24 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			-- clangd = {},
-			-- gopls = {},
-			-- jedi_language_server = {},
-			pyright = {
+			bashls = {},
+			basedpyright = {
 				settings = {
-					pyright = {
-						disableOrganizeImports = true, -- Using Ruff
-					},
-					python = {
+					basedpyright = {
 						analysis = {
-							ignore = { "*" }, -- Using Ruff
-							typeCheckingMode = "off", -- Using mypy
+							ignore = { "*" },
+							autoSearchPaths = true,
+							useLibraryCodeForTypes = true,
+							typeCheckingMode = "basic", -- Change to "strict" if needed
+							diagnosticMode = "openFilesOnly",
+							diagnosticSeverityOverrides = {
+								reportGeneralTypeIssues = "none",
+								reportOptionalMemberAccess = "none",
+								reportOptionalSubscript = "none",
+								reportPrivateImportUsage = "none",
+								reportUnboundVariable = "error", -- Ensure critical errors are still shown
+							},
+							logLevel = "Error",
 						},
 					},
 				},
@@ -215,6 +221,7 @@ return {
 								"COM812", -- invalid-trailing-comma
 								"D", -- pydocstyle
 								"EM", -- flake8-errmsg
+								"ERA001", -- Found commented-out code
 								"FIX002", -- line-contains-todo
 								"N802", -- invalid function name
 								"N803", -- argument name should be lowercase
@@ -281,7 +288,11 @@ return {
 		-- for you, so that they are available from within Neovim.
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
+			"prettier",
+			"shellcheck",
+			"shfmt",
 			"stylua", -- Used to format Lua code
+			"taplo",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

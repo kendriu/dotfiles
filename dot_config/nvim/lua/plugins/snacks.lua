@@ -9,7 +9,7 @@ return {
 		-- picker
 		{ "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
 		{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Project Symbols" },
-		{ "<leader>/", function() Snacks.picker.lines({ layout={ preset="ivy_split" } }) end, desc = "Buffer Lines"},
+		{ "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines"},
 		-- picker find
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -17,6 +17,8 @@ return {
 		{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
 		{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 		{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+		-- picker zoom
+		{ "<leader>z",  function() Snacks.zen.zoom() end, desc = "Toggle Zen Mode" },
 		-- stylua: ignore stop
 	},
 	---@type snacks.Config
