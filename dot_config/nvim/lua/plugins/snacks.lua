@@ -1,5 +1,4 @@
 return {
-	-- https://github.com/folke/snacks.nvim
 	"folke/snacks.nvim",
 	priority = 1000,
 	lazy = false,
@@ -30,6 +29,14 @@ return {
 		{ "<leader>fg", function() Snacks.picker.git_files() end, desc = "Find Git Files" },
 		{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 		{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
+		-- search
+
+		{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+		-- grep
+		{ "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
+		{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
+		{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
+		{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
 		-- zen
 		{ "<leader>z",  function() Snacks.zen.zoom() end, desc = "Toggle Zen Mode" },
 		-- other 

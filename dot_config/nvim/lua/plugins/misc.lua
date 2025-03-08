@@ -19,20 +19,7 @@ return {
 		-- Hints keybinds
 		"folke/which-key.nvim",
 		event = "VeryLazy",
-		opts = {
-			-- win = {
-			--   border = {
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--     { '?', 'FloatBorder' },
-			--   },
-			-- },
-		},
+		opts = {},
 	},
 	{
 		-- Autoclose parentheses, brackets, quotes, etc.
@@ -44,32 +31,40 @@ return {
 	},
 	{
 		"kylechui/nvim-surround",
-		event = "VeryLazy",
+		event = { "BufReadPre", "BufNewFile" },
 	},
-	-- {
-	-- 	"jmbuhr/otter.nvim",
-	--
-	-- 		"nvim-treesitter/nvim-treesitter",
-	-- 	},
-	-- 	opts = {},
-	-- },
 	{
 		"sQVe/sort.nvim",
 		cmd = "Sort",
 	},
 	{
-		-- https://github.com/Pocco81/auto-save.nvim
-		"okuuva/auto-save.nvim",
-		event = "BufEnter",
-		keys = { { "<leader>a", "<cmd>ASToggle<CR>", desc = "Toogle auto-save" } },
+		"sontungexpt/url-open",
+		event = "VeryLazy",
+		keys = { { "gx", "<esc><cmd>URLOpenUnderCursor<cr>", desc = "Open under cursor" } },
 		config = function()
-			require("auto-save").setup({
-				execution_message = {
-					message = function()
-						return ""
-					end,
+			local status_ok, url_open = pcall(require, "url-open")
+			if not status_ok then
+				return
+			end
+			url_open.setup({
+				highlight_url = {
+					cursor_move = {
+						enabled = true,
+						fg = "text", -- "text" or "#rrggbb"
+						-- fg = "text", -- text will set underline same color with text
+						bg = nil, -- nil or "#rrggbb"
+						underline = true,
+					},
 				},
 			})
+		end,
+	},
+	{
+		"okuuva/auto-save.nvim",
+		event = "VeryLazy",
+		keys = { { "<leader>a", "<cmd>ASToggle<CR>", desc = "Toogle auto-save" } },
+		config = function()
+			require("auto-save").setup({})
 		end,
 	},
 }
