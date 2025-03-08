@@ -1,8 +1,10 @@
 return {
 	"saghen/blink.cmp",
-	event = { "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	-- optional: provides snippets for the snippet source
 	dependencies = "rafamadriz/friendly-snippets",
+	-- NOTE: if blink doesn't work uncomment the line bellow and run Lazy update
+	-- version = "*",
 	build = "cargo build --release",
 
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust

@@ -1,6 +1,13 @@
+-- https://github.com/m4xshen/hardtime.nvim
 return {
 	"m4xshen/hardtime.nvim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	dependencies = { "MunifTanjim/nui.nvim" },
-	opts = {},
+	opts = {
+		disabled_keys = {},
+		["<Up>"] = {},
+		["<Down>"] = {},
+		["<Left>"] = {},
+		["<Right>"] = {},
+	},
 }

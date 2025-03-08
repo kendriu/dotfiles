@@ -23,8 +23,9 @@ vim.keymap.set("n", "<leader>wn", "<cmd>noautocmd w <CR>", opts)
 -- save all and quit
 vim.keymap.set("n", "<C-q>", "<cmd> wqa <CR>", opts)
 
--- delete single charcter without copying into register
-vim.keymap.set("n", "x", '"_x', opts)
+-- Delete without copying into register
+vim.keymap.set("n", "x", '"_d', opts)
+vim.keymap.set("n", "X", '"_D', opts)
 
 -- Vertical scroll and center
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)

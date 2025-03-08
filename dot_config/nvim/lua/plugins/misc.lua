@@ -3,7 +3,7 @@ return {
 	{
 		-- detect tabstop and shiftwidth automatically
 		"tpope/vim-sleuth",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 	},
 	{
 		-- Powerful Git integration for Vim
@@ -38,15 +38,17 @@ return {
 		-- Autoclose parentheses, brackets, quotes, etc.
 		"windwp/nvim-autopairs",
 		event = "InsertEnter",
-		opts = {},
+		opts = {
+			fast_wrap = {},
+		},
 	},
 	{
 		"kylechui/nvim-surround",
-		event = { "BufReadPre", "BufNewFile" },
+		event = "VeryLazy",
 	},
 	-- {
 	-- 	"jmbuhr/otter.nvim",
-	-- 	dependencies = {
+	--
 	-- 		"nvim-treesitter/nvim-treesitter",
 	-- 	},
 	-- 	opts = {},
@@ -54,5 +56,20 @@ return {
 	{
 		"sQVe/sort.nvim",
 		cmd = "Sort",
+	},
+	{
+		-- https://github.com/Pocco81/auto-save.nvim
+		"okuuva/auto-save.nvim",
+		event = "BufEnter",
+		keys = { { "<leader>a", "<cmd>ASToggle<CR>", desc = "Toogle auto-save" } },
+		config = function()
+			require("auto-save").setup({
+				execution_message = {
+					message = function()
+						return ""
+					end,
+				},
+			})
+		end,
 	},
 }

@@ -1,6 +1,6 @@
 return {
 	"alker0/chezmoi.vim",
-	event = { "BufReadPre", "BufNewFile" },
+	event = "VeryLazy",
 	config = function()
 		-- This option is required.
 		vim.g["chezmoi#use_tmp_buffer"] = true
