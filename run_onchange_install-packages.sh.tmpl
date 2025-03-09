@@ -1,7 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 arch -arm64 brew bundle --file=/dev/stdin <<EOF
-    brew "yazi"
     brew "bat"
     brew "bat-extras"
     brew "chezmoi"
@@ -9,6 +8,7 @@ arch -arm64 brew bundle --file=/dev/stdin <<EOF
     brew "fd"
     brew "fish"
     brew "fish-lsp"
+    brew "fzf"
     brew "gcc"
     brew "git"
     brew "git-delta"
@@ -23,6 +23,7 @@ arch -arm64 brew bundle --file=/dev/stdin <<EOF
     brew "starship"
     brew "terminal-notifier"
     brew "uv"
+    brew "yazi"
     cask "chatgpt"
     cask "flycut"
     cask "font-jetbrains-mono-nerd-font"
