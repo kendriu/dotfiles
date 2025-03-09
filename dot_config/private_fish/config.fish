@@ -16,6 +16,9 @@ function cat --wraps bat
 end
 eval (batpipe)
 
+#zoxide 
+zoxide init fish | source
+
 # nvim
 set -gx EDITOR nvim
 abbr v nvim
