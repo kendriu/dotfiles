@@ -1,4 +1,1 @@
-lazy-lock.json
-{{- if ne .chezmoi.hostname "MB-928298" }}
-~/.ssh/config
-{{- end }}
+fish_variables
