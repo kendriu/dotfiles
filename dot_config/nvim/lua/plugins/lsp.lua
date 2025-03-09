@@ -2,7 +2,7 @@ return {
 	-- Main LSP Configuration
 	"neovim/nvim-lspconfig",
 	priority = 900,
-	event = "VeryLazy",
+	event = { "BufReadPre", "VeryLazy" },
 	dependencies = {
 		-- Automatically install LSPs and related tools to stdpath for Neovim
 		{ "williamboman/mason.nvim", config = true }, -- NOTE: Must be loaded before dependants
@@ -156,7 +156,6 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
-			fish_lsp = {},
 			bashls = {},
 			basedpyright = {
 				settings = {
@@ -302,9 +301,20 @@ return {
 				end,
 			},
 		})
-		local fish_lsp_server = servers["fish_lsp"]
+		local fish_lsp_server = {}
 		fish_lsp_server.capabilities = require("blink.cmp").get_lsp_capabilities(fish_lsp_server.capabilities)
-		require("lspconfig")["fish_lsp"].setup(fish_lsp_server)
+		require("lspconfig").fish_lsp.setup(fish_lsp_server)
+		-- vim.api.nvim_create_autocmd("FileType", {
+		-- 	pattern = "fish",
+		-- 	callback = function()
+		-- 		Snacks.notify("sdfsdfsd")
+		-- 		vim.lsp.start({
+		-- 			name = "fish-lsp",
+		-- 			cmd = { "fish-lsp", "start" },
+		-- 			cmd_env = { fish_lsp_show_client_popups = true },
+		-- 		})
+		-- 	end,
+		-- })
 
 		local navic = require("nvim-navic")
 		navic.setup({
