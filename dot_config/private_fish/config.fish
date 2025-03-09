@@ -8,9 +8,6 @@ end
 fish_add_path /opt/homebrew/opt/rustup/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# bat
-# curl -sL https://raw.githubusercontent.com/0xTadash1/bat-into-tokyonight/refs/heads/main/bat-into-tokyonight | bash
-# 
 set -gx BAT_THEME "tokyonight_moon"
 set -gx PAGER bat
 set -gx MANPAGER bat
