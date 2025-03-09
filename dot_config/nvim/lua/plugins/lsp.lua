@@ -156,6 +156,7 @@ return {
 		--  - settings (table): Override the default settings passed when initializing the server.
 		--        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
 		local servers = {
+			fish_lsp = {},
 			bashls = {},
 			basedpyright = {
 				settings = {
@@ -301,6 +302,9 @@ return {
 				end,
 			},
 		})
+		local fish_lsp_server = servers["fish_lsp"]
+		fish_lsp_server.capabilities = require("blink.cmp").get_lsp_capabilities(fish_lsp_server.capabilities)
+		require("lspconfig")["fish_lsp"].setup(fish_lsp_server)
 
 		local navic = require("nvim-navic")
 		navic.setup({

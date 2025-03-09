@@ -9,19 +9,22 @@ return {
 		lazygit = { enabled = true },
 		picker = { enabled = true },
 		statuscolumn = { enabled = true },
+		scroll = { enabled = true },
 	},
 	keys = {
 		-- stylua: ignore start
+		-- Top pickers & Explorer
+		{ "<leader><space>", function() Snacks.picker.smart() end, desc = "Smart Find Files" },
+		{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 		-- notifier
 		{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
 		{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 		-- buffers
 		{ "<leader>bd", function() Snacks.bufdelete.delete() end, desc = "Delete buffer", },
 		{ "<leader>bo", function() Snacks.bufdelete.other() end, desc = "Delete other buffers", },
-		-- picker
+		-- symvols
 		{ "<leader>ss", function() Snacks.picker.lsp_symbols() end, desc = "LSP Symbols" },
 		{ "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Project Symbols" },
-		{ "<leader>/", function() Snacks.picker.lines() end, desc = "Buffer Lines"},
 		-- find
 		{ "<leader>fb", function() Snacks.picker.buffers() end, desc = "Buffers" },
 		{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
@@ -30,8 +33,7 @@ return {
 		{ "<leader>fp", function() Snacks.picker.projects() end, desc = "Projects" },
 		{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
 		-- search
-
-		{ "<leader>sR", function() Snacks.picker.resume() end, desc = "Resume" },
+		{ "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
 		-- grep
 		{ "<leader>sb", function() Snacks.picker.lines() end, desc = "Buffer Lines" },
 		{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },

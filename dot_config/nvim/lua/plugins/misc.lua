@@ -67,4 +67,8 @@ return {
 			require("auto-save").setup({})
 		end,
 	},
+	{
+		"sphamba/smear-cursor.nvim",
+		opts = {},
+	},
 }
