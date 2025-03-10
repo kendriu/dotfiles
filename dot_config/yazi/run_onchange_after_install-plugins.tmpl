@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+# fish_plugins hash: {{ include "./dot_config/yazi/package.toml" | sha256sum }}
+
+echo "yazi plugins list changed. Running update."
+
+ya pack -i
