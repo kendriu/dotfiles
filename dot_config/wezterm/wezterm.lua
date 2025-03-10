@@ -8,9 +8,9 @@ config = {
 	window_close_confirmation = "NeverPrompt",
 	window_decorations = "RESIZE", -- disable the title bar but enable the resizeble behaviour
 	default_cursor_style = "SteadyBlock",
-	color_scheme = "Tokyo Night Moon",
+	color_scheme = "Catppuccin Macchiato",
 	font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular" }),
-	font_size = 13,
+	font_size = 14,
 	keys = {
 		{
 			key = "Enter",

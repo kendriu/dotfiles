@@ -1,10 +1,6 @@
 set -gx LANG us_US.utf-8
 set fish_greeting
 
-if not functions -q fisher
-    eval (curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher)
-end
-
 fish_add_path /opt/homebrew/opt/rustup/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
