@@ -178,6 +178,9 @@ return {
 					},
 				},
 			},
+			-- TODO: Setup harper
+			-- https://writewithharper.com/docs/integrations/neovim
+			-- harper_ls = {},
 			ruff = {
 				-- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
 				-- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
@@ -206,29 +209,7 @@ return {
 					},
 				},
 				init_options = {
-					settings = {
-						lineLength = 140,
-						lint = {
-							select = { "ALL" },
-							ignore = {
-								"ANN", -- flake8-annotations
-								"COM812", -- invalid-trailing-comma
-								"D", -- pydocstyle
-								"EM", -- flake8-errmsg
-								"ERA001", -- Found commented-out code
-								"FIX002", -- line-contains-todo
-								"N802", -- invalid function name
-								"N803", -- argument name should be lowercase
-								"PERF203", -- try-except-in-loop
-								"PTH", -- flake8-use-pathlib
-								"Q000", -- double quotes preffered
-								"S101", -- assert
-								"TD", -- flake8-todos
-								"TRY002", -- raise-vanilla-class
-								"TRY003", -- raise-vanilla-args (TRY003)
-							},
-						},
-					},
+					settings = { lineLength = 140 },
 				},
 			},
 			rust_analyzer = {},
@@ -268,6 +249,7 @@ return {
 					},
 				},
 			},
+			taplo = {},
 		}
 
 		-- Ensure the servers and tools above are installed
