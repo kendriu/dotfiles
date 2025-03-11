@@ -161,19 +161,12 @@ return {
 				settings = {
 					basedpyright = {
 						analysis = {
-							ignore = { "*" },
+							-- ignore = { "*" },
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
 							typeCheckingMode = "basic", -- Change to "strict" if needed
-							diagnosticMode = "openFilesOnly",
-							diagnosticSeverityOverrides = {
-								reportGeneralTypeIssues = "none",
-								reportOptionalMemberAccess = "none",
-								reportOptionalSubscript = "none",
-								reportPrivateImportUsage = "none",
-								reportUnboundVariable = "error", -- Ensure critical errors are still shown
-							},
-							logLevel = "Error",
+							diagnosticMode = "workspace",
+							diagnosticSeverityOverrides = {},
 						},
 					},
 				},
