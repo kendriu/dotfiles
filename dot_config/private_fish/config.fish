@@ -2,8 +2,10 @@ set -gx LANG us_US.utf-8
 set fish_greeting
 
 fish_add_path /opt/homebrew/opt/rustup/bin
+
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+#bat 
 set -gx BAT_THEME "Catppuccin Macchiato"
 set -gx PAGER bat
 set -gx MANPAGER bat
@@ -19,9 +21,6 @@ set -gx FZF_DEFAULT_OPTS "\
 --color=marker:#b7bdf8,fg+:#cad3f5,prompt:#c6a0f6,hl+:#ed8796 \
 --color=selected-bg:#494d64 \
 --color=border:#363a4f,label:#cad3f5"
-
-#zoxide 
-zoxide init fish | source
 
 # nvim
 set -gx EDITOR nvim
@@ -145,3 +144,6 @@ function r --wraps rsync
         terminal-notifier -title Orion -message Synced
     end
 end
+
+#zoxide 
+zoxide init fish | source
