@@ -4,7 +4,7 @@ set fish_greeting
 fish_add_path /opt/homebrew/opt/rustup/bin
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-set -gx BAT_THEME tokyonight_moon
+set -gx BAT_THEME "Catppuccin Macchiato"
 set -gx PAGER bat
 set -gx MANPAGER bat
 function cat --wraps bat
