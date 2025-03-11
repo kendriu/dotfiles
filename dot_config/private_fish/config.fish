@@ -94,7 +94,7 @@ abbr gcan! git commit --verbose --all --no-edit --amend
 abbr cssh chezmoi edit -a ~/.ssh/config
 
 # starship
-##starship init fish | source
+starship init fish | source
 
 # misc
 abbr a source .venv/bin/activate.fish
