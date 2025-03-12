@@ -55,8 +55,6 @@ return {
 		-- words
 		{ "]w",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
 		{ "[w",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
-
 		-- stylua: ignore stop
 	},
 }
--- TODO: https://www.reddit.com/r/neovim/comments/1iljttg/people_who_use_snacksnivm_how_do_you_modularize/
