@@ -12,7 +12,7 @@ success_symbol = "[[󰄛](green) ❯](peach)"
 error_symbol = "[[󰄛](red) ❯](peach)"
 
 [directory]
-truncation_length = 4
+# truncation_length = 4
 # style = "bold yellow"
 
 [aws]
