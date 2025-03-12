@@ -32,8 +32,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 
 -- Find and center
-vim.keymap.set("n", "n", "nzzzv", opts)
-vim.keymap.set("n", "N", "Nzzzv", opts)
+vim.keymap.set("n", "n", "nzz", opts)
+vim.keymap.set("n", "N", "Nzz", opts)
 
 -- Resize with arrows
 vim.keymap.set("n", "<Up>", ":resize -2<CR>", opts)
@@ -75,9 +75,9 @@ vim.keymap.set("v", ">", ">gv", opts)
 vim.keymap.set("v", "p", '"_dP', opts)
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { desc = "Open floating diagnostic message" })
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+vim.keymap.set("n", "]dzz", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+vim.keymap.set("n", "[dzz", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 
-vim.keymap.set("n", "<leader>xt", "<Nop>")
+-- Quick fix list
+vim.keymap.set("n", "]qzz", ":cnext<CR>", { desc = "Go to next on quickfix list" })
+vim.keymap.set("n", "[qzz", ":cprev<CR>", { desc = "Go to previous on quickfix list" })
