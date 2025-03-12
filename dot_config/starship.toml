@@ -7,13 +7,11 @@ palette = "catppuccin_macchiato"
 add_newline = true
 
 [character]
-
 success_symbol = "[[󰄛](green) ❯](peach)"
 error_symbol = "[[󰄛](red) ❯](peach)"
 
 [directory]
-# truncation_length = 4
-# style = "bold yellow"
+truncation_length = 4
 
 [aws]
 format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
