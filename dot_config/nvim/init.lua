@@ -41,19 +41,25 @@ require("lazy").setup({
 })
 
 -- TODO:
---  Install:
---  * https://github.com/desdic/agrolens.nvim?tab=readme-ov-file
---  * https://github.com/sudormrfbin/cheatsheet.nvim
---  * https://github.com/klen/nvim-test
---  * https://github.com/RRethy/vim-illuminate
---  * https://github.com/nvim-neotest/neotest
---  * https://github.com/Bekaboo/deadcolumn.nvim
---  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua
---  * https://dotfyle.com/plugins/rafamadriz/friendly-snippets
---  * https://dotfyle.com/plugins/folke/todo-comments.nvim
---  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects
---  * https://github.com/nvim-pack/nvim-spectre
---  * https://github.com/folke/snacks.nvim
---  * https://github.com/ggandor/leap.nvim
---  * https://github.com/ms-jpq/chadtree?tab=readme-ov-file
---  * https://cmp.saghen.dev/installation -- blink
+--  NEOVIM:
+--  * https://dotfyle.com/plugins/rafamadriz/friendly-snippets - learn how to use them
+--  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua - copilot
+--  * https://github.com/Bekaboo/deadcolumn.nvim - Deadcolumn
+--  * https://github.com/RRethy/vim-illuminate - highlighting other uses of the word under the cursor using either LSP, Tree-sitter, or regex matching.
+--  * https://github.com/ggandor/leap.nvim - replacement for flash.nvim (?)
+--  * https://github.com/klen/nvim-test - tests from nvim
+--  * https://github.com/ms-jpq/chadtree?tab=readme-ov-file - replacement for neotree
+--  * https://github.com/nvim-neotest/neotest - tests from nvim
+--  * https://github.com/nvim-pack/nvim-spectre - sophisticated find & replace
+--  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects - Tree-sitter text-objects
+--  * https://www.reddit.com/r/neovim/comments/14f0t0n/your_favourite_neovim_plugins/ - set of favorite plugins
+--  * https://github.com/tris203/hawtkeys.nvim - suggests keys for keymaps
+--  * https://github.com/aaronik/treewalker.nvim - Move around your code in a syntax tree aware manner.
+--  * https://github.com/anuvyklack/hydra.nvim - Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension
+--  * https://github.com/meznaric/key-analyzer.nvim - Ever wondered which mappings are free to be mapped?
+--  * https://github.com/mikavilpas/blink-ripgrep.nvim - Ripgrep project as a source for blink
+--  WEZTERM:
+--  * https://github.com/michaelbrusegard/tabline.wez - Tabline for Wezterm
+--  * https://github.com/xarvex/presentation.wez - presentation Mode
+--  xxh:
+--  * https://github.com/xxh/xxh - copy your shell to remote machine

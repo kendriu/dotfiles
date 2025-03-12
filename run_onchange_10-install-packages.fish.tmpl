@@ -1,0 +1,65 @@
+#!/usr/bin/env fish
+
+# Define the Brewfile content
+set brewfile_content "
+brew '7zip'
+brew 'bat'
+brew 'bat-extras'
+brew 'chezmoi'
+brew 'eza'
+brew 'fd'
+brew 'ffmpeg'
+brew 'fish'
+brew 'fish-lsp'
+brew 'fzf'
+brew 'gcc'
+brew 'git'
+brew 'git-delta'
+brew 'imagemagick'
+brew 'just'
+brew 'lazygit'
+brew 'luarocks'
+brew 'neovim'
+brew 'npm'
+brew 'poppler'
+brew 'ripgrep'
+brew 'rustup'
+brew 'starship'
+brew 'terminal-notifier'
+brew 'uv'
+brew 'wget'
+brew 'xclip'
+brew 'yazi'
+brew 'zoxide'
+cask 'chatgpt'
+cask 'flycut'
+cask 'font-jetbrains-mono-nerd-font'
+cask 'iterm2'
+cask 'jetbrains-toolbox'
+cask 'keepingyouawake'
+cask 'obsidian'
+cask 'vivaldi'
+cask 'wezterm'
+"
+
+# Conditional additions based on hostname
+{{- if eq .chezmoi.hostname "MB-928298" }}
+set brewfile_content "$brewfile_content
+brew 'awscli'
+brew 'fswatch'
+brew 'net-snmp'
+brew 'portaudio'
+brew 'postgresql@14'
+cask 'docker'
+"
+{{- else}}
+set brewfile_content "$brewfile_content
+cask 'chromedriver'
+cask 'gcenx/wine/kegworks'
+"
+
+{{- end }}
+
+echo $brewfile_content | brew bundle cleanup --force --file=/dev/stdin
+echo $brewfile_content | arch -arm64 brew bundle --upgrade --file=/dev/stdin
+brew cleanup --scrub
