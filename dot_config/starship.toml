@@ -14,7 +14,8 @@ error_symbol = "[[󰄛](red) ❯](peach)"
 truncation_length = 4
 
 [aws]
-format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+disabled = true
+# format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
 [bun]
 format = '\[[$symbol($version)]($style)\]'
