@@ -11,12 +11,6 @@ local opts = { noremap = true, silent = true }
 -- clear highlights
 vim.keymap.set("n", "<Esc>", ":noh<CR>", opts)
 
--- save file
-vim.keymap.set("n", "<C-s>", "<cmd> w <CR>", opts)
-
--- save all files
-vim.keymap.set("n", "<C-S-s>", "<cmd> wa <CR>", opts)
-
 -- save file without auto-formatting
 vim.keymap.set("n", "<leader>wn", "<cmd>noautocmd w <CR>", opts)
 
@@ -79,5 +73,5 @@ vim.keymap.set("n", "]dzz", vim.diagnostic.goto_next, { desc = "Go to next diagn
 vim.keymap.set("n", "[dzz", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
 
 -- Quick fix list
-vim.keymap.set("n", "]qzz", ":cnext<CR>", { desc = "Go to next on quickfix list" })
-vim.keymap.set("n", "[qzz", ":cprev<CR>", { desc = "Go to previous on quickfix list" })
+vim.keymap.set("n", "]q", ":cnext<CR>zz", { desc = "Go to next on quickfix list" })
+vim.keymap.set("n", "[q", ":cprev<CR>zz", { desc = "Go to previous on quickfix list" })

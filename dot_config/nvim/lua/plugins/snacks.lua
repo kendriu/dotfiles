@@ -43,18 +43,20 @@ return {
 		{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
 		-- search
 		{ "<leader>sr", function() Snacks.picker.resume() end, desc = "Resume" },
-		-- grep
 		{ "<leader>sb", function() Snacks.picker.lines({matcher={fuzzy=false}}) end, desc = "Buffer Lines" },
 		{ "<leader>sB", function() Snacks.picker.grep_buffers() end, desc = "Grep Open Buffers" },
 		{ "<leader>sg", function() Snacks.picker.grep() end, desc = "Grep" },
 		{ "<leader>sw", function() Snacks.picker.grep_word() end, desc = "Visual selection or word", mode = { "n", "x" } },
+		{ "<leader>sk", function() Snacks.picker.keymaps() end, desc = "Keymaps" },
+
 		-- zen
 		{ "<leader>z",  function() Snacks.zen.zoom() end, desc = "Toggle Zen Mode" },
 		-- other 
+	    { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 		{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
 		-- words
-		{ "]w",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-		{ "[w",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+		{ "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
+		{ "[r",         function() Snacks.words.jump(-vim.v.count1) end , desc = "Prev Reference", mode = { "n", "t" } },
 		-- stylua: ignore stop
 	},
 }
