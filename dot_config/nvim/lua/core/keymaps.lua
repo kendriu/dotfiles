@@ -75,3 +75,15 @@ vim.keymap.set("n", "[dzz", vim.diagnostic.goto_prev, { desc = "Go to previous d
 -- Quick fix list
 vim.keymap.set("n", "]q", ":cnext<CR>zz", { desc = "Go to next on quickfix list" })
 vim.keymap.set("n", "[q", ":cprev<CR>zz", { desc = "Go to previous on quickfix list" })
+
+-- System clipboard iteraction
+-- Map <Leader>++ to copy the last yanked text into the system clipboard
+vim.keymap.set("n", "<Leader>++", function()
+  vim.fn.setreg("+", vim.fn.getreg('"'))
+end, { desc = "Copy last yanked text to clipboard" })
+
+-- Map <Leader>y to yank into the system clipboard
+vim.keymap.set("n", "<Leader>y", '"+y', { desc = "Yank to clipboard" })
+
+-- Map <Leader>p to paste from the system clipboard
+vim.keymap.set("n", "<Leader>p", '"+p', { desc = "Paste from clipboard" })

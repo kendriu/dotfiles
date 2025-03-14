@@ -62,6 +62,9 @@ require("lazy").setup({
 --  * https://github.com/tris203/hawtkeys.nvim - suggests keys for keymaps
 --  * https://github.com/aaronik/treewalker.nvim - Move around your code in a syntax tree aware manner.
 --  * https://github.com/anuvyklack/hydra.nvim - Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension
+--  * https://github.com/kevinhwang91/nvim-bqf - better quickfix list
+--  * https://github.com/mistweaverco/kulala.nvim - great http client for nvim
+--  * https://github.com/MagicDuck/grug-far.nvim - find & replace with ast-grep support			
 --  * https://github.com/meznaric/key-analyzer.nvim - Ever wondered which mappings are free to be mapped?
 --  * https://github.com/mikavilpas/blink-ripgrep.nvim - Ripgrep project as a source for blink
 --  WEZTERM:
