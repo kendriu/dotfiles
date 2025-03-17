@@ -3,6 +3,12 @@
 
 palette = "catppuccin_macchiato"
 
+format = """$all"""
+right_format = """\
+$cmd_duration\
+$time\
+"""
+
 # Inserts a blank line between shell prompts
 add_newline = true
 
@@ -15,7 +21,7 @@ truncation_length = 4
 
 [aws]
 disabled = true
-# format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
+format = '\[[$symbol($profile)(\($region\))(\[$duration\])]($style)\]'
 
 [bun]
 format = '\[[$symbol($version)]($style)\]'
@@ -27,6 +33,7 @@ format = '\[[$symbol($version(-$name))]($style)\]'
 format = '\[[$symbol($version)]($style)\]'
 
 [cmd_duration]
+style = "yellow"
 format = '\[[? $duration]($style)\]'
 
 [cobol]
@@ -64,6 +71,9 @@ format = '\[[$symbol($version)]($style)\]'
 
 [fennel]
 format = '\[[$symbol($version)]($style)\]'
+
+[fill]
+disabled = false
 
 [fossil_branch]
 format = '\[[$symbol$branch]($style)\]'
@@ -179,6 +189,9 @@ format = '\[[$symbol($version)]($style)\]'
 [spack]
 format = '\[[$symbol$environment]($style)\]'
 
+[status]
+disabled = true
+
 [sudo]
 format = '\[[as $symbol]($style)\]'
 
@@ -189,6 +202,8 @@ format = '\[[$symbol($version)]($style)\]'
 format = '\[[$symbol$workspace]($style)\]'
 
 [time]
+disabled = false
+style = "subtext0"
 format = '\[[$time]($style)\]'
 
 [username]
