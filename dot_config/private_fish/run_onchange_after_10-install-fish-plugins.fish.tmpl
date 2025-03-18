@@ -1,6 +1,8 @@
 #!/usr/bin/env fish
 # fish_plugins hash: {{ include "./dot_config/private_fish/fish_plugins" | sha256sum }}
 
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+if not functions -q fisher
+    curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+end
 
 fisher update
