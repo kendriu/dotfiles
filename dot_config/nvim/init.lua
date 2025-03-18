@@ -62,7 +62,6 @@ require("lazy").setup({
 --  * https://github.com/kevinhwang91/nvim-bqf - better quickfix list
 --  * https://github.com/mistweaverco/kulala.nvim - great http client for nvim
 --  * https://github.com/MagicDuck/grug-far.nvim - find & replace with ast-grep support
---  * https://github.com/meznaric/key-analyzer.nvim - Ever wondered which mappings are free to be mapped?
 --  * https://github.com/mikavilpas/blink-ripgrep.nvim - Ripgrep project as a source for blink
 --  WEZTERM:
 --  * https://github.com/michaelbrusegard/tabline.wez - Tabline for Wezterm
