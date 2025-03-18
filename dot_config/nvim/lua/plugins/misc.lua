@@ -79,5 +79,5 @@ return {
 		end,
 	},
 	{ "Async10/nvim-keepcase", cmd = { "Replace", "R" } },
-	{ "meznaric/key-analyzer.nvim", opts = {} },
+	{ "meznaric/key-analyzer.nvim", opts = {}, cmd = "KeyAnalyzer" },
 }
