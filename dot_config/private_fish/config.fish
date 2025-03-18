@@ -89,6 +89,8 @@ abbr gst git status
 abbr gl git pull
 abbr glog git log --oneline --decorate --graph
 abbr gcan! git commit --verbose --all --no-edit --amend
+abbr gp git push
+abbr gpf git push --force-with-lease
 
 # ssh
 abbr cssh chezmoi edit -a ~/.ssh/config
