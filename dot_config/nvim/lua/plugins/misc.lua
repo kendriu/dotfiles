@@ -78,4 +78,5 @@ return {
 			require("gitignore")
 		end,
 	},
+	{ "Async10/nvim-keepcase", cmd = { "Replace", "R" } },
 }

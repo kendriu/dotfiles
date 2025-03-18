@@ -112,7 +112,25 @@ return {
 							useLibraryCodeForTypes = true,
 							typeCheckingMode = "basic", -- Change to "strict" if needed
 							diagnosticMode = "workspace",
-							diagnosticSeverityOverrides = {},
+							diagnosticSeverityOverrides = {
+
+								-- pythonVersion = "3.11"
+								-- pythonPlatform = "Linux"
+								--
+								-- typeCheckingMode = "basic"
+								reportArgumentType = "warning",
+								reportAssignmentType = "warning",
+								reportAttributeAccessIssue = false,
+								reportCallIssue = "warning",
+								reportGeneralTypeIssues = "warning",
+								reportOptionalMemberAccess = false,
+								reportOptionalSubscript = false,
+								reportPrivateImportUsage = false,
+								reportUndefinedVariable = false,
+								reportUnusedImport = false,
+								reportUnusedParameter = "warning",
+								reportUnusedVariable = "warning",
+							},
 						},
 					},
 				},
