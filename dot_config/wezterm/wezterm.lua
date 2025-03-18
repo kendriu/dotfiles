@@ -12,6 +12,7 @@ config = {
 	font = wezterm.font("JetBrainsMono Nerd Font Mono", { weight = "Regular" }),
 	font_size = 14,
 	keys = {
+		-- Maximizes the window using a custom function
 		{
 			key = "Enter",
 			mods = "CTRL",
@@ -19,20 +20,59 @@ config = {
 				win:maximize()
 			end),
 		},
+		-- Splits the current pane horizontally
 		{
 			key = "d",
 			mods = "CMD",
 			action = wezterm.action.SplitHorizontal({}),
 		},
+		-- Splits the current pane vertically
 		{
 			key = "d",
 			mods = "CMD|SHIFT",
 			action = wezterm.action.SplitVertical({}),
 		},
+		-- Moves focus to the pane on the left
+		{
+			key = "h",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.ActivatePaneDirection("Left"),
+		},
+		-- Moves focus to the pane on the right
+		{
+			key = "l",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.ActivatePaneDirection("Right"),
+		},
+		-- Moves focus to the pane above
+		{
+			key = "k",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.ActivatePaneDirection("Up"),
+		},
+		-- Moves focus to the pane below
+		{
+			key = "j",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.ActivatePaneDirection("Down"),
+		},
+		-- Closes the current pane without confirmation
 		{
 			key = "w",
 			mods = "CMD|SHIFT",
 			action = wezterm.action.CloseCurrentPane({ confirm = false }),
+		},
+		-- Moves the current tab to the left
+		{
+			key = "LeftArrow",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.MoveTabRelative(-1),
+		},
+		-- Moves the current tab to the right
+		{
+			key = "RightArrow",
+			mods = "CTRL|SHIFT",
+			action = wezterm.action.MoveTabRelative(1),
 		},
 	},
 }
