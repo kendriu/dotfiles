@@ -13,6 +13,7 @@ $time\
 add_newline = true
 
 [character]
+# format = "[[󰄛](green) ❯](peach)"
 success_symbol = "[[󰄛](green) ❯](peach)"
 error_symbol = "[[󰄛](red) ❯](peach)"
 
@@ -188,9 +189,6 @@ format = '\[[$symbol($version)]($style)\]'
 
 [spack]
 format = '\[[$symbol$environment]($style)\]'
-
-[status]
-disabled = true
 
 [sudo]
 format = '\[[as $symbol]($style)\]'
