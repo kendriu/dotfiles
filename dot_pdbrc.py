@@ -1,11 +1,11 @@
 import pdb
-import pygments
+from pygments import formatters
 
 
 try:
 
     class Config(pdb.DefaultConfig):
-        formatter = pygments.formatters.TerminalTrueColorFormatter(
+        formatter = formatters.TerminalTrueColorFormatter(
             style="catppuccin-macchiato",
         )
         use_pygments = True
