@@ -44,10 +44,8 @@ require("lazy").setup({
 --  NEOVIM:
 --  * https://dotfyle.com/plugins/rafamadriz/friendly-snippets - learn how to use them
 --  * https://dotfyle.com/plugins/zbirenbaum/copilot.lua - copilot
---  * https://github.com/Bekaboo/deadcolumn.nvim - Deadcolumn
 --  * https://github.com/klen/nvim-test - tests from nvim
 --  * https://github.com/nvim-neotest/neotest - tests from nvim
---  * https://github.com/nvim-pack/nvim-spectre - sophisticated find & replace
 --  * https://github.com/nvim-treesitter/nvim-treesitter-textobjects - Tree-sitter text-objects
 --  * https://www.reddit.com/r/neovim/comments/14f0t0n/your_favourite_neovim_plugins/ - set of favorite plugins
 --  * https://github.com/ThePrimeagen/harpoon/tree/harpoon2 - HARPOON
@@ -55,7 +53,7 @@ require("lazy").setup({
 --  * https://github.com/rgroli/other.nvim - Alternative file for the current buffer
 --  * https://github.com/jinh0/eyeliner.nvim - Move faster with unique f/F indicators for each word on the line
 --  * https://github.com/mg979/vim-visual-multi - Mutli cursor for nvim
---  * https://github.com/utilyre/barbecue.nvim?tab=readme-ov-file better breadcrumbs
+--  * https://github.com/utilyre/barbecue.nvim -  better breadcrumbs
 --  * https://github.com/rebelot/heirline.nvim -DYI  rendering statusline/winbar/tabline/statuscolumn (lot of WORK!)
 --  * https://github.com/aaronik/treewalker.nvim - Move around your code in a syntax tree aware manner.
 --  * https://github.com/anuvyklack/hydra.nvim - Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension

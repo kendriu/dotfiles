@@ -80,4 +80,9 @@ return {
 	},
 	{ "Async10/nvim-keepcase", cmd = { "Replace", "R" } },
 	{ "meznaric/key-analyzer.nvim", opts = {}, cmd = "KeyAnalyzer" },
+	{
+		"kevinhwang91/nvim-bqf",
+		ft = "qf",
+		opts = {},
+	},
 }
