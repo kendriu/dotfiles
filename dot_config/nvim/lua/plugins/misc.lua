@@ -85,4 +85,5 @@ return {
 		ft = "qf",
 		opts = {},
 	},
+	{ "sindrets/diffview.nvim" },
 }
