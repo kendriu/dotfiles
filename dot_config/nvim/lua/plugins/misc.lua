@@ -79,11 +79,11 @@ return {
 		end,
 	},
 	{ "Async10/nvim-keepcase", cmd = { "Replace", "R" } },
-	{ "meznaric/key-analyzer.nvim", opts = {}, cmd = "KeyAnalyzer" },
-	{
-		"kevinhwang91/nvim-bqf",
-		ft = "qf",
-		opts = {},
-	},
-	{ "sindrets/diffview.nvim" },
+	-- { "meznaric/key-analyzer.nvim", opts = {}, cmd = "KeyAnalyzer" },
+	-- {
+	-- 	"kevinhwang91/nvim-bqf",
+	-- 	ft = "qf",
+	-- 	opts = {},
+	-- },
+	-- { "sindrets/diffview.nvim" },
 }
