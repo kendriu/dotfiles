@@ -2,7 +2,7 @@ vim.opt.number = true -- Make line numbers default
 vim.opt.relativenumber = true -- Set relative numbered lines
 vim.opt.signcolumn = "yes" -- Always show signcolumn
 -- vim.opt.clipboard = "unnamedplus" -- Sync clipboard between OS and Neovim
-vim.opt.wrap = true -- Display lines as one long line
+vim.opt.wrap = false -- Display lines as one long line
 vim.opt.linebreak = true -- Companion to wrap don't split words
 vim.opt.mouse = "a" -- Enable mouse mode
 vim.opt.autoindent = true -- Copy indent from current line when starting new line
@@ -19,7 +19,7 @@ vim.opt.showmode = false -- Don't show the mode, since it's already in the statu
 vim.opt.undofile = true -- Save undo history
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
-vim.opt.textwidth = 140
+-- vim.opt.textwidth = 140
 
 vim.g.python3_host_prog = "/Users/andrzej.skupien/neovim_python/.venv/bin/python"
 
