@@ -111,7 +111,7 @@ return {
 							autoSearchPaths = true,
 							useLibraryCodeForTypes = true,
 							typeCheckingMode = "basic", -- Change to "strict" if needed
-							diagnosticMode = "workspace",
+							diagnosticMode = "openFilesOnly",
 							diagnosticSeverityOverrides = {
 
 								-- pythonVersion = "3.11"
