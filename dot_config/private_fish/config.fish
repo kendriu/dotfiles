@@ -2,6 +2,7 @@ set -gx LANG us_US.utf-8
 set fish_greeting
 
 fish_add_path /opt/homebrew/opt/rustup/bin
+fish_add_path $HOME/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
