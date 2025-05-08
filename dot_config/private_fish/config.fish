@@ -104,7 +104,7 @@ abbr a source .venv/bin/activate.fish
 fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
 fish_add_path /usr/local/bin/
 
-# set -gx USE_QPIPES yes
+set -gx USE_QPIPES yes
 set -gx MAIN "release/5.3.0"
 set -gx NEXT "TEAM/infra-5.4"
 
