@@ -148,7 +148,7 @@ end
 
 # jira
 abbr j jira
-abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated --order-by priority
+abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated --order-by priority --columns PRIORITY,KEY
 
 #zoxide 
 zoxide init fish | source
