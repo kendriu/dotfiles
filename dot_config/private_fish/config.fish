@@ -105,7 +105,7 @@ fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
 fish_add_path /usr/local/bin/
 
 # set -gx USE_QPIPES yes
-set -gx MAIN "release/5.4.0"
+set -gx MAIN "TEAM/infra-5.5"
 set -gx NEXT "TEAM/infra-5.5"
 
 abbr c ./comet.sh -R DEVVM:orion
