@@ -8,7 +8,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 #bat 
 set -gx BAT_THEME "Catppuccin Macchiato"
-set -gx PAGER bat
+set -gx PAGER bat --paging always
 set -gx MANPAGER bat
 function cat --wraps bat
     bat $argv
