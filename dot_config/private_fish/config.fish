@@ -104,14 +104,13 @@ abbr a source .venv/bin/activate.fish
 fish_add_path /Users/andrzej.skupien/sources/infra/user-scripts
 fish_add_path /usr/local/bin/
 
-# set -gx USE_QPIPES yes
+set -gx USE_QPIPES yes
 set -gx MAIN "TEAM/infra-5.5"
 set -gx NEXT "TEAM/infra-5.5"
 
 abbr c ./comet.sh -R DEVVM:orion
 abbr gm git checkout $MAIN
 abbr glm git pull origin $MAIN
-abbr j just -f ./.local/justfile
 
 function glrm
     git switch $MAIN
@@ -146,6 +145,10 @@ function r --wraps rsync
         terminal-notifier -title Orion -message Synced
     end
 end
+
+# jira
+abbr j jira
+abbr jmy jira issue list -a$(jira me)
 
 #zoxide 
 zoxide init fish | source
