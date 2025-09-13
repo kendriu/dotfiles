@@ -1,0 +1,2521 @@
+auth_type: basic
+board: ""
+epic:
+    name: customfield_10005
+    link: customfield_10003
+installation: Cloud
+issue:
+    fields:
+        custom:
+            - name: Failed unit Pickup address
+              key: customfield_18111
+              schema:
+                datatype: string
+            - name: Pickup contact number
+              key: customfield_18112
+              schema:
+                datatype: string
+            - name: Pickup contact email
+              key: customfield_18113
+              schema:
+                datatype: string
+            - name: Pickup contact Name
+              key: customfield_18110
+              schema:
+                datatype: string
+            - name: Known Issue
+              key: customfield_10990
+              schema:
+                datatype: option
+            - name: Reason not found
+              key: customfield_10991
+              schema:
+                datatype: option
+            - name: TP Coverage
+              key: customfield_10992
+              schema:
+                datatype: option
+            - name: Expected result
+              key: customfield_10871
+              schema:
+                datatype: string
+            - name: Frequency
+              key: customfield_10872
+              schema:
+                datatype: option
+            - name: qTest Link
+              key: customfield_10993
+              schema:
+                datatype: string
+            - name: Customer Impact
+              key: customfield_10994
+              schema:
+                datatype: string
+            - name: Release Blocker
+              key: customfield_10984
+              schema:
+                datatype: option
+            - name: DR
+              key: customfield_10863
+              schema:
+                datatype: option
+            - name: Organizations
+              key: customfield_10500
+              schema:
+                datatype: array
+                items: sd-customerorganization
+            - name: Severity
+              key: customfield_10985
+              schema:
+                datatype: option
+            - name: Assigned to Group and Team
+              key: customfield_10986
+              schema:
+                datatype: option-with-child
+            - name: Support Classification
+              key: customfield_10865
+              schema:
+                datatype: option
+            - name: Customer
+              key: customfield_10866
+              schema:
+                datatype: string
+            - name: Resolved by
+              key: customfield_10987
+              schema:
+                datatype: user
+            - name: Closed by
+              key: customfield_10988
+              schema:
+                datatype: user
+            - name: Cluster
+              key: customfield_10867
+              schema:
+                datatype: string
+            - name: reopened count
+              key: customfield_10989
+              schema:
+                datatype: number
+            - name: Reviewer (Docs)
+              key: customfield_17018
+              schema:
+                datatype: array
+                items: user
+            - name: Are cartons palletized for pickup
+              key: customfield_18108
+              schema:
+                datatype: option
+            - name: Shrink wrapped for pickup?
+              key: customfield_18109
+              schema:
+                datatype: option
+            - name: Created by Team
+              key: customfield_10980
+              schema:
+                datatype: option
+            - name: Found in Version
+              key: customfield_10981
+              schema:
+                datatype: version
+            - name: System Status
+              key: customfield_10861
+              schema:
+                datatype: option
+            - name: Reproducible
+              key: customfield_10982
+              schema:
+                datatype: option
+            - name: Issue color
+              key: customfield_10862
+              schema:
+                datatype: string
+            - name: End Customer Complete Address
+              key: customfield_18107
+              schema:
+                datatype: string
+            - name: Regression
+              key: customfield_10983
+              schema:
+                datatype: option
+            - name: Traces Expiration
+              key: customfield_10973
+              schema:
+                datatype: datetime
+            - name: system_build
+              key: customfield_10852
+              schema:
+                datatype: string
+            - name: Breakage
+              key: customfield_10974
+              schema:
+                datatype: option
+            - name: test_failure
+              key: customfield_10853
+              schema:
+                datatype: string
+            - name: panics
+              key: customfield_10854
+              schema:
+                datatype: string
+            - name: MFG Part Number
+              key: customfield_10975
+              schema:
+                datatype: string
+            - name: Flash Order Number (Ops)
+              key: customfield_10976
+              schema:
+                datatype: number
+            - name: Responders
+              key: customfield_10977
+              schema:
+                datatype: array
+                items: string
+            - name: CI URL
+              key: customfield_10857
+              schema:
+                datatype: string
+            - name: 'Netsuite Return Order # (Ops)'
+              key: customfield_10978
+              schema:
+                datatype: string
+            - name: Story point estimate
+              key: customfield_10858
+              schema:
+                datatype: number
+            - name: General Failure Reason (Support)
+              key: customfield_10979
+              schema:
+                datatype: option
+            - name: Assigned to Team
+              key: customfield_10859
+              schema:
+                datatype: option
+            - name: Test escape
+              key: customfield_10970
+              schema:
+                datatype: array
+                items: option
+            - name: FA Source
+              key: customfield_10971
+              schema:
+                datatype: option
+            - name: System GUID
+              key: customfield_10850
+              schema:
+                datatype: string
+            - name: system_version
+              key: customfield_10851
+              schema:
+                datatype: string
+            - name: Merged To
+              key: customfield_10972
+              schema:
+                datatype: array
+                items: string
+            - name: 'Netsuite Sales Order # (Ops)'
+              key: customfield_10962
+              schema:
+                datatype: string
+            - name: Ship Date (Ops)
+              key: customfield_10963
+              schema:
+                datatype: date
+            - name: System Type
+              key: customfield_10600
+              schema:
+                datatype: option
+            - name: Fixed in Commit
+              key: customfield_10842
+              schema:
+                datatype: string
+            - name: Delivery ETA (Ops)
+              key: customfield_10964
+              schema:
+                datatype: date
+            - name: Num of Dboxes
+              key: customfield_10843
+              schema:
+                datatype: array
+                items: option
+            - name: Start date
+              key: customfield_10844
+              schema:
+                datatype: date
+            - name: Return Date (Ops)
+              key: customfield_10965
+              schema:
+                datatype: date
+            - name: cycle
+              key: customfield_10845
+              schema:
+                datatype: string
+            - name: Return Tracking Number (Ops)
+              key: customfield_10968
+              schema:
+                datatype: string
+            - name: Return Part Serial Number (Ops)
+              key: customfield_10969
+              schema:
+                datatype: string
+            - name: test_id
+              key: customfield_10848
+              schema:
+                datatype: string
+            - name: test_session_id
+              key: customfield_10849
+              schema:
+                datatype: string
+            - name: Publication Viewable by
+              key: customfield_15291
+              schema:
+                datatype: option
+            - name: Introduced in Commit
+              key: customfield_10960
+              schema:
+                datatype: string
+            - name: origin
+              key: customfield_10961
+              schema:
+                datatype: string
+            - name: Request language
+              key: customfield_10840
+              schema:
+                datatype: sd-request-lang
+            - name: Continuation Type
+              key: customfield_10951
+              schema:
+                datatype: option
+            - name: Start date (SoftwarePlant)
+              key: customfield_10830
+              schema:
+                datatype: date
+            - name: Jurisdiction
+              key: customfield_10952
+              schema:
+                datatype: option
+            - name: End date
+              key: customfield_10831
+              schema:
+                datatype: date
+            - name: Flagged
+              key: customfield_10832
+              schema:
+                datatype: array
+                items: option
+            - name: Filing Date
+              key: customfield_10953
+              schema:
+                datatype: date
+            - name: Grant Date
+              key: customfield_10954
+              schema:
+                datatype: date
+            - name: Request Type
+              key: customfield_10833
+              schema:
+                datatype: sd-customerrequesttype
+            - name: Patent Number
+              key: customfield_10955
+              schema:
+                datatype: string
+            - name: Request participants
+              key: customfield_10834
+              schema:
+                datatype: array
+                items: user
+            - name: Satisfaction
+              key: customfield_10835
+              schema:
+                datatype: sd-feedback
+            - name: Patent Attorney
+              key: customfield_10956
+              schema:
+                datatype: string
+            - name: Docket Number
+              key: customfield_10957
+              schema:
+                datatype: string
+            - name: Satisfaction date
+              key: customfield_10836
+              schema:
+                datatype: datetime
+            - name: Approvers
+              key: customfield_10837
+              schema:
+                datatype: array
+                items: user
+            - name: Inventors
+              key: customfield_10958
+              schema:
+                datatype: array
+                items: user
+            - name: Disabled Test
+              key: customfield_10959
+              schema:
+                datatype: string
+            - name: Time to resolution
+              key: customfield_10838
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Time to first response
+              key: customfield_10839
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Messaging
+              key: customfield_17220
+              schema:
+                datatype: string
+            - name: Linked Issue
+              key: customfield_17348
+              schema:
+                datatype: string
+            - name: Patent Type
+              key: customfield_10950
+              schema:
+                datatype: option
+            - name: Infra Version
+              key: customfield_10940
+              schema:
+                datatype: version
+            - name: Field Update Required
+              key: customfield_10941
+              schema:
+                datatype: option
+            - name: Duplicates Policy
+              key: customfield_10942
+              schema:
+                datatype: option
+            - name: Roster
+              key: customfield_10943
+              schema:
+                datatype: array
+                items: user
+            - name: Mandatory Validation Required
+              key: customfield_10944
+              schema:
+                datatype: option
+            - name: Content type - text (obsolete)
+              key: customfield_10945
+              schema:
+                datatype: string
+            - name: Application No
+              key: customfield_10947
+              schema:
+                datatype: string
+            - name: Title
+              key: customfield_10948
+              schema:
+                datatype: string
+            - name: Baseline start date
+              key: customfield_10827
+              schema:
+                datatype: date
+            - name: Confirmation Number
+              key: customfield_10949
+              schema:
+                datatype: string
+            - name: Baseline end date
+              key: customfield_10828
+              schema:
+                datatype: date
+            - name: Task progress
+              key: customfield_10829
+              schema:
+                datatype: number
+            - name: Functional Teams
+              key: customfield_15390
+              schema:
+                datatype: array
+                items: option
+            - name: Atomic Type
+              key: customfield_17579
+              schema:
+                datatype: option
+            - name: Steps to Resolve
+              key: customfield_17216
+              schema:
+                datatype: string
+            - name: Urgency
+              key: customfield_17219
+              schema:
+                datatype: string
+            - name: Blast Radius
+              key: customfield_17218
+              schema:
+                datatype: string
+            - name: Issue Description
+              key: customfield_17217
+              schema:
+                datatype: string
+            - name: Top Assert Serial Number
+              key: customfield_10930
+              schema:
+                datatype: string
+            - name: Merged to Team
+              key: customfield_10931
+              schema:
+                datatype: option
+            - name: Start in Progress
+              key: customfield_10932
+              schema:
+                datatype: datetime
+            - name: cluster lab
+              key: customfield_10933
+              schema:
+                datatype: option
+            - name: Target start
+              key: customfield_10934
+              schema:
+                datatype: date
+            - name: Target end
+              key: customfield_10935
+              schema:
+                datatype: date
+            - name: Traces Preservation
+              key: customfield_10937
+              schema:
+                datatype: option
+            - name: Traces Consumption (Gb)
+              key: customfield_10938
+              schema:
+                datatype: number
+            - name: Traces Link
+              key: customfield_10939
+              schema:
+                datatype: string
+            - name: Main Salesforce Object
+              key: customfield_17447
+              schema:
+                datatype: option
+            - name: Change Type
+              key: customfield_15027
+              schema:
+                datatype: option
+            - name: Technical Solution Approach
+              key: customfield_17448
+              schema:
+                datatype: option
+            - name: vendor_ticket
+              key: customfield_10920
+              schema:
+                datatype: string
+            - name: vendor_rma_id
+              key: customfield_10921
+              schema:
+                datatype: string
+            - name: Found in Build
+              key: customfield_10801
+              schema:
+                datatype: string
+            - name: FA_JIRA
+              key: customfield_10923
+              schema:
+                datatype: string
+            - name: Part Number
+              key: customfield_10924
+              schema:
+                datatype: string
+            - name: Vendor
+              key: customfield_10927
+              schema:
+                datatype: string
+            - name: Parent JIRA
+              key: customfield_10928
+              schema:
+                datatype: string
+            - name: Dev Actual Size
+              key: customfield_17678
+              schema:
+                datatype: option
+            - name: Business Stage
+              key: customfield_14169
+              schema:
+                datatype: option
+            - name: Closed Date
+              key: customfield_15258
+              schema:
+                datatype: date
+            - name: RootCause
+              key: customfield_10916
+              schema:
+                datatype: option-with-child
+            - name: CS Quarter
+              key: customfield_18075
+              schema:
+                datatype: option
+            - name: Sync to qTest
+              key: customfield_11200
+              schema:
+                datatype: option
+            - name: Begin Date
+              key: customfield_11201
+              schema:
+                datatype: datetime
+            - name: Manager Name
+              key: customfield_12531
+              schema:
+                datatype: string
+            - name: End Date
+              key: customfield_11202
+              schema:
+                datatype: datetime
+            - name: Test Plan Requirement
+              key: customfield_13856
+              schema:
+                datatype: string
+            - name: Code Regression Result
+              key: customfield_13855
+              schema:
+                datatype: string
+            - name: Software Version (Non-RTM)
+              key: customfield_13858
+              schema:
+                datatype: string
+            - name: Deploy latest code to factory
+              key: customfield_13857
+              schema:
+                datatype: array
+                items: option
+            - name: Sentiment
+              key: customfield_12529
+              schema:
+                datatype: array
+                items: sd-sentiment
+            - name: Confluence Link
+              key: customfield_13971
+              schema:
+                datatype: string
+            - name: Product Family
+              key: customfield_13850
+              schema:
+                datatype: option
+            - name: Approvals
+              key: customfield_10100
+              schema:
+                datatype: sd-approvals
+            - name: Manufacturing - Field in Test Mode!
+              key: customfield_12400
+              schema:
+                datatype: option-with-child
+            - name: Test Playbook/Profile
+              key: customfield_13854
+              schema:
+                datatype: array
+                items: option
+            - name: Development Unit SN and Location
+              key: customfield_13853
+              schema:
+                datatype: string
+            - name: NPI Phase
+              key: customfield_12514
+              schema:
+                datatype: array
+                items: string
+            - name: VEL Plan
+              key: customfield_13845
+              schema:
+                datatype: string
+            - name: Partner Portal
+              key: customfield_12513
+              schema:
+                datatype: option
+            - name: Sample Requirement
+              key: customfield_13844
+              schema:
+                datatype: string
+            - name: Site Survey Date
+              key: customfield_13847
+              schema:
+                datatype: date
+            - name: Contact Name and Email
+              key: customfield_13849
+              schema:
+                datatype: string
+            - name: Supplier Name & MPN
+              key: customfield_13848
+              schema:
+                datatype: string
+            - name: Location
+              key: customfield_13609
+              schema:
+                datatype: string
+            - name: Product Part Number
+              key: customfield_13840
+              schema:
+                datatype: string
+            - name: Mindtickle
+              key: customfield_12512
+              schema:
+                datatype: option
+            - name: Arena Link
+              key: customfield_13843
+              schema:
+                datatype: string
+            - name: Parent Task
+              key: customfield_12511
+              schema:
+                datatype: string
+            - name: Test Requirement Start Date
+              key: customfield_13842
+              schema:
+                datatype: date
+            - name: Publish
+              key: customfield_12503
+              schema:
+                datatype: option
+            - name: Engineer wiki page link
+              key: customfield_13833
+              schema:
+                datatype: string
+            - name: Request
+              key: customfield_12502
+              schema:
+                datatype: option
+            - name: Playbook link
+              key: customfield_13836
+              schema:
+                datatype: string
+            - name: Campaign
+              key: customfield_12504
+              schema:
+                datatype: option
+            - name: Work Instruction link
+              key: customfield_13835
+              schema:
+                datatype: string
+            - name: Implementation Date
+              key: customfield_12507
+              schema:
+                datatype: date
+            - name: Implementation Date
+              key: customfield_12508
+              schema:
+                datatype: date
+            - name: Test Requirement Checklist
+              key: customfield_13839
+              schema:
+                datatype: array
+                items: option
+            - name: Parent Link
+              key: customfield_10200
+              schema:
+                datatype: any
+            - name: Firmware and OS Information
+              key: customfield_13832
+              schema:
+                datatype: string
+            - name: Firmware and OS locked Date
+              key: customfield_13823
+              schema:
+                datatype: date
+            - name: FRU Readiness Date
+              key: customfield_13825
+              schema:
+                datatype: date
+            - name: Packaging Date
+              key: customfield_13827
+              schema:
+                datatype: date
+            - name: Team Lead
+              key: customfield_13829
+              schema:
+                datatype: array
+                items: user
+            - name: 'FAI #'
+              key: customfield_13828
+              schema:
+                datatype: string
+            - name: Dev owners
+              key: customfield_13707
+              schema:
+                datatype: array
+                items: user
+            - name: Test Requirement Completion Date
+              key: customfield_13821
+              schema:
+                datatype: date
+            - name: Type
+              key: customfield_13811
+              schema:
+                datatype: option
+            - name: BOM Creation Date
+              key: customfield_13814
+              schema:
+                datatype: date
+            - name: Work Instruction Date
+              key: customfield_13816
+              schema:
+                datatype: date
+            - name: Phase Gate
+              key: customfield_13938
+              schema:
+                datatype: option
+            - name: Playbook Date
+              key: customfield_13819
+              schema:
+                datatype: date
+            - name: Customer
+              key: customfield_18141
+              schema:
+                datatype: option
+            - name: FAI Date
+              key: customfield_13810
+              schema:
+                datatype: date
+            - name: Development
+              key: customfield_10300
+              schema:
+                datatype: any
+            - name: Shipment Carrier (Ops)
+              key: customfield_10896
+              schema:
+                datatype: option
+            - name: Asset SN
+              key: customfield_10897
+              schema:
+                datatype: string
+            - name: Outgoing Part Serial Number
+              key: customfield_10898
+              schema:
+                datatype: string
+            - name: Software Bundle Target
+              key: customfield_13807
+              schema:
+                datatype: string
+            - name: Factory
+              key: customfield_13806
+              schema:
+                datatype: array
+                items: option
+            - name: ECO Date
+              key: customfield_13809
+              schema:
+                datatype: date
+            - name: ECO Number
+              key: customfield_13808
+              schema:
+                datatype: string
+            - name: Asset Lock
+              key: customfield_17282
+              schema:
+                datatype: option
+            - name: Project Health
+              key: customfield_18010
+              schema:
+                datatype: option
+            - name: Vast OS Version
+              key: customfield_10890
+              schema:
+                datatype: string
+            - name: NIC FW
+              key: customfield_10891
+              schema:
+                datatype: string
+            - name: Free field
+              key: customfield_10892
+              schema:
+                datatype: option
+            - name: Part Dispatch Reason (Support)
+              key: customfield_10893
+              schema:
+                datatype: option
+            - name: Replacement Asset Serial Number (Ops)
+              key: customfield_10894
+              schema:
+                datatype: string
+            - name: PSNT (Support)
+              key: customfield_10895
+              schema:
+                datatype: string
+            - name: Customer Contact Name (Support)
+              key: customfield_10885
+              schema:
+                datatype: string
+            - name: Failed Component Serial Number (Support)
+              key: customfield_10886
+              schema:
+                datatype: string
+            - name: Pre-Pilot
+              key: customfield_13910
+              schema:
+                datatype: string
+            - name: Chassis Serial Number (Support)
+              key: customfield_10887
+              schema:
+                datatype: string
+            - name: Part Number (Previous Field - Do Not Use)
+              key: customfield_10888
+              schema:
+                datatype: string
+            - name: Tracking Number (Ops)
+              key: customfield_10889
+              schema:
+                datatype: string
+            - name: 'Owner '
+              key: customfield_15093
+              schema:
+                datatype: option
+            - name: Cluster SW version
+              key: customfield_17150
+              schema:
+                datatype: string
+            - name: Dashboard Summary
+              key: customfield_18009
+              schema:
+                datatype: string
+            - name: Original fix version
+              key: customfield_10882
+              schema:
+                datatype: string
+            - name: Team
+              key: customfield_10400
+              schema:
+                datatype: team
+            - name: Account Name (Support)
+              key: customfield_10884
+              schema:
+                datatype: string
+            - name: Business Impact
+              key: customfield_18008
+              schema:
+                datatype: option
+            - name: Fix Description
+              key: customfield_10995
+              schema:
+                datatype: string
+            - name: Release Notes
+              key: customfield_10996
+              schema:
+                datatype: option
+            - name: cluster under investigation
+              key: customfield_10875
+              schema:
+                datatype: array
+                items: option
+            - name: Action Take
+              key: customfield_10997
+              schema:
+                datatype: string
+            - name: Fix version defer
+              key: customfield_10877
+              schema:
+                datatype: array
+                items: option
+            - name: Planned Fix Version
+              key: customfield_10999
+              schema:
+                datatype: version
+            - name: Execute Commit
+              key: customfield_13906
+              schema:
+                datatype: string
+            - name: Business Concept
+              key: customfield_13905
+              schema:
+                datatype: string
+            - name: Execute Commit Checklist
+              key: customfield_13908
+              schema:
+                datatype: array
+                items: option
+            - name: Business Concept Checklist
+              key: customfield_13907
+              schema:
+                datatype: array
+                items: option
+            - name: Pilot/FCS
+              key: customfield_13909
+              schema:
+                datatype: string
+            - name: Expected number of Attendees
+              key: customfield_13580
+              schema:
+                datatype: string
+            - name: Product Family
+              key: customfield_12370
+              schema:
+                datatype: option
+            - name: Open forms
+              key: customfield_11160
+              schema:
+                datatype: number
+            - name: Submitted forms
+              key: customfield_11161
+              schema:
+                datatype: number
+            - name: Shipping Carrier
+              key: customfield_13582
+              schema:
+                datatype: string
+            - name: Product Family
+              key: customfield_12371
+              schema:
+                datatype: option
+            - name: CS owner
+              key: customfield_12492
+              schema:
+                datatype: user
+            - name: System Integrator
+              key: customfield_13581
+              schema:
+                datatype: string
+            - name: Locked forms
+              key: customfield_11162
+              schema:
+                datatype: number
+            - name: Total forms
+              key: customfield_11163
+              schema:
+                datatype: number
+            - name: Verification Days
+              key: customfield_12253
+              schema:
+                datatype: number
+            - name: Keywords
+              key: customfield_16853
+              schema:
+                datatype: string
+            - name: 'Complaint Category '
+              key: customfield_13584
+              schema:
+                datatype: option
+            - name: CS-Ops Notes (Support)
+              key: customfield_11164
+              schema:
+                datatype: string
+            - name: Factory SO Number
+              key: customfield_13583
+              schema:
+                datatype: string
+            - name: Development Days
+              key: customfield_12252
+              schema:
+                datatype: number
+            - name: Modality
+              key: customfield_14433
+              schema:
+                datatype: option
+            - name: Affected Serial Number
+              key: customfield_13586
+              schema:
+                datatype: string
+            - name: Close Date
+              key: customfield_12255
+              schema:
+                datatype: datetime
+            - name: Automated by
+              key: customfield_11165
+              schema:
+                datatype: user
+            - name: Request Date
+              key: customfield_12497
+              schema:
+                datatype: date
+            - name: Affected Part Number
+              key: customfield_13585
+              schema:
+                datatype: string
+            - name: Resolve Date
+              key: customfield_12254
+              schema:
+                datatype: datetime
+            - name: Learning Objectives
+              key: customfield_14436
+              schema:
+                datatype: string
+            - name: Assigned to Team History
+              key: customfield_12257
+              schema:
+                datatype: string
+            - name: Latest Update
+              key: customfield_12499
+              schema:
+                datatype: string
+            - name: MFG Test Version
+              key: customfield_13588
+              schema:
+                datatype: string
+            - name: Latest Update
+              key: customfield_12498
+              schema:
+                datatype: string
+            - name: FW and OS version
+              key: customfield_13587
+              schema:
+                datatype: string
+            - name: Parent Link
+              key: customfield_14437
+              schema:
+                datatype: string
+            - name: Category
+              key: customfield_11168
+              schema:
+                datatype: option
+            - name: Count Assigned to Team
+              key: customfield_12256
+              schema:
+                datatype: number
+            - name: Owner Team
+              key: customfield_11169
+              schema:
+                datatype: option-with-child
+            - name: Learning Content Type
+              key: customfield_14434
+              schema:
+                datatype: option
+            - name: Expected Outcomes
+              key: customfield_14435
+              schema:
+                datatype: string
+            - name: D3-Containment Action
+              key: customfield_13589
+              schema:
+                datatype: string
+            - name: Soothsayer Prediction
+              key: customfield_12249
+              schema:
+                datatype: string
+            - name: Engagement type
+              key: customfield_12480
+              schema:
+                datatype: option
+            - name: Stakeholder
+              key: customfield_12240
+              schema:
+                datatype: array
+                items: user
+            - name: Certificate Expiration Date
+              key: customfield_12361
+              schema:
+                datatype: date
+            - name: Return Part Serial Number
+              key: customfield_11150
+              schema:
+                datatype: string
+            - name: MFG Part Number
+              key: customfield_11151
+              schema:
+                datatype: string
+            - name: Checklist Completed
+              key: customfield_11030
+              schema:
+                datatype: string
+            - name: 'Implementation details '
+              key: customfield_16721
+              schema:
+                datatype: string
+            - name: Design
+              key: customfield_12363
+              schema:
+                datatype: array
+                items: design.field.name
+            - name: Vast OS Version
+              key: customfield_11152
+              schema:
+                datatype: string
+            - name: RCA Required
+              key: customfield_12242
+              schema:
+                datatype: option
+            - name: Focus Areas
+              key: customfield_17810
+              schema:
+                datatype: array
+                items: Focus Areas
+            - name: NIC FW
+              key: customfield_11153
+              schema:
+                datatype: string
+            - name: Certificate Expiration Date
+              key: customfield_12362
+              schema:
+                datatype: date
+            - name: Project Type
+              key: customfield_14664
+              schema:
+                datatype: option
+            - name: RCA Required
+              key: customfield_12241
+              schema:
+                datatype: array
+                items: option
+            - name: Checklist Text
+              key: customfield_11032
+              schema:
+                datatype: string
+            - name: RCA Required
+              key: customfield_12244
+              schema:
+                datatype: option
+            - name: qTest Info
+              key: customfield_11033
+              schema:
+                datatype: string
+            - name: Area
+              key: customfield_13575
+              schema:
+                datatype: array
+                items: option
+            - name: NIC Config
+              key: customfield_11154
+              schema:
+                datatype: option
+            - name: FA_JIRA
+              key: customfield_11155
+              schema:
+                datatype: string
+            - name: PCIe MFG version
+              key: customfield_11034
+              schema:
+                datatype: string
+            - name: Depot (Ops)
+              key: customfield_12243
+              schema:
+                datatype: option
+            - name: Brief description of the failure
+              key: customfield_12246
+              schema:
+                datatype: string
+            - name: District
+              key: customfield_13577
+              schema:
+                datatype: array
+                items: option
+            - name: Job Name
+              key: customfield_11035
+              schema:
+                datatype: string
+            - name: Region
+              key: customfield_13576
+              schema:
+                datatype: array
+                items: option
+            - name: ORT bypass List? (Ops)
+              key: customfield_12245
+              schema:
+                datatype: option
+            - name: Product Family
+              key: customfield_12369
+              schema:
+                datatype: option
+            - name: Quarter
+              key: customfield_13579
+              schema:
+                datatype: array
+                items: option
+            - name: Owner
+              key: customfield_11159
+              schema:
+                datatype: array
+                items: user
+            - name: Replacement date (Support)
+              key: customfield_12247
+              schema:
+                datatype: date
+            - name: Fiscal Year
+              key: customfield_13578
+              schema:
+                datatype: array
+                items: option
+            - name: Checklist Progress %
+              key: customfield_11028
+              schema:
+                datatype: number
+            - name: Preventative measure
+              key: customfield_12239
+              schema:
+                datatype: string
+            - name: Return Order
+              key: customfield_11149
+              schema:
+                datatype: string
+            - name: Containment action
+              key: customfield_12238
+              schema:
+                datatype: string
+            - name: Checklist Template
+              key: customfield_11029
+              schema:
+                datatype: option2
+            - name: Link
+              key: customfield_12350
+              schema:
+                datatype: string
+            - name: Keep Your Drive Warranty
+              key: customfield_11140
+              schema:
+                datatype: option
+            - name: URL for related automation
+              key: customfield_12352
+              schema:
+                datatype: string
+            - name: Uplink URL
+              key: customfield_16952
+              schema:
+                datatype: string
+            - name: Fix in MCU version
+              key: customfield_11020
+              schema:
+                datatype: string
+            - name: Shipment Carrier
+              key: customfield_11141
+              schema:
+                datatype: option
+            - name: Admin Tracking Updates
+              key: customfield_12351
+              schema:
+                datatype: string
+            - name: Tracking Number
+              key: customfield_11142
+              schema:
+                datatype: string
+            - name: 'Category '
+              key: customfield_14895
+              schema:
+                datatype: option
+            - name: Fix in PCIe version
+              key: customfield_11021
+              schema:
+                datatype: string
+            - name: Zendesk Ticket Count
+              key: customfield_12233
+              schema:
+                datatype: number
+            - name: Ship Date
+              key: customfield_11143
+              schema:
+                datatype: date
+            - name: 'Training Travel Start Date '
+              key: customfield_12475
+              schema:
+                datatype: date
+            - name: Audience
+              key: customfield_12354
+              schema:
+                datatype: option
+            - name: Fix Version Internal
+              key: customfield_11022
+              schema:
+                datatype: string
+            - name: Automated Date
+              key: customfield_11023
+              schema:
+                datatype: date
+            - name: Zendesk Ticket IDs
+              key: customfield_12232
+              schema:
+                datatype: string
+            - name: IT queue
+              key: customfield_12474
+              schema:
+                datatype: option
+            - name: Delivery Date
+              key: customfield_11144
+              schema:
+                datatype: date
+            - name: Is this a POC System? (Support)
+              key: customfield_12235
+              schema:
+                datatype: option
+            - name: 'Buddy '
+              key: customfield_12477
+              schema:
+                datatype: array
+                items: user
+            - name: Disabled Tests
+              key: customfield_12356
+              schema:
+                datatype: string
+            - name: Replacement Asset Serial Number
+              key: customfield_11145
+              schema:
+                datatype: string
+            - name: Escaped Handled Date
+              key: customfield_11024
+              schema:
+                datatype: date
+            - name: KB Section
+              key: customfield_12355
+              schema:
+                datatype: option
+            - name: Flash Order Number
+              key: customfield_11146
+              schema:
+                datatype: number
+            - name: 'Location '
+              key: customfield_12476
+              schema:
+                datatype: string
+            - name: IT-Labels
+              key: customfield_11026
+              schema:
+                datatype: option
+            - name: Netsuite Order
+              key: customfield_11147
+              schema:
+                datatype: string
+            - name: 'Executive Summary '
+              key: customfield_14896
+              schema:
+                datatype: string
+            - name: 'Travel for Training Start Date '
+              key: customfield_12479
+              schema:
+                datatype: date
+            - name: Corrective Action
+              key: customfield_12237
+              schema:
+                datatype: string
+            - name: Department
+              key: customfield_12357
+              schema:
+                datatype: option
+            - name: Return Tracking Number
+              key: customfield_11148
+              schema:
+                datatype: string
+            - name: Checklist Progress
+              key: customfield_11027
+              schema:
+                datatype: string
+            - name: RCA Determine Cause
+              key: customfield_12236
+              schema:
+                datatype: string
+            - name: 'Status Update '
+              key: customfield_14897
+              schema:
+                datatype: string
+            - name: 'Region '
+              key: customfield_12478
+              schema:
+                datatype: option
+            - name: Business Priority
+              key: customfield_12349
+              schema:
+                datatype: option
+            - name: Part Type
+              key: customfield_11138
+              schema:
+                datatype: option
+            - name: Duration
+              key: customfield_12228
+              schema:
+                datatype: number
+            - name: Canister 2 SN
+              key: customfield_11017
+              schema:
+                datatype: string
+            - name: Drive Certificate of Sanitization Requested
+              key: customfield_11139
+              schema:
+                datatype: option
+            - name: Bluefield FW
+              key: customfield_11018
+              schema:
+                datatype: string
+            - name: Starting Date
+              key: customfield_12227
+              schema:
+                datatype: date
+            - name: Fix in BMC version
+              key: customfield_11019
+              schema:
+                datatype: string
+            - name: VAST Co-Pilot
+              key: customfield_12229
+              schema:
+                datatype: string
+            - name: Next Action
+              key: customfield_12460
+              schema:
+                datatype: date
+            - name: RCA Summary
+              key: customfield_16820
+              schema:
+                datatype: string
+            - name: Failed Component Serial Number
+              key: customfield_11130
+              schema:
+                datatype: string
+            - name: Test Plan
+              key: customfield_12220
+              schema:
+                datatype: string
+            - name: Customer Facing Release Notes
+              key: customfield_11010
+              schema:
+                datatype: string
+            - name: Part Number Selection
+              key: customfield_11131
+              schema:
+                datatype: option
+            - name: Customer Contact Name
+              key: customfield_11132
+              schema:
+                datatype: string
+            - name: QA owner
+              key: customfield_13674
+              schema:
+                datatype: user
+            - name: QA Notes
+              key: customfield_11011
+              schema:
+                datatype: string
+            - name: Testing gap
+              key: customfield_12222
+              schema:
+                datatype: option
+            - name: Customer Contact Number
+              key: customfield_11133
+              schema:
+                datatype: string
+            - name: BMC version
+              key: customfield_11012
+              schema:
+                datatype: string
+            - name: FRD link
+              key: customfield_13676
+              schema:
+                datatype: string
+            - name: Ship to Address
+              key: customfield_11134
+              schema:
+                datatype: string
+            - name: MCU version
+              key: customfield_11013
+              schema:
+                datatype: string
+            - name: SFDC link
+              key: customfield_12224
+              schema:
+                datatype: string
+            - name: PCIe switch version
+              key: customfield_11014
+              schema:
+                datatype: string
+            - name: Architect
+              key: customfield_13675
+              schema:
+                datatype: user
+            - name: VAST Cluster Version
+              key: customfield_11135
+              schema:
+                datatype: string
+            - name: Replacement Part Number (Ops)
+              key: customfield_12226
+              schema:
+                datatype: string
+            - name: FW Version
+              key: customfield_11136
+              schema:
+                datatype: string
+            - name: Canister 1 SN
+              key: customfield_11016
+              schema:
+                datatype: string
+            - name: Last Assigned On
+              key: customfield_12225
+              schema:
+                datatype: datetime
+            - name: Infra owner
+              key: customfield_13677
+              schema:
+                datatype: user
+            - name: General Failure Reason
+              key: customfield_11137
+              schema:
+                datatype: option
+            - name: Work category
+              key: customfield_11006
+              schema:
+                datatype: string
+            - name: Account SE
+              key: customfield_11127
+              schema:
+                datatype: string
+            - name: Stage
+              key: customfield_12459
+              schema:
+                datatype: option
+            - name: Recurring Type
+              key: customfield_12217
+              schema:
+                datatype: option
+            - name: PSNT
+              key: customfield_11128
+              schema:
+                datatype: string
+            - name: Content Type
+              key: customfield_12458
+              schema:
+                datatype: option
+            - name: Blocked Reason
+              key: customfield_11007
+              schema:
+                datatype: option
+            - name: Customer update by
+              key: customfield_11008
+              schema:
+                datatype: date
+            - name: Chassis Serial Number
+              key: customfield_11129
+              schema:
+                datatype: string
+            - name: Approver groups
+              key: customfield_11009
+              schema:
+                datatype: array
+                items: group
+            - name: Project Lead
+              key: customfield_12451
+              schema:
+                datatype: user
+            - name: Approvers
+              key: customfield_14994
+              schema:
+                datatype: array
+                items: user
+            - name: Target Completion Date
+              key: customfield_12450
+              schema:
+                datatype: date
+            - name: Failed Part Number Returned to Vast (Ops)
+              key: customfield_11120
+              schema:
+                datatype: option
+            - name: Vertical
+              key: customfield_12453
+              schema:
+                datatype: option
+            - name: Merged to versions
+              key: customfield_11000
+              schema:
+                datatype: array
+                items: version
+            - name: FW Version (Support)
+              key: customfield_11121
+              schema:
+                datatype: string
+            - name: Assigned to Group
+              key: customfield_11001
+              schema:
+                datatype: option
+            - name: Infra_RCA
+              key: customfield_12331
+              schema:
+                datatype: option
+            - name: General Failure Reasons (Support)
+              key: customfield_11122
+              schema:
+                datatype: option-with-child
+            - name: Reviewers
+              key: customfield_12334
+              schema:
+                datatype: array
+                items: user
+            - name: Found in Version Internal
+              key: customfield_11002
+              schema:
+                datatype: string
+            - name: Funnel Stage
+              key: customfield_12455
+              schema:
+                datatype: option
+            - name: Reviewers (Solutions)
+              key: customfield_14634
+              schema:
+                datatype: array
+                items: user
+            - name: Feature Type
+              key: customfield_11003
+              schema:
+                datatype: option
+            - name: Checklist Text (view-only)
+              key: customfield_11124
+              schema:
+                datatype: string
+            - name: Persona
+              key: customfield_12454
+              schema:
+                datatype: array
+                items: option
+            - name: Return Date
+              key: customfield_11125
+              schema:
+                datatype: date
+            - name: Test Automated
+              key: customfield_11004
+              schema:
+                datatype: option
+            - name: Account Name
+              key: customfield_11126
+              schema:
+                datatype: string
+            - name: Gated
+              key: customfield_12456
+              schema:
+                datatype: option
+            - name: Escaped Handled
+              key: customfield_11005
+              schema:
+                datatype: option
+            - name: Request Date
+              key: customfield_12448
+              schema:
+                datatype: date
+            - name: Account SE (Support)
+              key: customfield_11118
+              schema:
+                datatype: string
+            - name: Target Completion Date
+              key: customfield_12449
+              schema:
+                datatype: date
+            - name: VAST Cluster Version (Support)
+              key: customfield_11119
+              schema:
+                datatype: string
+            - name: Project Resources
+              key: customfield_12440
+              schema:
+                datatype: array
+                items: user
+            - name: Project Resources
+              key: customfield_12442
+              schema:
+                datatype: array
+                items: user
+            - name: Factory
+              key: customfield_12321
+              schema:
+                datatype: option
+            - name: Ship to Address (Support)
+              key: customfield_11111
+              schema:
+                datatype: string
+            - name: Project Resources
+              key: customfield_12441
+              schema:
+                datatype: array
+                items: user
+            - name: Serial number
+              key: customfield_12320
+              schema:
+                datatype: string
+            - name: Google Map Location
+              key: customfield_10023
+              schema:
+                datatype: any
+            - name: Project Resources
+              key: customfield_12444
+              schema:
+                datatype: array
+                items: user
+            - name: Customer Contact Number (Support)
+              key: customfield_11112
+              schema:
+                datatype: string
+            - name: Project Resources
+              key: customfield_12443
+              schema:
+                datatype: array
+                items: user
+            - name: Keep Your Drive Warranty (Support)
+              key: customfield_11114
+              schema:
+                datatype: option
+            - name: Bisector Search Pattern
+              key: customfield_12325
+              schema:
+                datatype: string
+            - name: Resources
+              key: customfield_12437
+              schema:
+                datatype: string
+            - name: Root cause
+              key: customfield_11105
+              schema:
+                datatype: string
+            - name: Workaround
+              key: customfield_11106
+              schema:
+                datatype: string
+            - name: Major incident
+              key: customfield_11107
+              schema:
+                datatype: string
+            - name: Last Good Commit
+              key: customfield_12318
+              schema:
+                datatype: string
+            - name: Stage
+              key: customfield_12439
+              schema:
+                datatype: option
+            - name: Project/Task Health
+              key: customfield_12438
+              schema:
+                datatype: option
+            - name: Time to close after resolution
+              key: customfield_11108
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Time to review normal change
+              key: customfield_11109
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Problem Category
+              key: customfield_16919
+              schema:
+                datatype: option
+            - name: Part Type by Product Family (Support)
+              key: customfield_12310
+              schema:
+                datatype: option-with-child
+            - name: Planned start
+              key: customfield_11100
+              schema:
+                datatype: datetime
+            - name: Stakeholders
+              key: customfield_12312
+              schema:
+                datatype: array
+                items: user
+            - name: Program Component
+              key: customfield_12433
+              schema:
+                datatype: option
+            - name: Planned end
+              key: customfield_11101
+              schema:
+                datatype: datetime
+            - name: Project Type
+              key: customfield_12311
+              schema:
+                datatype: option
+            - name: Actual start
+              key: customfield_11102
+              schema:
+                datatype: datetime
+            - name: Actual end
+              key: customfield_11103
+              schema:
+                datatype: datetime
+            - name: Investigation reason
+              key: customfield_11104
+              schema:
+                datatype: option
+            - name: Returned Part Number by Product Family (Ops)
+              key: customfield_12305
+              schema:
+                datatype: option-with-child
+            - name: Failed Part Number by Product Family (Ops)
+              key: customfield_12304
+              schema:
+                datatype: option-with-child
+            - name: Epic Color
+              key: customfield_10006
+              schema:
+                datatype: string
+            - name: Sprint
+              key: customfield_10007
+              schema:
+                datatype: array
+                items: json
+            - name: Project/Task Health
+              key: customfield_12428
+              schema:
+                datatype: option
+            - name: Story Points
+              key: customfield_10008
+              schema:
+                datatype: number
+            - name: Install Date
+              key: customfield_12309
+              schema:
+                datatype: string
+            - name: 'Account Name '
+              key: customfield_12308
+              schema:
+                datatype: string
+            - name: 'Stage '
+              key: customfield_12429
+              schema:
+                datatype: option
+            - name: Contract Manufacturer
+              key: customfield_14961
+              schema:
+                datatype: option
+            - name: Software Release Date (RTM)
+              key: customfield_13872
+              schema:
+                datatype: date
+            - name: '[CHART] Date of First Response'
+              key: customfield_10000
+              schema:
+                datatype: datetime
+            - name: Outgoing Part Number
+              key: customfield_11210
+              schema:
+                datatype: string
+            - name: Change Options
+              key: customfield_14964
+              schema:
+                datatype: array
+                items: option
+            - name: Project overview status
+              key: customfield_12301
+              schema:
+                datatype: string
+            - name: '[CHART] Time in Status'
+              key: customfield_10001
+              schema:
+                datatype: any
+            - name: Request Date
+              key: customfield_12422
+              schema:
+                datatype: date
+            - name: Project overview key
+              key: customfield_12300
+              schema:
+                datatype: string
+            - name: Rank
+              key: customfield_10002
+              schema:
+                datatype: any
+            - name: Request Date
+              key: customfield_12421
+              schema:
+                datatype: date
+            - name: Resources
+              key: customfield_12424
+              schema:
+                datatype: string
+            - name: Account Name
+              key: customfield_12303
+              schema:
+                datatype: string
+            - name: Install Date
+              key: customfield_12302
+              schema:
+                datatype: string
+            - name: Mindtickle Publishing Checklist
+              key: customfield_12423
+              schema:
+                datatype: array
+                items: option
+            - name: Epic Status
+              key: customfield_10004
+              schema:
+                datatype: option
+            - name: Goals
+              key: customfield_12538
+              schema:
+                datatype: array
+                items: Goals
+            - name: Status Update
+              key: customfield_11208
+              schema:
+                datatype: string
+            - name: Outgoing Serial Number
+              key: customfield_11209
+              schema:
+                datatype: string
+            - name: Fiscal Quarter
+              key: customfield_15126
+              schema:
+                datatype: option
+            - name: Cost
+              key: customfield_15127
+              schema:
+                datatype: number
+            - name: CM
+              key: customfield_15128
+              schema:
+                datatype: option
+            - name: VAST Release Version
+              key: customfield_17777
+              schema:
+                datatype: string
+            - name: Required in Both Orgs?
+              key: customfield_17414
+              schema:
+                datatype: option
+            - name: SAR
+              key: customfield_15357
+              schema:
+                datatype: string
+            - name: Your Name & VAST Email
+              key: customfield_17779
+              schema:
+                datatype: string
+            - name: Valid NDA?
+              key: customfield_17778
+              schema:
+                datatype: array
+                items: option
+            - name: Test Location
+              key: customfield_16790
+              schema:
+                datatype: string
+            - name: Issue report
+              key: customfield_16792
+              schema:
+                datatype: string
+            - name: Total Return
+              key: customfield_16791
+              schema:
+                datatype: string
+            - name: Start Date
+              key: customfield_17645
+              schema:
+                datatype: date
+            - name: CC
+              key: customfield_14499
+              schema:
+                datatype: array
+                items: user
+            - name: SFDC Case
+              key: customfield_17646
+              schema:
+                datatype: string
+            - name: Site Survey Release Assignment
+              key: customfield_16557
+              schema:
+                datatype: option
+            - name: Affected hardware
+              key: customfield_11090
+              schema:
+                datatype: string
+            - name: Affected services
+              key: customfield_11091
+              schema:
+                datatype: array
+                items: service-entity-field
+            - name: Severity
+              key: customfield_11092
+              schema:
+                datatype: option
+            - name: Source
+              key: customfield_11093
+              schema:
+                datatype: option
+            - name: Asset Description
+              key: customfield_14241
+              schema:
+                datatype: string
+            - name: Change type
+              key: customfield_11094
+              schema:
+                datatype: option
+            - name: Target Audience
+              key: customfield_14242
+              schema:
+                datatype: string
+            - name: Related projects
+              key: customfield_16660
+              schema:
+                datatype: string
+            - name: Change risk
+              key: customfield_11095
+              schema:
+                datatype: option
+            - name: Change reason
+              key: customfield_11096
+              schema:
+                datatype: option
+            - name: Asset Owner
+              key: customfield_14240
+              schema:
+                datatype: string
+            - name: Dev Estimate Size
+              key: customfield_17513
+              schema:
+                datatype: option
+            - name: Implementation plan
+              key: customfield_11097
+              schema:
+                datatype: string
+            - name: Minimal Install Version
+              key: customfield_17876
+              schema:
+                datatype: string
+            - name: RCA Level
+              key: customfield_16787
+              schema:
+                datatype: string
+            - name: Metrics Destination
+              key: customfield_14367
+              schema:
+                datatype: array
+                items: option
+            - name: Backout plan
+              key: customfield_11098
+              schema:
+                datatype: string
+            - name: Related App
+              key: customfield_14243
+              schema:
+                datatype: option
+            - name: Test plan
+              key: customfield_11099
+              schema:
+                datatype: string
+            - name: Test Completed
+              key: customfield_16789
+              schema:
+                datatype: date
+            - name: Dev Urgency
+              key: customfield_17514
+              schema:
+                datatype: option
+            - name: RTV PO#
+              key: customfield_11080
+              schema:
+                datatype: string
+            - name: Reviewers (Dev)
+              key: customfield_12291
+              schema:
+                datatype: array
+                items: user
+            - name: RTV shipping date
+              key: customfield_11081
+              schema:
+                datatype: date
+            - name: 'RTV shipping tracking #'
+              key: customfield_11082
+              schema:
+                datatype: string
+            - name: Reviewers  (CS)
+              key: customfield_12293
+              schema:
+                datatype: array
+                items: user
+            - name: Reviewers (QA)
+              key: customfield_12292
+              schema:
+                datatype: array
+                items: user
+            - name: RTV return date
+              key: customfield_11083
+              schema:
+                datatype: date
+            - name: Reviewers (Octo)
+              key: customfield_12295
+              schema:
+                datatype: array
+                items: user
+            - name: Netsuite location
+              key: customfield_11084
+              schema:
+                datatype: option
+            - name: Reviewers (PM)
+              key: customfield_12294
+              schema:
+                datatype: array
+                items: user
+            - name: Urgency
+              key: customfield_11085
+              schema:
+                datatype: option
+            - name: Which prioritized vertical is it part of?
+              key: customfield_16655
+              schema:
+                datatype: option
+            - name: Impact
+              key: customfield_11086
+              schema:
+                datatype: option
+            - name: Completion Date
+              key: customfield_12297
+              schema:
+                datatype: date
+            - name: Functional Teams
+              key: customfield_14598
+              schema:
+                datatype: option
+            - name: Reporter Department
+              key: customfield_14235
+              schema:
+                datatype: option
+            - name: Review Status
+              key: customfield_12296
+              schema:
+                datatype: option
+            - name: Pending reason
+              key: customfield_11087
+              schema:
+                datatype: option
+            - name: Product categorization
+              key: customfield_11088
+              schema:
+                datatype: option-with-child
+            - name: Install Date
+              key: customfield_12299
+              schema:
+                datatype: array
+                items: string
+            - name: Operational categorization
+              key: customfield_11089
+              schema:
+                datatype: option-with-child
+            - name: 'Account Name '
+              key: customfield_12298
+              schema:
+                datatype: array
+                items: string
+            - name: Support team
+              key: customfield_16659
+              schema:
+                datatype: string
+            - name: Type
+              key: customfield_16658
+              schema:
+                datatype: string
+            - name: Asset Expiration Date
+              key: customfield_14239
+              schema:
+                datatype: option
+            - name: Content Purpose
+              key: customfield_14236
+              schema:
+                datatype: string
+            - name: Sales opportunity
+              key: customfield_16657
+              schema:
+                datatype: string
+            - name: Asset Usage
+              key: customfield_14237
+              schema:
+                datatype: option
+            - name: Which prioritized campaign is it associated with?
+              key: customfield_16656
+              schema:
+                datatype: option
+            - name: Target Version
+              key: customfield_12280
+              schema:
+                datatype: array
+                items: string
+            - name: Backtrace
+              key: customfield_11191
+              schema:
+                datatype: string
+            - name: Target Version
+              key: customfield_12282
+              schema:
+                datatype: array
+                items: string
+            - name: Target Version
+              key: customfield_12281
+              schema:
+                datatype: array
+                items: string
+            - name: category
+              key: customfield_12284
+              schema:
+                datatype: string
+            - name: Category
+              key: customfield_12283
+              schema:
+                datatype: string
+            - name: Drive Certificate of Sanitization Requested (Support)
+              key: customfield_11074
+              schema:
+                datatype: option
+            - name: Propel FAI#
+              key: customfield_17975
+              schema:
+                datatype: string
+            - name: Required for Beta
+              key: customfield_16886
+              schema:
+                datatype: array
+                items: option
+            - name: Category
+              key: customfield_12285
+              schema:
+                datatype: string
+            - name: Requested Go-Live Date
+              key: customfield_14466
+              schema:
+                datatype: date
+            - name: Failure Analysis Required?
+              key: customfield_14103
+              schema:
+                datatype: array
+                items: option
+            - name: RCA
+              key: customfield_11198
+              schema:
+                datatype: string
+            - name: Labels
+              key: customfield_12288
+              schema:
+                datatype: array
+                items: string
+            - name: Project
+              key: customfield_12287
+              schema:
+                datatype: option
+            - name: Area of Impact
+              key: customfield_11199
+              schema:
+                datatype: option
+            - name: Deployed
+              key: customfield_11079
+              schema:
+                datatype: option
+            - name: Defective Serial Number
+              key: customfield_14106
+              schema:
+                datatype: string
+            - name: Final Content Due
+              key: customfield_14467
+              schema:
+                datatype: date
+            - name: Estimated Time Required
+              key: customfield_16888
+              schema:
+                datatype: string
+            - name: Failed on Arrival?
+              key: customfield_14104
+              schema:
+                datatype: array
+                items: option
+            - name: Propel FAI Approval Status
+              key: customfield_17977
+              schema:
+                datatype: option
+            - name: Target Due Date
+              key: customfield_17976
+              schema:
+                datatype: date
+            - name: Defective Part Number
+              key: customfield_14105
+              schema:
+                datatype: string
+            - name: Client Software Requirements
+              key: customfield_11180
+              schema:
+                datatype: string
+            - name: Ops Notes
+              key: customfield_12271
+              schema:
+                datatype: string
+            - name: VAST Email Address
+              key: customfield_12270
+              schema:
+                datatype: string
+            - name: Additional Information
+              key: customfield_11184
+              schema:
+                datatype: string
+            - name: Alternate Start Date
+              key: customfield_11185
+              schema:
+                datatype: date
+            - name: Video Edit Requirements
+              key: customfield_16754
+              schema:
+                datatype: option
+            - name: 'Avnet RMA #'
+              key: customfield_14697
+              schema:
+                datatype: string
+            - name: Vast Cluster Type
+              key: customfield_11186
+              schema:
+                datatype: array
+                items: option
+            - name: Will this request go to Vastdata.com?
+              key: customfield_14334
+              schema:
+                datatype: option
+            - name: Encryption
+              key: customfield_11187
+              schema:
+                datatype: array
+                items: option
+            - name: SFDC Opportunity Entry
+              key: customfield_11188
+              schema:
+                datatype: string
+            - name: Which Client Cbox to use?
+              key: customfield_11189
+              schema:
+                datatype: array
+                items: option
+            - name: Metrics Target
+              key: customfield_14337
+              schema:
+                datatype: option
+            - name: Kubernetes
+              key: customfield_14338
+              schema:
+                datatype: array
+                items: option
+            - name: Carrier tracking number
+              key: customfield_14698
+              schema:
+                datatype: string
+            - name: Client distro & Kernel
+              key: customfield_14335
+              schema:
+                datatype: string
+            - name: K8s
+              key: customfield_14336
+              schema:
+                datatype: array
+                items: option
+            - name: Video Editing Requirements
+              key: customfield_16755
+              schema:
+                datatype: array
+                items: option
+            - name: D5-Potential Corrective Action
+              key: customfield_13591
+              schema:
+                datatype: string
+            - name: TIF Pattern
+              key: customfield_11170
+              schema:
+                datatype: string
+            - name: D4-Root Cause Analysis
+              key: customfield_13590
+              schema:
+                datatype: string
+            - name: D7-Preventive Action
+              key: customfield_13593
+              schema:
+                datatype: string
+            - name: D6-Implement Correct Action
+              key: customfield_13592
+              schema:
+                datatype: string
+            - name: Business Applications
+              key: customfield_12264
+              schema:
+                datatype: option
+            - name: Affected Part Number
+              key: customfield_13595
+              schema:
+                datatype: string
+            - name: Replacement Part Number (Ops)
+              key: customfield_12263
+              schema:
+                datatype: option
+            - name: Appprovers
+              key: customfield_14565
+              schema:
+                datatype: array
+                items: user
+            - name: Site Survey
+              key: customfield_13594
+              schema:
+                datatype: string
+            - name: Requested Duration
+              key: customfield_11176
+              schema:
+                datatype: option
+            - name: Reproduced RMA Failure Reason
+              key: customfield_12386
+              schema:
+                datatype: option
+            - name: Affected Serial Number
+              key: customfield_13596
+              schema:
+                datatype: string
+            - name: Does Customer need VPN Access?
+              key: customfield_11177
+              schema:
+                datatype: string
+            - name: 'Vast Cluster Type: More'
+              key: customfield_11178
+              schema:
+                datatype: string
+            - name: Time to done
+              key: customfield_12389
+              schema:
+                datatype: sd-servicelevelagreement
+            - name: Client Requirements
+              key: customfield_11179
+              schema:
+                datatype: array
+                items: option
+            - name: Vulnerability
+              key: customfield_12388
+              schema:
+                datatype: any
+            - name: Closed Date
+              key: customfield_13598
+              schema:
+                datatype: date
+            - name: Level of Effort (size)
+              key: customfield_14203
+              schema:
+                datatype: option
+            - name: Spare Kit Replacement
+              key: customfield_12269
+              schema:
+                datatype: option
+            - name: Category
+              key: customfield_14204
+              schema:
+                datatype: option
+    types:
+        - id: "10003"
+          name: Task
+          handle: Task
+          subtask: false
+        - id: "10004"
+          name: Sub-task
+          handle: Sub-task
+          subtask: true
+        - id: "10005"
+          name: New Feature
+          handle: New Feature
+          subtask: false
+        - id: "10006"
+          name: Bug
+          handle: Bug
+          subtask: false
+        - id: "10123"
+          name: Tech Debt
+          handle: Tech Debt
+          subtask: false
+        - id: "10001"
+          name: Story
+          handle: Story
+          subtask: false
+        - id: "10000"
+          name: Epic
+          handle: Epic
+          subtask: false
+        - id: "10119"
+          name: Sub Test Execution
+          handle: Sub Test Execution
+          subtask: true
+        - id: "10101"
+          name: Test
+          handle: Test
+          subtask: false
+        - id: "10181"
+          name: Duty
+          handle: Duty
+          subtask: false
+        - id: "10209"
+          name: Debug
+          handle: Debug
+          subtask: false
+        - id: "11349"
+          name: Initiative
+          handle: Initiative
+          subtask: false
+login: andrzej.skupien@vastdata.com
+project:
+    key: ORION
+    type: classic
+server: https://vastdata.atlassian.net
+timezone: Asia/Jerusalem
