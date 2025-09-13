@@ -45,10 +45,11 @@ cask 'wezterm'
 {{- if eq .chezmoi.hostname "MB-928298" }}
 set brewfile_content "$brewfile_content
 brew 'awscli'
+brew 'awslogs'
 brew 'fswatch'
 brew 'net-snmp'
+brew 'ollama'
 brew 'portaudio'
-brew 'postgresql@14'
 cask 'docker'
 cask 'wireshark'
 "

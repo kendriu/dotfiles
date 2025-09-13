@@ -106,7 +106,7 @@ fish_add_path /usr/local/bin/
 
 # set -gx USE_QPIPES yes
 set -gx MAIN "release/5.4.0"
-set -gx NEXT "TEAM/infra-5.4"
+set -gx NEXT "TEAM/infra-5.5"
 
 abbr c ./comet.sh -R DEVVM:orion
 abbr gm git checkout $MAIN
