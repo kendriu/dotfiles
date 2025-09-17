@@ -121,16 +121,18 @@ function glrm
 end
 
 function gp
-    set root $MAIN
-    set first_commit (git cherry $root | head -n 1 | cut -d" " -f2)
-    set message (git log --format=%B -n 1 $first_commit | string trim)
-    set last_message (git log -1 --pretty=%B)
-    git commit --amend -m "$last_message" -m"ci-jobs: COMET"
-
-    git prop $root BUILD $message
-    git commit --amend -m "$last_message"
-
-    git prop
+    git prop $MAIN q:COMET
+    git prop $MAIN q:BUILD
+    # set root $MAIN
+    # set first_commit (git cherry $root | head -n 1 | cut -d" " -f2)
+    # set message (git log --format=%B -n 1 $first_commit | string trim)
+    # set last_message (git log -1 --pretty=%B)
+    # git commit --amend -m "$last_message" -m"ci-jobs: COMET"
+    #
+    # git prop $root BUILD $message
+    # git commit --amend -m "$last_message"
+    #
+    # git prop
 end
 
 function r --wraps rsync
