@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+import subprocess
+import sys
+from difflib import SequenceMatcher
+
+content = sys.stdin.read()
+
+cmd = ["git", "show"]
+
+file_path = sys.argv[1]  # file passed as param
+
+cmd.append(f"HEAD:{file_path}")
+
+try:
+    result = subprocess.run(cmd, stdout=subprocess.PIPE, text=True, check=True)
+except subprocess.CalledProcessError:
+    original = ""
+else:
+    original = result.stdout
+
+sm = SequenceMatcher(None, original.splitlines(), content.splitlines())
+
+cmd = ["ruff", "format", "--line-length", "120"]
+for tag, i1, i2, j1, j2 in sm.get_opcodes():
+    if tag in ("replace", "insert"):
+        # j1..j2-1 in b are the changed lines
+        # Convert to 1-based: add +1
+        start = j1 + 1
+        stop = j2  # since j2 is exclusive, it's already 1-based stop
+        if start <= stop:
+            # format "start-stop". If only one line, start == stop
+            cmd.append("--range")
+            if start == stop:
+                stop += 1
+            cmd.append(f"{start}-{stop + 1}")
+cmd.append("-")
+
+p = subprocess.Popen(cmd, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+stdout, stderr = p.communicate(input=content)
+
+sys.stdout.write(stdout)
