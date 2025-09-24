@@ -3,6 +3,7 @@ set fish_greeting
 
 fish_add_path /opt/homebrew/opt/rustup/bin
 fish_add_path $HOME/bin
+fish_add_path $HOME/.cargo/bin
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
