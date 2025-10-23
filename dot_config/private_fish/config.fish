@@ -122,7 +122,7 @@ function glrm
 end
 
 function gp
-    git prop $MAIN q:MERCURY
+    git prop $MAIN q:COMET
     git prop $MAIN q:BUILD
     # set root $MAIN
     # set first_commit (git cherry $root | head -n 1 | cut -d" " -f2)
