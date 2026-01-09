@@ -171,5 +171,5 @@ function clogs
 
     AWS_PROFILE=crater lnav \
     (just web-logs $argv | psub) \
-    (just scrubber-logs &argv |psub)
+    (just scrubber-logs $argv |psub)
 end
