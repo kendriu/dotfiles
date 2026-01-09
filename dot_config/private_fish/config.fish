@@ -169,7 +169,18 @@ function clogs
         end
     end
 
-    AWS_PROFILE=crater lnav \
-    (just web-logs $argv | psub) \
-    (just scrubber-logs $argv |psub)
+    # Create temp files
+    set web_tmp (mktemp)
+    set scrub_tmp (mktemp)
+
+    AWS_PROFILE=crater just web-logs      $argv > $web_tmp &
+    set web_pid $last_pid
+
+    AWS_PROFILE=crater just scrubber-logs $argv > $scrub_tmp &
+    set scrub_pid $last_pid
+
+    lnav $web_tmp $scrub_tmp
+
+    # (Optional) After you exit lnav, stop background jobs
+    kill $web_pid $scrub_pid > /dev/null
 end
