@@ -158,7 +158,7 @@ zoxide init fish | source
 
 # crater
 function clogs
-    if not aws sts get-caller-identity --profile crater ^/dev/null
+    if not aws sts get-caller-identity --profile crater > /dev/null
         echo "🔐 AWS SSO not logged in; running aws sso login..."
         aws sso login --use-device-code --profile crater
 
