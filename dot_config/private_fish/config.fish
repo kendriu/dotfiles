@@ -170,8 +170,10 @@ function clogs
     end
 
     # Create temp files
-    set web_tmp (mktemp)
-    set scrub_tmp (mktemp)
+    set timestamp (date +"%Y%m%dT%H%M%S")
+
+    set web_tmp "/tmp/web-$timestamp.log"
+    set scrub_tmp "/tmp/scrub-$timestamp.log"
 
     AWS_PROFILE=crater just web-logs      $argv > $web_tmp &
     set web_pid $last_pid
