@@ -155,3 +155,21 @@ abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated -s~Debug --order-
 
 #zoxide 
 zoxide init fish | source
+
+# crater
+function clogs
+    if not aws sts get-caller-identity --profile crater ^/dev/null
+        echo "🔐 AWS SSO not logged in; running aws sso login..."
+        aws sso login --use-device-code --profile crater
+
+        # If login failed or was cancelled, stop
+        if test $status -ne 0
+            echo "❌ AWS SSO login failed"
+            return 1
+        end
+    end
+
+    AWS_PROFILE=crater lnav \
+    (just web-logs $argv | psub) \
+    (just scrubber-logs &argv |psub)
+end
