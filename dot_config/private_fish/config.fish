@@ -37,8 +37,6 @@ function cv
     chezmoi add ~/.config/nvim
 end
 
-# wezterm
-abbr cw chezmoi edit -a ~/.config/wezterm/wezterm.lua
 
 # fish
 function cf
