@@ -79,5 +79,11 @@ return {
 		end,
 	},
 	{ "Async10/nvim-keepcase", cmd = { "Replace", "R" } },
-	{ "nvim-mini/mini.align", version = "*" },
+	{
+		"nvim-mini/mini.align",
+		version = "*",
+		config = function()
+			require("mini.align").setup()
+		end,
+	},
 }
