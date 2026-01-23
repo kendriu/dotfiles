@@ -150,8 +150,10 @@ function r --wraps rsync
 end
 
 # jira
-# abbr j jira
-# abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated -s~Debug --order-by priority --columns PRIORITY,KEY,SUMMARY,STATUS,REPORTER,CREATED
+if type -q jira
+    abbr j jira
+    abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated -s~Debug --order-by priority --columns PRIORITY,KEY,SUMMARY,STATUS,REPORTER,CREATED
+end
 
 #zoxide 
 zoxide init fish | source
