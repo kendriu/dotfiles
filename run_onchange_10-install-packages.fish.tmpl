@@ -15,7 +15,6 @@ brew 'fzf'
 brew 'gcc'
 brew 'git'
 brew 'git-delta'
-brew 'gitui'
 brew 'helix'
 brew 'imagemagick'
 brew 'just'
@@ -36,16 +35,17 @@ brew 'zoxide'
 cask 'chatgpt'
 cask 'flycut'
 cask 'font-jetbrains-mono-nerd-font'
-cask 'jetbrains-toolbox'
 cask 'keepingyouawake'
 cask 'obsidian'
 cask 'vivaldi'
-cask 'wezterm'
+cask 'kitty'
 "
 
 # Conditional additions based on hostname
 {{- if eq .chezmoi.hostname "MB-928298" }}
 set brewfile_content "$brewfile_content
+brew 'rainfrog'
+brew 'lnav'
 brew 'awscli'
 brew 'awslogs'
 brew 'fswatch'
@@ -55,7 +55,6 @@ brew 'oci-cli'
 brew 'ollama'
 brew 'portaudio'
 cask 'docker'
-cask 'wireshark'
 "
 {{- else}}
 set brewfile_content "$brewfile_content
