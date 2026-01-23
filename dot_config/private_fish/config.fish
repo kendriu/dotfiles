@@ -153,6 +153,19 @@ end
 if type -q jira
     abbr j jira
     abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated -s~Debug --order-by priority --columns PRIORITY,KEY,SUMMARY,STATUS,REPORTER,CREATED
+    
+    function ticket
+        # Get current branch name
+        set branch (git rev-parse --abbrev-ref HEAD)
+        # Extract ticket number (e.g., ORION-310342)
+        set ticket (string match -r '[A-Z]+-\d+' -- $branch)
+        if test -n "$ticket"
+            set url "https://vastdata.atlassian.net/browse/$ticket"
+            open $url
+        else
+            echo "No ticket number found in branch name: $branch"
+        end
+    end
 end
 
 #zoxide 
