@@ -2,3 +2,6 @@
 .local/
 nav.md
 **/.DS_Store
+codecompanion-workspace.json
+worktrees
+**/my_tests/
