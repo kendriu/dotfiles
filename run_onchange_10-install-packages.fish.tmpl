@@ -33,7 +33,6 @@ brew 'xclip'
 brew 'yazi'
 brew 'zoxide'
 cask 'chatgpt'
-cask 'copilot-cli'
 cask 'flycut'
 cask 'font-jetbrains-mono-nerd-font'
 cask 'keepingyouawake'
@@ -61,8 +60,6 @@ cask 'docker'
 set brewfile_content "$brewfile_content
 cask 'chromedriver'
 cask 'gcenx/wine/kegworks'
-"
-
 {{- end }}
 
 echo $brewfile_content | brew bundle cleanup --force --file=/dev/stdin
