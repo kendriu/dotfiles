@@ -59,7 +59,7 @@ cask 'docker'
 {{- else}}
 set brewfile_content "$brewfile_content
 cask 'chromedriver'
-cask 'gcenx/wine/kegworks'
+"
 {{- end }}
 
 echo $brewfile_content | brew bundle cleanup --force --file=/dev/stdin
