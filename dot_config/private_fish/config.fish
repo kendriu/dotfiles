@@ -37,7 +37,6 @@ function cv
     chezmoi add ~/.config/nvim
 end
 
-
 # fish
 function cf
     set fish_trace 1
@@ -151,7 +150,7 @@ end
 if type -q jira
     abbr j jira
     abbr jmy jira issue list -a $(jira me) -s~Closed -s~Integrated -s~Debug --order-by priority --columns PRIORITY,KEY,SUMMARY,STATUS,REPORTER,CREATED
-    
+
     function ticket
         # Get current branch name
         set branch (git rev-parse --abbrev-ref HEAD)
@@ -171,7 +170,7 @@ zoxide init fish | source
 
 # crater
 function clogs
-    if not aws sts get-caller-identity --profile crater > /dev/null
+    if not aws sts get-caller-identity --profile crater >/dev/null
         echo "🔐 AWS SSO not logged in; running aws sso login..."
         aws sso login --use-device-code --profile crater
 
@@ -188,14 +187,14 @@ function clogs
     set web_tmp "/tmp/web-$timestamp.log"
     set scrub_tmp "/tmp/scrub-$timestamp.log"
 
-    AWS_PROFILE=crater just web-logs      $argv > $web_tmp &
+    AWS_PROFILE=crater just web-logs $argv >$web_tmp &
     set web_pid $last_pid
 
-    AWS_PROFILE=crater just scrubber-logs $argv > $scrub_tmp &
+    AWS_PROFILE=crater just scrubber-logs $argv >$scrub_tmp &
     set scrub_pid $last_pid
 
     lnav $web_tmp $scrub_tmp
 
     # (Optional) After you exit lnav, stop background jobs
-    kill $web_pid $scrub_pid > /dev/null
+    kill $web_pid $scrub_pid >/dev/null
 end
