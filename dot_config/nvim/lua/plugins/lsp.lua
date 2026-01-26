@@ -102,6 +102,7 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"bashls",
+				"fish_lsp",
 				"basedpyright",
 				"ruff",
 				"rust_analyzer",
