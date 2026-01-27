@@ -79,11 +79,19 @@ vim.keymap.set("n", "[q", ":cprev<CR>zz", { desc = "Go to previous on quickfix l
 -- System clipboard iteraction
 -- Map <Leader>++ to copy the last yanked text into the system clipboard
 vim.keymap.set("n", "<Leader>++", function()
-  vim.fn.setreg("+", vim.fn.getreg('"'))
+	vim.fn.setreg("+", vim.fn.getreg('"'))
 end, { desc = "Copy last yanked text to clipboard" })
 
 -- Map <Leader>y to yank into the system clipboard
-vim.keymap.set("n", "<Leader>y", '"+y', { desc = "Yank to clipboard" })
+vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
 
 -- Map <Leader>p to paste from the system clipboard
-vim.keymap.set("n", "<Leader>p", '"+p', { desc = "Paste from clipboard" })
+vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
+
+-- Git ammend and push force with lease
+vim.keymap.set(
+	"n",
+	"<leader>ga",
+	":!git commit --amend --no-edit && git push --force-with-lease<CR>",
+	{ desc = "Git amend and push force with lease" }
+)
