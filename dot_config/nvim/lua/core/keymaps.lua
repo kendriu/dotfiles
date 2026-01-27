@@ -89,9 +89,12 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
 vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
 
 -- Git ammend and push force with lease
-vim.keymap.set(
-	"n",
-	"<leader>ga",
-	":!git commit --amend --no-edit && git push --force-with-lease<CR>",
-	{ desc = "Git amend and push force with lease" }
-)
+vim.keymap.set("n", "<leader>ga", function()
+	vim.opt.cmdheight = 10
+	-- Amend the commit
+	vim.cmd("Git commit --verbose --all --no-edit --amend")
+
+	vim.opt.cmdheight = 2
+	-- Then force-push with lease
+	vim.cmd("Git push --force-with-lease")
+end, { desc = "Git amend and push force with lease" })
