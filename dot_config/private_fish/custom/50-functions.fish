@@ -1,0 +1,92 @@
+# Custom Functions
+# User-defined helper functions
+
+# Edit Neovim config and sync with chezmoi
+function cv -d "Edit Neovim config and sync with chezmoi"
+    cd ~/.config/nvim
+    nvim
+    chezmoi --force forget ~/.config/nvim
+    chezmoi add ~/.config/nvim
+end
+
+# Edit Fish config and reload
+function cf -d "Edit Fish config with chezmoi and reload"
+    chezmoi edit -a ~/.config/fish/config.fish
+    fish
+end
+
+# Sync chezmoi to git
+function c-sync -d "Sync chezmoi changes to git"
+    cd ~/.local/share/chezmoi/
+    git add .
+    git commit -mSync
+    git push
+end
+
+# Edit brew packages and apply
+function cb -d "Edit brew packages and apply changes"
+    nvim ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl
+    chezmoi apply
+end
+
+# Smart Python virtualenv activation
+function venv -d "Activate Python venv (auto-detect .venv, venv, or env)"
+    for dir in .venv venv env
+        if test -f $dir/bin/activate.fish
+            source $dir/bin/activate.fish
+            echo "✓ Activated $dir"
+            return 0
+        end
+    end
+    echo "❌ No virtualenv found (.venv, venv, or env)"
+    return 1
+end
+abbr a venv
+
+# Automatic Python virtualenv activation on directory change
+function _auto_venv --on-variable PWD -d "Auto-activate Python venv on directory change"
+    # Deactivate current venv if we're in one
+    if set -q VIRTUAL_ENV
+        # Check if we're still in the same venv's parent directory tree
+        set -l venv_dir (dirname $VIRTUAL_ENV)
+        if not string match -q "$venv_dir*" $PWD
+            # We've left the venv directory, deactivate
+            deactivate 2>/dev/null
+            set -e VIRTUAL_ENV
+        end
+    end
+
+    # Try to activate venv in current or parent directories
+    set -l current_dir $PWD
+    while test $current_dir != "/"
+        for venv_name in .venv venv env
+            if test -f $current_dir/$venv_name/bin/activate.fish
+                # Only activate if not already in this venv
+                if not set -q VIRTUAL_ENV; or test $VIRTUAL_ENV != $current_dir/$venv_name
+                    source $current_dir/$venv_name/bin/activate.fish 2>/dev/null
+                    set -gx VIRTUAL_ENV $current_dir/$venv_name
+                end
+                return 0
+            end
+        end
+        # Move to parent directory
+        set current_dir (dirname $current_dir)
+    end
+end
+
+# Watch directory and rsync on changes
+function r --wraps rsync -d "Watch directory and rsync on changes (respects .gitignore)"
+    # Usage: r SOURCE DEST
+    # Watches SOURCE recursively, syncs to DEST on any change
+    # Respects .gitignore files in source and home
+    fswatch --recursive --one-per-batch $argv[1] | while read line
+        rsync -ah --stats --delete-after \
+            --filter=":- $argv[1]/.gitignore" \
+            --filter=':- ~/.gitignore' \
+            $argv
+        set_color yellow
+        date
+        set_color normal
+        terminal-notifier -title Orion -message Synced
+    end
+end
