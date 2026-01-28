@@ -46,16 +46,17 @@ cask 'vivaldi'
 # Conditional additions based on hostname
 {{- if eq .chezmoi.hostname "MB-928298" }}
 set brewfile_content "$brewfile_content
-brew 'rainfrog'
-brew 'lnav'
 brew 'awscli'
 brew 'awslogs'
 brew 'fswatch'
 brew 'jira-cli'
+brew 'lnav'
 brew 'net-snmp'
 brew 'oci-cli'
 brew 'ollama'
 brew 'portaudio'
+brew 'rainfrog'
+cask 'copilot-cli'
 cask 'docker-desktop'
 "
 {{- else}}
