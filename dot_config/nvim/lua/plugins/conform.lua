@@ -156,7 +156,7 @@ return {
 						"$FILENAME",
 						"-",
 					},
-					range_args = function(self, ctx)
+					range_args = function(ctx)
 						return {
 							"format",
 							"--line-length",

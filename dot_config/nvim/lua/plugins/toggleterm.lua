@@ -33,9 +33,6 @@ return {
 			},
 		})
 
-		-- Terminal keybindings
-		local opts = { noremap = true, silent = true }
-
 		-- Toggle floating terminal (already have <C-\> from open_mapping)
 		vim.keymap.set("n", "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", { desc = "Terminal: Float" })
 
