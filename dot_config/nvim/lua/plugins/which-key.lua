@@ -23,35 +23,41 @@ return {
 		-- Register group names/labels
 		wk.add({
 			-- Top-level keys (fast access, no group)
-			{ "<leader><space>", desc = "Smart Find Files", icon = "" },
-			{ "<leader>/", desc = "Grep", icon = "" },
-			{ "<leader>?", desc = "Open Cheatsheet", icon = "" },
+			{ "<leader><space>", desc = "Find Files", icon = "" },
+			{ "<leader>/", desc = "Search in Project", icon = "" },
+			{ "<leader>?", desc = "Cheatsheet", icon = "" },
 			{ "<leader><Tab>", desc = "File Explorer", icon = "" },
-			{ "\\", desc = "Explorer Reveal", icon = "" },
+			{ "\\", desc = "Reveal in Explorer", icon = "" },
 			{ "<leader>z", desc = "Zen Mode", icon = "󰚀" },
 
 			-- Harpoon
-			{ "<leader>a", desc = "Add to Harpoon", icon = "󰛢" },
-			{ "<leader>e", desc = "Harpoon Menu", icon = "󰛢" },
+			{ "<leader>a", desc = "Mark File", icon = "󰛢" },
+			{ "<leader>e", desc = "Marked Files", icon = "󰛢" },
+			{ "<C-1>", desc = "File 1", icon = "1" },
+			{ "<C-2>", desc = "File 2", icon = "2" },
+			{ "<C-3>", desc = "File 3", icon = "3" },
+			{ "<C-4>", desc = "File 4", icon = "4" },
+			{ "<C-S-P>", desc = "Prev Marked File", icon = "󰛢" },
+			{ "<C-S-N>", desc = "Next Marked File", icon = "󰛢" },
 
 			-- Dropbar (Breadcrumbs Navigation)
-			{ "<leader>;", desc = "Pick Symbol", icon = "" },
-			{ "[;", desc = "Context Start", icon = "󰮰" },
-			{ "];", desc = "Pick Symbol", icon = "" },
+			{ "<leader>;", desc = "Jump to Symbol", icon = "" },
+			{ "[;", desc = "Go to Context Start", icon = "󰮰" },
+			{ "];", desc = "Jump to Symbol", icon = "" },
 
 			-- AI/Assistant (CodeCompanion)
 			{ "<leader>A", group = "AI/Assistant", icon = "" },
 			{ "<leader>Ac", desc = "Toggle Chat", icon = "" },
 			{ "<leader>An", desc = "New Chat", icon = "" },
 			{ "<leader>Aa", desc = "Action Palette", icon = "" },
-			{ "<leader>Ai", desc = "Inline Prompt", icon = "" },
-			{ "<leader>Am", desc = "Model/Strategy", icon = "" },
-			{ "<leader>Ar", desc = "Run on Selection", icon = "", mode = "v" },
-			{ "<leader>As", desc = "Surgical Edit Mode", icon = "" },
-			{ "<leader>Ad", desc = "Debug ORION Ticket", icon = "" },
-			{ "<leader>Av", desc = "Code Review (Selection)", icon = "", mode = { "n", "v" } },
-			{ "<leader>AR", desc = "Review All Changes", icon = "" },
-			{ "<leader>AC", desc = "Generate Commit Message", icon = "" },
+			{ "<leader>Ai", desc = "Ask AI Inline", icon = "" },
+			{ "<leader>Am", desc = "Change AI Model", icon = "" },
+			{ "<leader>Ar", desc = "Ask AI About Selection", icon = "", mode = "v" },
+			{ "<leader>As", desc = "Minimal Edit", icon = "" },
+			{ "<leader>Ad", desc = "Debug Ticket", icon = "" },
+			{ "<leader>Av", desc = "Review Code", icon = "", mode = { "n", "v" } },
+			{ "<leader>AR", desc = "Review Changes", icon = "" },
+			{ "<leader>AC", desc = "Write Commit Message", icon = "" },
 			{ "gA", desc = "Add to AI Chat", icon = "", mode = "v" },
 
 			-- Find/Files
@@ -68,14 +74,14 @@ return {
 			-- Search
 			{ "<leader>s", group = "Search", icon = "" },
 			{ "<leader>sb", desc = "Buffer Lines", icon = "" },
-			{ "<leader>sB", desc = "Grep Buffers", icon = "" },
-			{ "<leader>sg", desc = "Grep", icon = "" },
-			{ "<leader>sw", desc = "Word/Selection", icon = "" },
+			{ "<leader>sB", desc = "Search All Buffers", icon = "" },
+			{ "<leader>sg", desc = "Search in Project", icon = "" },
+			{ "<leader>sw", desc = "Search Current Word", icon = "" },
 			{ "<leader>sk", desc = "Keymaps", icon = "" },
 			{ "<leader>sm", desc = "Marks", icon = "" },
-			{ "<leader>sr", desc = "Resume Search", icon = "" },
-			{ "<leader>ss", desc = "LSP Symbols", icon = "" },
-			{ "<leader>sS", desc = "Workspace Symbols", icon = "" },
+			{ "<leader>sr", desc = "Resume Last Search", icon = "" },
+			{ "<leader>ss", desc = "Document Symbols", icon = "" },
+			{ "<leader>sS", desc = "Project Symbols", icon = "" },
 
 			-- Buffers
 			{ "<leader>b", group = "Buffers", icon = "" },
@@ -88,7 +94,7 @@ return {
 			{ "<leader>bC", desc = "Close Buffers to Right", icon = "" },
 			{ "<leader>bf", desc = "First Buffer", icon = "" },
 			{ "<leader>bl", desc = "Last Buffer", icon = "" },
-			{ "<leader>bj", desc = "Pick Buffer (Jump)", icon = "" },
+			{ "<leader>bj", desc = "Jump to Buffer", icon = "" },
 			{ "<leader>bs", desc = "Sort by Directory", icon = "" },
 			{ "<leader>bS", desc = "Sort by Extension", icon = "" },
 			{ "<leader>b1", desc = "Buffer 1", icon = "1" },
@@ -102,14 +108,12 @@ return {
 
 			-- Code
 			{ "<leader>c", group = "Code", icon = "" },
-			{ "<leader>ca", desc = "Code Actions", icon = "" },
-			{ "<leader>cr", desc = "Rename Symbol", icon = "" },
-			{ "<leader>cf", desc = "Format Document", icon = "" },
-			{ "<leader>ci", desc = "Go to Implementation", icon = "" },
-			{ "<leader>ct", desc = "Go to Type Definition", icon = "" },
+			{ "<leader>ca", desc = "Code Action", icon = "" },
+			{ "<leader>cr", desc = "Rename", icon = "" },
+			{ "<leader>cf", desc = "Format", icon = "" },
 			{ "<leader>cR", desc = "Rename File", icon = "" },
-			{ "<leader>cs", desc = "Symbols (Trouble)", icon = "" },
-			{ "<leader>cl", desc = "LSP Definitions/References", icon = "" },
+			{ "<leader>cs", desc = "Symbols", icon = "" },
+			{ "<leader>cl", desc = "Definitions/References", icon = "" },
 
 			-- Refactoring
 			{ "<leader>r", group = "Refactor", icon = "" },
@@ -119,9 +123,9 @@ return {
 			{ "<leader>ri", desc = "Inline Variable", icon = "", mode = { "n", "x" } },
 			{ "<leader>rb", desc = "Extract Block", icon = "" },
 			{ "<leader>rbf", desc = "Extract Block to File", icon = "" },
-			{ "<leader>rp", desc = "Debug Print", icon = "" },
-			{ "<leader>rc", desc = "Cleanup Debug Prints", icon = "󰃢" },
-			{ "<leader>rs", desc = "Refactor Menu", icon = "", mode = { "n", "x" } },
+			{ "<leader>rp", desc = "Add Debug Print", icon = "" },
+			{ "<leader>rc", desc = "Remove Debug Prints", icon = "󰃢" },
+			{ "<leader>rs", desc = "Refactor Options", icon = "", mode = { "n", "x" } },
 
 			-- Diagnostics/Trouble
 			{ "<leader>D", group = "Diagnostics", icon = "" },
@@ -151,6 +155,19 @@ return {
 			{ "<leader>wx", desc = "Close Split", icon = "" },
 			{ "<leader>v", desc = "Split Vertical", icon = "" },
 			{ "<leader>h", desc = "Split Horizontal", icon = "" },
+			
+			-- Window Navigation
+			{ "<C-h>", desc = "Window Left", icon = "" },
+			{ "<C-j>", desc = "Window Down", icon = "" },
+			{ "<C-k>", desc = "Window Up", icon = "" },
+			{ "<C-l>", desc = "Window Right", icon = "" },
+			{ "<C-q>", desc = "Save All & Quit", icon = "" },
+			
+			-- Window Resize
+			{ "<Up>", desc = "Decrease Height", icon = "" },
+			{ "<Down>", desc = "Increase Height", icon = "" },
+			{ "<Left>", desc = "Decrease Width", icon = "" },
+			{ "<Right>", desc = "Increase Width", icon = "" },
 
 			-- Tabs
 			{ "<leader>T", group = "Tabs", icon = "" },
@@ -158,6 +175,11 @@ return {
 			{ "<leader>Tx", desc = "Close Tab", icon = "" },
 			{ "<leader>Tn", desc = "Next Tab", icon = "" },
 			{ "<leader>Tp", desc = "Prev Tab", icon = "" },
+			
+			-- Buffer Switching
+			{ "<Tab>", desc = "Next Buffer", icon = "" },
+			{ "<S-Tab>", desc = "Prev Buffer", icon = "" },
+			{ "<leader>bb", desc = "New Buffer", icon = "" },
 
 			-- Notifications
 			{ "<leader>n", group = "Notifications", icon = "" },
@@ -171,18 +193,53 @@ return {
 			{ "<leader>ul", desc = "Toggle Line Numbers", icon = "" },
 			{ "<leader>ur", desc = "Toggle Relative Numbers", icon = "" },
 			{ "<leader>uh", desc = "Toggle Inlay Hints", icon = "" },
+			{ "<leader>uf", desc = "Toggle Format on Save", icon = "" },
 
 			-- Clipboard
 			{ "<leader>y", desc = "Yank to Clipboard", icon = "", mode = { "n", "v" } },
 			{ "<leader>p", desc = "Paste from Clipboard", icon = "", mode = { "n", "v" } },
 
-			-- Diagnostics
+			-- Diagnostics & Navigation
 			{ "]d", desc = "Next Diagnostic", icon = "" },
 			{ "[d", desc = "Prev Diagnostic", icon = "" },
+			{ "]D", desc = "Last Diagnostic", icon = "" },
+			{ "[D", desc = "First Diagnostic", icon = "" },
 			{ "]q", desc = "Next Quickfix", icon = "" },
 			{ "[q", desc = "Prev Quickfix", icon = "" },
+			{ "]Q", desc = "Last Quickfix", icon = "" },
+			{ "[Q", desc = "First Quickfix", icon = "" },
+			{ "]<C-Q>", desc = "Quickfix (Next File)", icon = "" },
+			{ "[<C-Q>", desc = "Quickfix (Prev File)", icon = "" },
+			{ "]l", desc = "Next Location", icon = "" },
+			{ "[l", desc = "Prev Location", icon = "" },
+			{ "]L", desc = "Last Location", icon = "" },
+			{ "[L", desc = "First Location", icon = "" },
+			{ "]<C-L>", desc = "Location (Next File)", icon = "" },
+			{ "[<C-L>", desc = "Location (Prev File)", icon = "" },
+			{ "]a", desc = "Next Arg", icon = "" },
+			{ "[a", desc = "Prev Arg", icon = "" },
+			{ "]A", desc = "Last Arg", icon = "" },
+			{ "[A", desc = "First Arg", icon = "" },
+			{ "]b", desc = "Next Buffer", icon = "" },
+			{ "[b", desc = "Prev Buffer", icon = "" },
+			{ "]B", desc = "Last Buffer", icon = "" },
+			{ "[B", desc = "First Buffer", icon = "" },
+			{ "]<Space>", desc = "Blank Line Below", icon = "" },
+			{ "[<Space>", desc = "Blank Line Above", icon = "" },
 			{ "]r", desc = "Next Reference", icon = "" },
 			{ "[r", desc = "Prev Reference", icon = "" },
+			
+			-- Todo Comments
+			{ "]t", desc = "Next TODO", icon = "" },
+			{ "[t", desc = "Prev TODO", icon = "" },
+			{ "]T", desc = "Last Tag", icon = "" },
+			{ "[T", desc = "First Tag", icon = "" },
+			{ "]<C-T>", desc = "Tag (Next Match)", icon = "" },
+			{ "[<C-T>", desc = "Tag (Prev Match)", icon = "" },
+			{ "]w", desc = "Next WARNING", icon = "" },
+			{ "[w", desc = "Prev WARNING", icon = "" },
+			{ "]n", desc = "Next NOTE", icon = "" },
+			{ "[n", desc = "Prev NOTE", icon = "" },
 
 			-- Quickfix & Lists
 			{ "<leader>l", group = "Lists", icon = "" },
@@ -190,20 +247,60 @@ return {
 			{ "<leader>lo", desc = "Open Quickfix", icon = "" },
 			{ "<leader>lc", desc = "Close Quickfix", icon = "" },
 			{ "<leader>lL", desc = "Location List", icon = "" },
-			{ "<leader>ld", desc = "Diagnostics to Quickfix", icon = "" },
+			{ "<leader>ld", desc = "Show Diagnostics in List", icon = "" },
 
-			-- LSP (when available)
-			{ "K", desc = "Hover Documentation", icon = "" },
-			{ "<leader>K", desc = "Signature Help", icon = "" },
-			{ "gd", desc = "Go to Definition", icon = "" },
-			{ "gD", desc = "Go to Declaration", icon = "" },
+			-- LSP
+			{ "K", desc = "Show Documentation", icon = "" },
+			{ "<leader>K", desc = "Show Signature", icon = "" },
+			{ "gd", desc = "Definition", icon = "" },
+			{ "gD", desc = "Declaration", icon = "" },
 			{ "gR", desc = "References", icon = "" },
-			{ "gI", desc = "Go to Implementation", icon = "" },
-			{ "gy", desc = "Go to Type Definition", icon = "" },
+			{ "gI", desc = "Implementation", icon = "" },
+			{ "gy", desc = "Type Definition", icon = "" },
+			{ "gO", desc = "Symbols", icon = "" },
+			
+			-- LSP gr* keymaps (Neovim defaults)
+			{ "gr", group = "LSP", icon = "" },
+			{ "gra", desc = "Code Action", icon = "", mode = { "n", "v" } },
+			{ "grn", desc = "Rename", icon = "" },
+			{ "grr", desc = "References", icon = "" },
+			{ "gri", desc = "Implementation", icon = "" },
+			{ "grt", desc = "Type Definition", icon = "" },
+			
+			-- Comment
+			{ "gc", desc = "Comment", icon = "󰆉", mode = { "n", "v" } },
+			{ "gcc", desc = "Comment Line", icon = "󰆉" },
+			
+			-- Vim Defaults
+			{ "<Esc>", desc = "Clear Highlights", icon = "" },
+			{ "n", desc = "Next Search (centered)", icon = "" },
+			{ "N", desc = "Prev Search (centered)", icon = "" },
+			{ "x", desc = "Delete (no yank)", icon = "" },
+			{ "X", desc = "Delete Line (no yank)", icon = "" },
+			{ "Y", desc = "Yank to EOL", icon = "" },
+			{ "&", desc = "Repeat :s", icon = "" },
+			{ "%", desc = "Matching Bracket", icon = "" },
+			{ "g%", desc = "Matching Bracket (reverse)", icon = "" },
+			{ "[%", desc = "Matching Bracket (prev)", icon = "" },
+			{ "]%", desc = "Matching Bracket (next)", icon = "" },
+			
+			-- Visual Mode
+			{ "<", desc = "Indent Left", icon = "", mode = "v" },
+			{ ">", desc = "Indent Right", icon = "", mode = "v" },
+			{ "p", desc = "Paste (keep register)", icon = "", mode = "v" },
+			
+			-- Open URL/File
+			{ "gx", desc = "Open Link", icon = "", mode = { "n", "v" } },
+			
+			-- Scroll
+			{ "<C-d>", desc = "Scroll Down", icon = "" },
+			{ "<C-u>", desc = "Scroll Up", icon = "" },
+			{ "<C-f>", desc = "Page Down", icon = "" },
+			{ "<C-b>", desc = "Page Up", icon = "" },
 
 			-- Flash
-			{ "s", desc = "Flash Jump", icon = "⚡", mode = { "n", "x", "o" } },
-			{ "S", desc = "Flash Treesitter", icon = "⚡", mode = { "n", "x", "o" } },
+			{ "s", desc = "Jump", icon = "⚡", mode = { "n", "x", "o" } },
+			{ "S", desc = "Jump (Treesitter)", icon = "⚡", mode = { "n", "x", "o" } },
 
 			-- Treesitter Text Objects (in visual/operator-pending mode)
 			{ "af", desc = "Around Function", mode = { "x", "o" } },
@@ -222,24 +319,28 @@ return {
 			{ "i/", desc = "Inside Comment", mode = { "x", "o" } },
 
 			-- Treesitter Navigation
-			{ "]f", desc = "Next Function Start" },
-			{ "[f", desc = "Prev Function Start" },
-			{ "]c", desc = "Next Class Start" },
-			{ "[c", desc = "Prev Class Start" },
-			{ "]a", desc = "Next Argument" },
-			{ "[a", desc = "Prev Argument" },
-			{ "]l", desc = "Next Loop Start" },
-			{ "[l", desc = "Prev Loop Start" },
-			{ "]o", desc = "Next Conditional Start" },
-			{ "[o", desc = "Prev Conditional Start" },
-			{ "]b", desc = "Next Block Start" },
-			{ "[b", desc = "Prev Block Start" },
-			{ "]F", desc = "Next Function End" },
-			{ "[F", desc = "Prev Function End" },
-			{ "]C", desc = "Next Class End" },
-			{ "[C", desc = "Prev Class End" },
-			{ "]A", desc = "Next Argument End" },
-			{ "[A", desc = "Prev Argument End" },
+			{ "]]", desc = "Next Section", icon = "" },
+			{ "[[", desc = "Prev Section", icon = "" },
+			{ "][", desc = "Next Section End", icon = "" },
+			{ "[]", desc = "Prev Section End", icon = "" },
+			{ "]f", desc = "Next Function", icon = "" },
+			{ "[f", desc = "Prev Function", icon = "" },
+			{ "]c", desc = "Next Class", icon = "" },
+			{ "[c", desc = "Prev Class", icon = "" },
+			{ "]a", desc = "Next Argument", icon = "" },
+			{ "[a", desc = "Prev Argument", icon = "" },
+			{ "]l", desc = "Next Loop", icon = "" },
+			{ "[l", desc = "Prev Loop", icon = "" },
+			{ "]o", desc = "Next Conditional", icon = "" },
+			{ "[o", desc = "Prev Conditional", icon = "" },
+			{ "]b", desc = "Next Block", icon = "" },
+			{ "[b", desc = "Prev Block", icon = "" },
+			{ "]F", desc = "Next Function End", icon = "" },
+			{ "[F", desc = "Prev Function End", icon = "" },
+			{ "]C", desc = "Next Class End", icon = "" },
+			{ "[C", desc = "Prev Class End", icon = "" },
+			{ "]A", desc = "Next Argument End", icon = "" },
+			{ "[A", desc = "Prev Argument End", icon = "" },
 
 			-- Treesitter Swap Operations
 			{ "<leader>x", group = "eXchange/Swap", icon = "" },

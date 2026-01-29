@@ -47,16 +47,9 @@ return {
 			return stripped
 		end
 
-		-- Determine adapter based on hostname with fallback mechanism
-		local hostname = vim.fn.hostname()
-		local adapter = "ollama" -- Default to ollama
-		
-		-- Check if we should use Copilot on this laptop
-		local should_use_copilot = (hostname == "MB-928298.local")
-		
-		if should_use_copilot then
-			adapter = "copilot"
-		end
+		-- Use centralized AI adapter system
+		local ai_adapter = require("core.ai-adapter")
+		local adapter = ai_adapter.get_adapter()
 
 		require("codecompanion").setup({
 			strategies = {
@@ -90,28 +83,9 @@ return {
 					return require("codecompanion.adapters").extend("copilot", {
 						callbacks = {
 							on_error = function(err)
-								-- Check if rate limit error
-								if err and (
-									string.match(err, "[Rr]ate limit") or
-									string.match(err, "429") or
-									string.match(err, "[Qq]uota") or
-									string.match(err, "[Tt]hrottl")
-								) then
-									vim.notify(
-										"Copilot rate limit hit! Switching to Ollama (qwen2.5:14b-instruct)",
-										vim.log.levels.WARN
-									)
-									
-									-- Switch all strategies to Ollama
-									local cc = require("codecompanion")
-									cc.config.strategies.chat.adapter = "ollama"
-									cc.config.strategies.inline.adapter = "ollama"
-									cc.config.strategies.agent.adapter = "ollama"
-									
-									vim.notify(
-										"Switched to Ollama. Restart your last command to use local AI.",
-										vim.log.levels.INFO
-									)
+								-- Check if rate limit error using centralized function
+								if ai_adapter.is_rate_limit_error(err) then
+									ai_adapter.trigger_fallback("Copilot rate limit hit!")
 								end
 							end,
 						},

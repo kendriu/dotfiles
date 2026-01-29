@@ -1,8 +1,19 @@
+-- Determine dependencies and sources based on hostname
+local ai_adapter = require("core.ai-adapter")
+local deps = { "rafamadriz/friendly-snippets" }
+local default_sources = { "lsp", "path", "snippets", "buffer" }
+
+-- Only load blink-copilot on laptops that should use Copilot
+if ai_adapter.init() == "copilot" then
+	table.insert(deps, "fang2hou/blink-copilot")
+	table.insert(default_sources, "copilot")
+end
+
 return {
 	"saghen/blink.cmp",
 	event = "VeryLazy",
 	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot" },
+	dependencies = deps,
 	-- NOTE: if blink doesn't work uncomment the line bellow and run Lazy update
 	version = "*",
 	-- build = "cargo build --release",
@@ -135,7 +146,7 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "copilot" },
+			default = default_sources,
 			providers = {
 				copilot = {
 					name = "copilot",

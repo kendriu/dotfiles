@@ -50,39 +50,41 @@ return {
 
 		local conform = require("conform")
 
-		-- Smart git hunks formatting (only format changed lines)
-		local format_hunks = function(bufnr)
-			-- Respect global/buffer disable flags
-			if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+		local default_format_options = {
+			lsp_fallback = true,
+			async = false,
+			timeout_ms = 500,
+		}
+
+		local format_hunks = function()
+			local ignore_filetypes = {
+				-- Add filetypes to skip format on save
+			}
+			if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
+				return default_format_options
+			end
+
+			-- Respect disable flags
+			if vim.g.disable_autoformat or vim.b.disable_autoformat then
 				return
 			end
 
-			-- Skip certain filetypes where range formatting doesn't work well
-			local ignore_filetypes = { "lua" } -- Python NOT in list - we want hunks!
-			if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-				-- Full file format for ignored filetypes
-				return { timeout_ms = 500, lsp_format = "never" }
-			end
-
-			-- Check if gitsigns is available and has hunks
 			local ok, gitsigns = pcall(require, "gitsigns")
 			if not ok then
-				-- No gitsigns, do full file format
-				return { timeout_ms = 500, lsp_format = "never" }
+				return -- No gitsigns, no formatting
 			end
 
-			local hunks = gitsigns.get_hunks(bufnr)
+			local hunks = gitsigns.get_hunks()
 			if hunks == nil or #hunks == 0 then
-				-- No hunks (untracked or no changes), do full file format
-				return { timeout_ms = 500, lsp_format = "never" }
+				return -- No hunks, no formatting
 			end
 
-			-- Format each hunk
+			local format = require("conform").format
+
 			local function format_range()
 				if next(hunks) == nil then
 					return
 				end
-
 				local hunk = nil
 				while next(hunks) ~= nil and (hunk == nil or hunk.type == "delete") do
 					hunk = table.remove(hunks)
@@ -91,18 +93,13 @@ return {
 				if hunk ~= nil and hunk.type ~= "delete" then
 					local start = hunk.added.start
 					local last = start + hunk.added.count
-					local last_hunk_line = vim.api.nvim_buf_get_lines(bufnr, last - 2, last - 1, true)[1]
-					local range = {
-						start = { start, 0 },
-						["end"] = { last - 1, last_hunk_line:len() },
-					}
-					conform.format({
-						bufnr = bufnr,
-						range = range,
-						async = true,
-						lsp_format = "never", -- KEY: Never use LSP!
-					}, function()
-						vim.defer_fn(format_range, 1)
+					-- nvim_buf_get_lines uses zero-based indexing
+					local last_hunk_line = vim.api.nvim_buf_get_lines(0, last - 2, last - 1, true)[1]
+					local range = { start = { start, 0 }, ["end"] = { last - 1, last_hunk_line:len() } }
+					format({ range = range, async = true, lsp_fallback = true }, function()
+						vim.defer_fn(function()
+							format_range()
+						end, 1)
 					end)
 				end
 			end
@@ -145,37 +142,6 @@ return {
 
 			-- Custom formatter configurations
 			formatters = {
-				-- Ruff for Python with HARD-CODED 140 char line length
-				ruff_format = {
-					command = "ruff",
-					args = {
-						"format",
-						"--line-length",
-						"140",
-						"--stdin-filename",
-						"$FILENAME",
-						"-",
-					},
-					range_args = function(ctx)
-						return {
-							"format",
-							"--line-length",
-							"140",
-							"--range",
-							string.format(
-								"%d:%d-%d:%d",
-								ctx.range.start[1],
-								ctx.range.start[2] + 1,
-								ctx.range["end"][1],
-								ctx.range["end"][2] + 1
-							),
-							"--stdin-filename",
-							"$FILENAME",
-							"-",
-						}
-					end,
-				},
-
 				-- Biome with project config detection
 				biome = {
 					require_cwd = true, -- Only use if biome.json exists
@@ -188,13 +154,37 @@ return {
 				},
 			},
 
-			-- Format on save - git hunks (smart format only changed lines)
-			format_on_save = function(bufnr)
-				return format_hunks(bufnr)
+			-- Format on save - ONLY git hunks
+			format_on_save = function()
+				return format_hunks()
 			end,
 
 			-- Notify on formatter errors
 			notify_on_error = true,
 		})
+
+		-- Override ruff_format with range support
+		conform.formatters.ruff_format = {
+			args = { "format", "--force-exclude", "--line-length", "140", "--stdin-filename", "$FILENAME", "-" },
+			range_args = function(self, ctx)
+				return {
+					"format",
+					"--force-exclude",
+					"--line-length",
+					"140",
+					"--range",
+					string.format(
+						"%d:%d-%d:%d",
+						ctx.range.start[1],
+						ctx.range.start[2] + 1,
+						ctx.range["end"][1],
+						ctx.range["end"][2] + 1
+					),
+					"--stdin-filename",
+					"$FILENAME",
+					"-",
+				}
+			end,
+		}
 	end,
 }

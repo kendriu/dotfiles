@@ -85,12 +85,6 @@ return {
 					vim.lsp.buf.format({ async = true })
 				end, "Format Document")
 
-				-- Go to Implementation
-				map("<leader>ci", vim.lsp.buf.implementation, "Go to Implementation")
-
-				-- Go to Type Definition
-				map("<leader>ct", vim.lsp.buf.type_definition, "Go to Type Definition")
-
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
 				map("gD", vim.lsp.buf.declaration, "Go to Declaration")
