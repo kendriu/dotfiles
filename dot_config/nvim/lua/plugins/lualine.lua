@@ -125,7 +125,7 @@ return {
 			tabline = {},
 			winbar = {},
 			inactive_winbar = {},
-			extensions = { "lazy", "toggleterm", "trouble" },
+			extensions = { "lazy", "trouble" },
 		}
 		require("lualine").setup(opts)
 	end,

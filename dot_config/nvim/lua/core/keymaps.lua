@@ -91,6 +91,13 @@ vim.keymap.set("n", "<leader>?", function()
 	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/CHEATSHEET.md")
 end, { desc = "Open Cheatsheet" })
 
+-- Terminal
+vim.keymap.set("n", "<leader>th", "<cmd>split | terminal<CR>", { desc = "Terminal Horizontal" })
+vim.keymap.set("n", "<leader>tv", "<cmd>vsplit | terminal<CR>", { desc = "Terminal Vertical" })
+
+-- Terminal mode: easier escape
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
+
 -- Git ammend and push force with lease
 vim.keymap.set("n", "<leader>ga", function()
 	vim.opt.cmdheight = 10

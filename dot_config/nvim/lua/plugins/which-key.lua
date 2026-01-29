@@ -47,6 +47,11 @@ return {
 			{ "<leader>Ai", desc = "Inline Prompt", icon = "" },
 			{ "<leader>Am", desc = "Model/Strategy", icon = "" },
 			{ "<leader>Ar", desc = "Run on Selection", icon = "", mode = "v" },
+			{ "<leader>As", desc = "Surgical Edit Mode", icon = "" },
+			{ "<leader>Ad", desc = "Debug ORION Ticket", icon = "" },
+			{ "<leader>Av", desc = "Code Review (Selection)", icon = "", mode = { "n", "v" } },
+			{ "<leader>AR", desc = "Review All Changes", icon = "" },
+			{ "<leader>AC", desc = "Generate Commit Message", icon = "" },
 			{ "gA", desc = "Add to AI Chat", icon = "", mode = "v" },
 
 			-- Find/Files
@@ -136,13 +141,8 @@ return {
 
 			-- Terminal
 			{ "<leader>t", group = "Terminal", icon = "" },
-			{ "<leader>tf", desc = "Float Terminal", icon = "" },
-			{ "<leader>th", desc = "Horizontal Terminal", icon = "" },
-			{ "<leader>tv", desc = "Vertical Terminal", icon = "" },
-			{ "<leader>tt", desc = "Tab Terminal", icon = "" },
-			{ "<leader>tg", desc = "Lazygit Terminal", icon = "" },
-			{ "<leader>tp", desc = "Python REPL", icon = "" },
-			{ "<leader>tn", desc = "Node REPL", icon = "" },
+			{ "<leader>th", desc = "Horizontal Split", icon = "" },
+			{ "<leader>tv", desc = "Vertical Split", icon = "" },
 
 			-- Window
 			{ "<leader>w", group = "Window", icon = "" },
