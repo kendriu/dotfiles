@@ -1,9 +1,9 @@
 # Work-Specific Configuration
 # VAST-specific functions, abbreviations, and environment variables
-# Only loaded if work directories exist
+# Only loaded on work laptop
 
-# Check if this is a work environment
-if test -d ~/sources/infra
+# Check if this is the work laptop (by hostname)
+if string match -q "MB-928298.local" (hostname)
     # Work environment variables
     fish_add_path ~/sources/infra/user-scripts
     set -gx USE_QPIPES yes
@@ -96,5 +96,63 @@ if test -d ~/sources/infra
 
         # Clean up background jobs after lnav exits
         kill $web_pid $scrub_pid 2>/dev/null
+    end
+
+    # Crater management functions
+    function restart-crater --argument cloud --description "Restart crater-dev on specified cloud (e.g., aws)"
+        if test -z "$cloud"
+            echo "Usage: restart-crater <cloud-name>"
+            echo "Example: restart-crater aws"
+            return 1
+        end
+
+        set -l host "andrzej.skupien@crater-$cloud.vstd.int"
+        
+        echo "Restarting crater-dev on $host..."
+        ssh "$host" "restart-crater-dev.sh"
+    end
+
+    function crater-ipython --argument cloud script --description "Start iPython shell in crater-dev container on specified cloud"
+        if test -z "$cloud"
+            echo "Usage: crater-ipython <cloud-name> [script.py]"
+            echo "Example: crater-ipython aws"
+            echo "Example: crater-ipython aws myscript.py"
+            return 1
+        end
+
+        set -l host "andrzej.skupien@crater-$cloud.vstd.int"
+        
+        if test -n "$script"
+            # Execute local script in remote Python session
+            if not test -f "$script"
+                echo "Error: Script file '$script' not found"
+                return 1
+            end
+            
+            echo "Running $script in crater-dev on $host..."
+            cat "$script" | ssh -t "$host" 'docker exec -i crater-dev env CLOUD_WATCH=false python -m crater.main interact'
+        else
+            # Interactive session
+            echo "Starting iPython in crater-dev on $host..."
+            ssh -t "$host" 'docker exec -it crater-dev env CLOUD_WATCH=false python -m crater.main interact'
+        end
+    end
+    
+    function crater-exec --argument cloud script --description "Execute local Python script in crater-dev container"
+        if test -z "$cloud"; or test -z "$script"
+            echo "Usage: crater-exec <cloud-name> <script.py>"
+            echo "Example: crater-exec aws myscript.py"
+            return 1
+        end
+
+        if not test -f "$script"
+            echo "Error: Script file '$script' not found"
+            return 1
+        end
+
+        set -l host "andrzej.skupien@crater-$cloud.vstd.int"
+        
+        echo "Executing $script in crater-dev on $host..."
+        cat "$script" | ssh "$host" 'docker exec -i crater-dev env CLOUD_WATCH=false python'
     end
 end

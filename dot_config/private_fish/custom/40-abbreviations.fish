@@ -7,7 +7,7 @@ abbr vim nvim
 abbr n neovide
 
 # fish
-abbr rz fish
+abbr rz exec fish
 
 # chezmoi
 abbr ch chezmoi
@@ -16,5 +16,3 @@ abbr cha chezmoi apply
 abbr chu chezmoi update
 abbr cssh "chezmoi edit -a ~/.ssh/config"
 
-# Python virtualenv (replaced by smart venv function in 50-functions.fish)
-# abbr a source .venv/bin/activate.fish

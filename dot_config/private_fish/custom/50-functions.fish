@@ -1,34 +1,6 @@
 # Custom Functions
 # User-defined helper functions
 
-# Edit Neovim config and sync with chezmoi
-function cv -d "Edit Neovim config and sync with chezmoi"
-    cd ~/.config/nvim
-    nvim
-    chezmoi --force forget ~/.config/nvim
-    chezmoi add ~/.config/nvim
-end
-
-# Edit Fish config and reload
-function cf -d "Edit Fish config with chezmoi and reload"
-    chezmoi edit -a ~/.config/fish/config.fish
-    fish
-end
-
-# Sync chezmoi to git
-function c-sync -d "Sync chezmoi changes to git"
-    cd ~/.local/share/chezmoi/
-    git add .
-    git commit -mSync
-    git push
-end
-
-# Edit brew packages and apply
-function cb -d "Edit brew packages and apply changes"
-    nvim ~/.local/share/chezmoi/run_onchange_install-packages.sh.tmpl
-    chezmoi apply
-end
-
 # Smart Python virtualenv activation
 function venv -d "Activate Python venv (auto-detect .venv, venv, or env)"
     for dir in .venv venv env
@@ -90,3 +62,4 @@ function r --wraps rsync -d "Watch directory and rsync on changes (respects .git
         terminal-notifier -title Orion -message Synced
     end
 end
+
