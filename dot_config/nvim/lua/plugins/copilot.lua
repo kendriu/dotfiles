@@ -37,10 +37,17 @@ return {
 				-- Exit insert mode first
 				vim.cmd("stopinsert")
 				vim.schedule(function()
-					-- Call the copilot-lsp NES functions
-					local nes = require("copilot-lsp.nes")
-					if nes.apply_pending_nes() then
-						nes.walk_cursor_start_edit()
+					-- Call the copilot-lsp NES functions with error handling
+					local ok, nes = pcall(require, "copilot-lsp.nes")
+					if ok then
+						local success, err = pcall(function()
+							if nes.apply_pending_nes() then
+								nes.walk_cursor_start_edit()
+							end
+						end)
+						if not success then
+							vim.notify("Copilot NES error (copilot-lsp bug)", vim.log.levels.WARN)
+						end
 					end
 				end)
 			end, { desc = "Accept Copilot NES" })

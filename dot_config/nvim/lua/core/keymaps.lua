@@ -110,9 +110,9 @@ vim.keymap.set("n", "<leader>ga", function()
 		return
 	end
 	
-	-- Get commit summary
-	local commit_summary = vim.fn.system("git log -1 --pretty=format:'%s'")
-	vim.notify("Amended: " .. commit_summary, vim.log.levels.INFO)
+	-- Get commit summary (using %s without quotes works better)
+	local commit_summary = vim.fn.system("git log -1 --pretty=format:%s")
+	vim.notify("Amended: " .. vim.trim(commit_summary), vim.log.levels.INFO)
 	
 	-- Check if there's an upstream branch
 	local upstream = vim.fn.system("git rev-parse --abbrev-ref @{upstream} 2>/dev/null")
