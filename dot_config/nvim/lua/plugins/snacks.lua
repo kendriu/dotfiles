@@ -99,6 +99,7 @@ return {
 		-- other 
 	    { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 		{ "<leader>gg", function() Snacks.lazygit() end, desc = "Lazygit" },
+		{ "<leader>gd", function() Snacks.picker.git_diff() end, desc = "Git Diff (Hunks)" },
 		-- words
 		{ "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
 		{ "[r",         function() Snacks.words.jump(-vim.v.count1) end , desc = "Prev Reference", mode = { "n", "t" } },

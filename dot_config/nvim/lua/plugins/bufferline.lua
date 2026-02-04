@@ -7,9 +7,9 @@ return {
 			options = {
 				mode = "buffers",
 				themable = true,
-				show_buffer_close_icons = true,
+				show_buffer_close_icons = false,
 				show_close_icon = false,
-				separator_style = "slant", -- "slant" | "slope" | "thick" | "thin"
+				separator_style = "thin", -- "slant" | "slope" | "thick" | "thin"
 				indicator = {
 					style = "underline", -- "icon" | "underline" | "none"
 				},

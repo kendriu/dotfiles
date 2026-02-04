@@ -110,10 +110,6 @@ vim.keymap.set("n", "<leader>ga", function()
 		return
 	end
 	
-	-- Get commit summary (using %s without quotes works better)
-	local commit_summary = vim.fn.system("git log -1 --pretty=format:%s")
-	vim.notify("Amended: " .. vim.trim(commit_summary), vim.log.levels.INFO)
-	
 	-- Check if there's an upstream branch
 	local upstream = vim.fn.system("git rev-parse --abbrev-ref @{upstream} 2>/dev/null")
 	if vim.v.shell_error ~= 0 then
@@ -163,3 +159,12 @@ vim.api.nvim_create_user_command("GitCommitSelection", function()
 end, { desc = "Commit with selection as message" })
 
 vim.keymap.set("v", "<leader>gc", ":<C-u>GitCommitSelection<CR>", { desc = "Commit with selection" })
+
+vim.keymap.set("n", "<space><space>X", "<cmd>source %<CR>")
+vim.keymap.set("n", "<space>X", ":.lua<CR>")
+vim.keymap.set("v", "<space>X", ":lua<CR>")
+
+vim.api.nvim_create_user_command("CopyScriptfromBtoE", function()
+	-- Yank from mark 'b' to mark 'e' into the default register
+	vim.cmd("normal! `bV`e y")
+end, {desc = "Copy from mark b to mark e to the default register"})
