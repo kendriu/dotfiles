@@ -1,0 +1,25 @@
+{
+  "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+  "autoscaler_log": {
+    "description": "Custom autoscaler logs with timestamp, level, component, and message",
+    "regex": {
+      "entry": {
+        "pattern": "^(?<timestamp>[^|]+)\\|(?<thread>[^|]+)\\|(?<level>[^|]+)\\|(?<component>[^|]+)\\|(?<function>[^|]+)\\|(?<body>.*)$"
+      }
+    },
+    "level-field": "level",
+    "body-field": "body",
+    "value": {
+      "timestamp": { "kind": "string" },
+      "thread": { "kind": "string" },
+      "component": { "kind": "string" },
+      "function": { "kind": "string" },
+      "body": { "kind": "string" }
+    },
+    "sample": [
+      {
+        "line": "2026-02-03 19:48:07,361| 1:MainThread::TPE-422_13                  |DEBUG |autoscaler          |get_jobs_in_pro|Starving job: …"
+      }
+    ]
+  }
+}
