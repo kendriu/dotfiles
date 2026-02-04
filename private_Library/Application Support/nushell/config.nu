@@ -16,3 +16,6 @@
 # You can also pretty-print and page through the documentation for configuration
 # options using:
 #     config nu --doc | nu-highlight | less -R
+
+def lsg [] { ls | sort-by type name -i | grid -c -i -s "  " }
+
