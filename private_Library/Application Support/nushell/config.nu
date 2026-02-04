@@ -19,3 +19,4 @@
 
 def lsg [] { ls | sort-by type name -i | grid -c -i -s "  " }
 
+def op [file] { open $file | nu-highlight }
