@@ -298,6 +298,37 @@ return {
 		-- 		})
 		-- 	end,
 		-- })
+		--
+		-- Define a function to start NuShell LSP
+		local function start_nu_lsp()
+			-- Check if the client is already running
+			for _, client in ipairs(vim.lsp.get_active_clients()) do
+				if client.name == "nu_lsp" then
+					return client
+				end
+			end
 
+			-- Start the client
+			return vim.lsp.start({
+				name = "nu_lsp",
+				cmd = { "nu", "--lsp" }, -- Nushell binary in LSP mode
+				filetypes = { "nu" },
+				root_dir = function(fname)
+					local path = vim.fs.find({ "Nu.toml", ".git" }, { upward = true })[1]
+					if path then
+						return vim.fs.dirname(path)
+					else
+						return vim.loop.cwd()
+					end
+				end,
+			})
+		end
+
+		vim.api.nvim_create_autocmd("FileType", {
+			pattern = "nu",
+			callback = function()
+				start_nu_lsp()
+			end,
+		})
 	end,
 }
