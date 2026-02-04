@@ -99,17 +99,18 @@ if string match -q "MB-928298.local" (hostname)
     end
 
     # Crater management functions
-    function restart-crater --argument cloud --description "Restart crater-dev on specified cloud (e.g., aws)"
+    function deploy-branch --argument cloud --description "Deploys and restarts current branch on specified cloud (e.g., aws)"
         if test -z "$cloud"
-            echo "Usage: restart-crater <cloud-name>"
-            echo "Example: restart-crater aws"
+            echo "Usage: deploy-branch <cloud-name>"
+            echo "Example: deploy-branch aws"
             return 1
         end
 
         set -l host "andrzej.skupien@crater-$cloud.vstd.int"
+        set -l branch (git rev-parse --abbrev-ref HEAD)
         
-        echo "Restarting crater-dev on $host..."
-        ssh "$host" "restart-crater-dev.sh"
+        echo "Deploying branch '$branch' to crater-dev on $host..."
+        ssh "$host" "restart-crater.sh dev branch-$branch"
     end
 
     function crater-ipython --argument cloud script --description "Start iPython shell in crater-dev container on specified cloud"
