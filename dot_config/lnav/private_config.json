@@ -1,0 +1,382 @@
+{
+    "ui": {
+        "theme": "catppuccin-macchiato",
+        "theme-defs": {
+            "catppuccin_macchiato": {
+                "vars": {
+                    "ctp_base": "#24273a",
+                    "ctp_blue": "#8aadf4",
+                    "ctp_green": "#a6da95",
+                    "ctp_mauve": "#c6a0f6",
+                    "ctp_peach": "#f5a97f",
+                    "ctp_red": "#ed8796",
+                    "ctp_subtext0": "#a5adcb",
+                    "ctp_subtext1": "#b8c0e0",
+                    "ctp_surface1": "#494d64",
+                    "ctp_surface2": "#939ab7",
+                    "ctp_teal": "#8bd5ca",
+                    "ctp_text": "#cad3f5",
+                    "ctp_yellow": "#eed49f"
+                },
+                "styles": {
+                    "text": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_base"
+                    },
+                    "alt-text": {
+                        "color": "$ctp_subtext0"
+                    },
+                    "error": {
+                        "color": "$ctp_red",
+                        "bold": true
+                    },
+                    "ok": {
+                        "color": "$ctp_green"
+                    },
+                    "info": {
+                        "color": "$ctp_text"
+                    },
+                    "warning": {
+                        "color": "$ctp_yellow"
+                    },
+                    "hidden": {
+                        "color": "$ctp_subtext0"
+                    },
+                    "cursor-line": {
+                        "background-color": "$ctp_surface1"
+                    },
+                    "disabled-cursor-line": {
+                        "background-color": "$ctp_surface2"
+                    },
+                    "adjusted-time": {
+                        "color": "$ctp_peach"
+                    },
+                    "skewed-time": {
+                        "color": "$ctp_mauve"
+                    },
+                    "invalid-msg": {
+                        "color": "$ctp_red",
+                        "underline": true
+                    },
+                    "popup": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_surface2"
+                    },
+                    "focused": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_surface1",
+                        "bold": true
+                    },
+                    "disabled-focused": {
+                        "color": "$ctp_subtext1",
+                        "background-color": "$ctp_surface2"
+                    },
+                    "scrollbar": {
+                        "color": "$ctp_subtext1",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "h1": {
+                        "color": "$ctp_blue",
+                        "bold": true
+                    },
+                    "h2": {
+                        "color": "$ctp_teal",
+                        "bold": true
+                    }
+                },
+                "syntax-styles": {
+                    "inline-code": {
+                        "color": "$ctp_teal"
+                    },
+                    "quoted-code": {
+                        "color": "$ctp_mauve"
+                    },
+                    "code-border": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "keyword": {
+                        "color": "$ctp_mauve",
+                        "bold": true
+                    },
+                    "string": {
+                        "color": "$ctp_peach"
+                    },
+                    "comment": {
+                        "color": "$ctp_subtext0",
+                        "italic": true
+                    },
+                    "number": {
+                        "color": "$ctp_blue"
+                    }
+                },
+                "status-styles": {
+                    "text": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "warn": {
+                        "color": "$ctp_yellow",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "alert": {
+                        "color": "$ctp_red",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "active": {
+                        "color": "$ctp_blue",
+                        "background-color": "$ctp_surface2"
+                    },
+                    "inactive-alert": {
+                        "color": "$ctp_subtext0",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "inactive": {
+                        "color": "$ctp_subtext1",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "title-hotkey": {
+                        "color": "$ctp_teal",
+                        "background-color": "$ctp_surface2"
+                    },
+                    "title": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_surface2"
+                    },
+                    "disabled-title": {
+                        "color": "$ctp_subtext0",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "subtitle": {
+                        "color": "$ctp_subtext1",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "info": {
+                        "color": "$ctp_text",
+                        "background-color": "$ctp_surface1"
+                    },
+                    "hotkey": {
+                        "color": "$ctp_green",
+                        "background-color": "$ctp_surface1",
+                        "underline": true
+                    },
+                    "suggestion": {
+                        "color": "$ctp_teal",
+                        "background-color": "$ctp_surface1"
+                    }
+                },
+                "log-level-styles": {
+                    "trace": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "debug": {
+                        "color": "$ctp_blue"
+                    },
+                    "info": {
+                        "color": "$ctp_text"
+                    },
+                    "warning": {
+                        "color": "$ctp_yellow"
+                    },
+                    "error": {
+                        "color": "$ctp_red",
+                        "bold": true
+                    },
+                    "critical": {
+                        "color": "$ctp_red",
+                        "underline": true
+                    }
+                },
+                "highlights": {
+                    "highlight-error": {
+                        "pattern": "error|failed|fail|exception",
+                        "style": {
+                            "color": "$ctp_red",
+                            "bold": true
+                        }
+                    },
+                    "highlight-info": {
+                        "pattern": "info|notice",
+                        "style": {
+                            "color": "$ctp_blue"
+                        }
+                    },
+                    "highlight-ip": {
+                        "pattern": "\\b\\d{1,3}(?:\\.\\d{1,3}){3}\\b",
+                        "style": {
+                            "color": "$ctp_teal"
+                        }
+                    },
+                    "highlight-warning": {
+                        "pattern": "warn|warning",
+                        "style": {
+                            "color": "$ctp_yellow"
+                        }
+                    }
+                }
+            },
+            "catppuccin_macchiato_no_bg": {
+                "vars": {
+                    "ctp_base": "#24273a",
+                    "ctp_blue": "#8aadf4",
+                    "ctp_flamingo": "#f0c6c6",
+                    "ctp_green": "#a6da95",
+                    "ctp_lavender": "#b7bdf8",
+                    "ctp_maroon": "#ee99a0",
+                    "ctp_mauve": "#c6a0f6",
+                    "ctp_peach": "#f5a97f",
+                    "ctp_pink": "#f5bde6",
+                    "ctp_red": "#ed8796",
+                    "ctp_rosewater": "#f4dbd6",
+                    "ctp_sky": "#91d7e3",
+                    "ctp_subtext0": "#a5adcb",
+                    "ctp_subtext1": "#b8c0e0",
+                    "ctp_surface1": "#494d64",
+                    "ctp_surface2": "#939ab7",
+                    "ctp_teal": "#8bd5ca",
+                    "ctp_text": "#cad3f5",
+                    "ctp_yellow": "#eed49f"
+                },
+                "styles": {
+                    "text": {
+                        "color": "$ctp_text"
+                    },
+                    "error": {
+                        "color": "$ctp_red",
+                        "bold": true
+                    },
+                    "ok": {
+                        "color": "$ctp_green"
+                    },
+                    "info": {
+                        "color": "$ctp_text"
+                    },
+                    "warning": {
+                        "color": "$ctp_yellow"
+                    },
+                    "cursor-line": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "adjusted-time": {
+                        "color": "$ctp_peach"
+                    },
+                    "skewed-time": {
+                        "color": "$ctp_mauve"
+                    },
+                    "popup": {
+                        "color": "$ctp_text"
+                    },
+                    "focused": {
+                        "color": "$ctp_text",
+                        "bold": true
+                    },
+                    "scrollbar": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "h1": {
+                        "color": "$ctp_blue",
+                        "bold": true
+                    },
+                    "h2": {
+                        "color": "$ctp_teal",
+                        "bold": true
+                    }
+                },
+                "syntax-styles": {
+                    "inline-code": {
+                        "color": "$ctp_sky"
+                    },
+                    "keyword": {
+                        "color": "$ctp_mauve",
+                        "bold": true
+                    },
+                    "string": {
+                        "color": "$ctp_peach"
+                    },
+                    "comment": {
+                        "color": "$ctp_subtext0",
+                        "italic": true
+                    },
+                    "number": {
+                        "color": "$ctp_blue"
+                    },
+                    "type": {
+                        "color": "$ctp_teal"
+                    },
+                    "function": {
+                        "color": "$ctp_blue"
+                    }
+                },
+                "status-styles": {
+                    "subtitle": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "info": {
+                        "color": "$ctp_text"
+                    },
+                    "hotkey": {
+                        "color": "$ctp_green",
+                        "underline": true
+                    },
+                    "suggestion": {
+                        "color": "$ctp_teal"
+                    }
+                },
+                "log-level-styles": {
+                    "trace": {
+                        "color": "$ctp_subtext1"
+                    },
+                    "debug": {
+                        "color": "$ctp_blue"
+                    },
+                    "info": {
+                        "color": "$ctp_text"
+                    },
+                    "warning": {
+                        "color": "$ctp_yellow"
+                    },
+                    "error": {
+                        "color": "$ctp_red",
+                        "bold": true
+                    },
+                    "critical": {
+                        "color": "$ctp_red",
+                        "underline": true
+                    }
+                }
+            },
+            "default": {
+                "highlights": {
+                    "colors": {
+                        "pattern": "(?:#[a-fA-F0-9]{6}|#[a-fA-F0-9]{3}\\b)"
+                    },
+                    "ipv4": {
+                        "pattern": "\\b(?<!\\d\\.)\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b(?!\\.\\d)"
+                    },
+                    "xml": {
+                        "pattern": "</?([^ >=!]+)[^>]*>"
+                    },
+                    "xml-decl": {
+                        "pattern": "<!([^ >=!]+)[^>]*>"
+                    }
+                }
+            }
+        },
+        "mouse": {
+            "mode": "enabled"
+        }
+    },
+    "log": {
+        "demux": {
+            "container": {
+                "pattern": "^(?:\\x1b\\[\\d*K)?(?<mux_id>[a-zA-Z0-9][\\@a-zA-Z0-9_\\.\\-]*)\\s+\\| (?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}.\\d{9}Z )?(?<body>.*)"
+            },
+            "container-with-type": {
+                "pattern": "^(?<mux_id>[a-zA-Z][\\w\\-]{3,}) (?<container_type>[a-zA-Z][\\w\\-]{3,}) (?<body>.*)"
+            },
+            "recv-with-pod": {
+                "pattern": "^(?<timestamp>\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}(?:Z|[+\\-]\\d{2}:\\d{2})) source=[a-zA-Z0-9][a-zA-Z0-9_\\.\\-]* (?<body>.*) kubernetes_host=(?<k8s_host>[a-zA-Z0-9][a-zA-Z0-9_\\.\\-]*) kubernetes_pod_name=(?<mux_id>[a-zA-Z0-9][a-zA-Z0-9_\\.\\-]*)",
+                "control-pattern": "^===== (?:START|END) =====$"
+            }
+        }
+    }
+}
