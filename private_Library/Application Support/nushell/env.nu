@@ -21,3 +21,11 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense' # optional
 mkdir $"($nu.cache-dir)"
 carapace _carapace nushell | save --force $"($nu.cache-dir)/carapace.nu"
 
+mkdir ~/.local/share/atuin/
+
+let file = "~/.local/share/atuin/init.nu"
+if not ($file | path exists) {
+  atuin init nu | save ~/.local/share/atuin/init.nu
+  atuin import fish
+  atuin import nu
+}
