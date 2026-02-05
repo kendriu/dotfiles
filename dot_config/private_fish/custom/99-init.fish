@@ -15,3 +15,8 @@ if type -q carapace
     set -gx CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
     carapace _carapace | source
 end
+
+if type -q atuin
+    atuin init fish | source
+end
+
