@@ -10,3 +10,8 @@ end
 if type -q starship
     starship init fish | source
 end
+
+if type -q carapace
+    set -gx CARAPACE_BRIDGES 'zsh,fish,bash,inshellisense' # optional
+    carapace _carapace | source
+end
