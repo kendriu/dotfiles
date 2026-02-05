@@ -17,6 +17,17 @@
 # options using:
 #     config nu --doc | nu-highlight | less -R
 
+# NuShell commands tweaks
 def lsg [] { ls | sort-by type name -i | grid -c -i -s "  " }
-
 def op [file] { open $file | nu-highlight }
+alias rz = exec nu
+
+
+alias lg = lazygit
+
+# nvim
+alias v = nvim
+
+# git
+alias gst = git status
+alias gl = git pull
