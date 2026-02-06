@@ -108,6 +108,8 @@ return {
 		end
 
 		conform.setup({
+
+
 			formatters_by_ft = {
 				-- Web development
 				javascript = { "biome", "prettier", stop_after_first = true },
@@ -153,7 +155,10 @@ return {
 					prepend_args = { "--prose-wrap", "always" },
 				},
 			},
+			default_format_opts = {
 
+				lsp_format = "fallback",
+			},
 			-- Format on save - ONLY git hunks
 			format_on_save = function()
 				return format_hunks()
@@ -185,6 +190,9 @@ return {
 					"-",
 				}
 			end,
+		}
+		conform.formatters.isort = {
+			prepend_args = { "--line-length", "140" },
 		}
 	end,
 }
