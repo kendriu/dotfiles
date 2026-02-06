@@ -58,25 +58,15 @@ return {
 
 		local format_hunks = function()
 			local ignore_filetypes = {
-				-- Add filetypes to skip format on save
+				--	"lua",
 			}
 			if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
 				return default_format_options
 			end
 
-			-- Respect disable flags
-			if vim.g.disable_autoformat or vim.b.disable_autoformat then
-				return
-			end
-
-			local ok, gitsigns = pcall(require, "gitsigns")
-			if not ok then
-				return -- No gitsigns, no formatting
-			end
-
-			local hunks = gitsigns.get_hunks()
-			if hunks == nil or #hunks == 0 then
-				return -- No hunks, no formatting
+			local hunks = require("gitsigns").get_hunks()
+			if hunks == nil then
+				return default_format_options
 			end
 
 			local format = require("conform").format
@@ -93,7 +83,7 @@ return {
 				if hunk ~= nil and hunk.type ~= "delete" then
 					local start = hunk.added.start
 					local last = start + hunk.added.count
-					-- nvim_buf_get_lines uses zero-based indexing
+					-- nvim_buf_get_lines uses zero-based indexing -> subtract from last
 					local last_hunk_line = vim.api.nvim_buf_get_lines(0, last - 2, last - 1, true)[1]
 					local range = { start = { start, 0 }, ["end"] = { last - 1, last_hunk_line:len() } }
 					format({ range = range, async = true, lsp_fallback = true }, function()
@@ -108,8 +98,6 @@ return {
 		end
 
 		conform.setup({
-
-
 			formatters_by_ft = {
 				-- Web development
 				javascript = { "biome", "prettier", stop_after_first = true },
