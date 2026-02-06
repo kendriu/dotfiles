@@ -135,31 +135,13 @@ if string match -q "MB-928298.local" (hostname)
                 echo "Error: Script file '$script' not found"
                 return 1
             end
-            
+
             echo "Running $script in crater-dev on $host..."
-            cat "$script" | ssh -t "$host" 'docker exec -i crater-dev env CLOUD_WATCH=false python -m crater.main interact'
+            cat "$script" | /usr/bin/ssh -t "$host" 'docker exec -i crater-dev env CLOUD_WATCH=false python -m crater.main interact'
         else
             # Interactive session
             echo "Starting iPython in crater-dev on $host..."
-            ssh -t "$host" 'docker exec -it crater-dev env CLOUD_WATCH=false python -m crater.main interact'
+            /usr/bin/ssh -t "$host" 'docker exec -it crater-dev env CLOUD_WATCH=false python -m crater.main interact'
         end
-    end
-    
-    function crater-exec --argument cloud script --description "Execute local Python script in crater-dev container"
-        if test -z "$cloud"; or test -z "$script"
-            echo "Usage: crater-exec <cloud-name> <script.py>"
-            echo "Example: crater-exec aws myscript.py"
-            return 1
-        end
-
-        if not test -f "$script"
-            echo "Error: Script file '$script' not found"
-            return 1
-        end
-
-        set -l host "andrzej.skupien@crater-$cloud.vstd.int"
-        
-        echo "Executing $script in crater-dev on $host..."
-        cat "$script" | ssh "$host" 'docker exec -i crater-dev env CLOUD_WATCH=false python'
     end
 end
