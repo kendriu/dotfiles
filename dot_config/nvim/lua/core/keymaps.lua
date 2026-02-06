@@ -47,10 +47,10 @@ vim.keymap.set("n", "<leader>we", "<C-w>=", { noremap = true, silent = true, des
 vim.keymap.set("n", "<leader>wx", ":close<CR>", { noremap = true, silent = true, desc = "Close Split" })
 
 -- Navigate between splits
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Window Up" })
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, desc = "Window Down" })
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Window Left" })
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Window Right" })
+-- vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", { noremap = true, silent = true, desc = "Window Up" })
+-- vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", { noremap = true, silent = true, desc = "Window Down" })
+-- vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", { noremap = true, silent = true, desc = "Window Left" })
+-- vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", { noremap = true, silent = true, desc = "Window Right" })
 
 -- Tabs
 vim.keymap.set("n", "<leader>To", ":tabnew<CR>", { noremap = true, silent = true, desc = "Open Tab" })
