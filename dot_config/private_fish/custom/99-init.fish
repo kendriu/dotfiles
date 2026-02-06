@@ -16,7 +16,10 @@ if type -q carapace
     carapace _carapace | source
 end
 
+if type -q fzf
+    fzf --fish | source
+end
+
 if type -q atuin
     atuin init fish | source
 end
-

@@ -63,3 +63,30 @@ function r --wraps rsync -d "Watch directory and rsync on changes (respects .git
     end
 end
 
+function rfv
+    set -l query $argv
+
+    # Reload command for fzf
+    function fzf_reload --argument-names q
+        rg --column --color=always --smart-case $q; or true
+    end
+
+    # Open selection in Vim
+    function fzf_opener --argument-names fzf_select_count fzf_file fzf_line fzf_all_files
+        if test $fzf_select_count -eq 0
+            vim $fzf_file +$fzf_line
+        else
+            vim +cw -q $fzf_all_files
+        end
+    end
+
+    fzf --disabled --ansi --multi \
+        --bind "change:reload:rg --column --color=always --smart-case {q} || true" \
+        --bind "enter:become:vim {1} +{2}" \
+        --bind "ctrl-o:execute:vim {1} +{2}" \
+        --bind "alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview" \
+        --delimiter : \
+        --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
+        --preview-window '~4,+{2}+4/3,<80(up)' \
+        --query "$query"
+end
