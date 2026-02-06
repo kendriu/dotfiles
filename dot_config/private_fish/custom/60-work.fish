@@ -10,10 +10,16 @@ if string match -q "MB-928298.local" (hostname)
     set -gx MAIN "TEAM/infra-5.5"
     set -gx NEXT "TEAM/infra-5.5"
 
+
     # Work abbreviations
     abbr c ./comet.sh -R DEVVM:orion
     abbr gm git checkout $MAIN
     abbr glm git pull origin $MAIN
+
+    # SSH settings
+    set kitty_ssh "kitten ssh"
+    alias ssh=$kitty_ssh
+    set -gx DEVVM_SSH_COMMAND $kitty_ssh
 
     # Git rebase on main
     function glrm -d "Switch to main, pull, switch back, and rebase"
