@@ -1,7 +1,7 @@
 # Environment Variables
 # Loaded first (00-) to ensure env vars are available for other modules
 
-set -gx LANG us_US.utf-8
+set -gx LANG en_US.utf-8
 set fish_greeting
 
 set -gx EDITOR nvim
