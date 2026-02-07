@@ -1,0 +1,7 @@
+[tools]
+"github:nushell/nushell" = "latest"
+neovim = "latest"
+zoxide = "latest"
+
+[settings]
+color_theme = "catppuccin"
