@@ -69,6 +69,5 @@ cask 'google-chrome'
 "
 {{- end }}
 
-echo $brewfile_content | brew bundle cleanup --force --file=/dev/stdin
-echo $brewfile_content | arch -arm64 brew bundle --upgrade --file=/dev/stdin
+echo $brewfile_content | arch -arm64 brew bundle --cleanup --no-upgrade --file=/dev/stdin
 brew cleanup --scrub
