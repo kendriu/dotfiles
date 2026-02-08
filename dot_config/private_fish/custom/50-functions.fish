@@ -77,12 +77,3 @@ function rfv
 end
 
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"
-
-function chezmoi-add-modified
-    for line in (chezmoi status)
-        if string match -rq "^ M" -- $line
-            set file (string split " " $line)[2]
-            chezmoi add $file
-        end
-    end
-end
