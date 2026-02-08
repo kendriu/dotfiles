@@ -6,10 +6,6 @@ function cat --wraps bat -d "bat with default options"
     bat --style plain $argv
 end
 
-if type -q batpipe
-    eval (batpipe)
-end
-
 # fzf - fuzzy finder with Catppuccin theme
 set -gx FZF_DEFAULT_OPTS "\
 --color=bg+:#363a4f,bg:#24273a,spinner:#f4dbd6,hl:#ed8796 \
