@@ -3,9 +3,9 @@ atuin = "latest"
 bat = "latest"
 carapace = "latest"
 "github:nushell/nushell" = "latest"
-"github:tldr-pages/tldr" = "latest"
 neovim = "latest"
 ripgrep = "latest"
+tlrc = "latest"
 zoxide = "latest"
 
 [settings]
