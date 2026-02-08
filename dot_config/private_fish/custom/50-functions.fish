@@ -64,16 +64,7 @@ function r --wraps rsync -d "Watch directory and rsync on changes (respects .git
 end
 
 function rfv
-    set -l query $argv
-    fzf --disabled --ansi --multi \
-        --bind "change:reload:rg --column --color=always --smart-case {q} || true" \
-        --bind "enter:become:nvim {1} +{2}" \
-        --bind "ctrl-o:execute:nvim {1} +{2}" \
-        --bind "alt-a:select-all,alt-d:deselect-all,ctrl-/:toggle-preview" \
-        --delimiter : \
-        --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
-        --preview-window '~4,+{2}+4/3,<80(up)' \
-        --query "$query"
+    tv text
 end
 
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"

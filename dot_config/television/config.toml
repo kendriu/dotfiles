@@ -163,7 +163,7 @@ ctrl-x = "toggle_action_picker"
 ctrl-o = "toggle_preview"
 ctrl-h = "toggle_help"
 f12 = "toggle_status_bar"
-ctrl-l = "toggle_layout"
+ctrl-q = "toggle_layout"
 
 # Input field actions
 # ----------------------------------------

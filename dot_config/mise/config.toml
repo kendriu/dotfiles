@@ -5,6 +5,7 @@ carapace = "latest"
 "github:nushell/nushell" = "latest"
 neovim = "latest"
 ripgrep = "latest"
+television = "latest"
 tlrc = "latest"
 zoxide = "latest"
 
