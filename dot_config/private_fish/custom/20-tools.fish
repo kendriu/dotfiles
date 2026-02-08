@@ -3,7 +3,7 @@
 
 # bat - better cat with syntax highlighting
 function cat --wraps bat -d "bat with default options"
-    bat $argv
+    bat --style plain $argv
 end
 
 if type -q batpipe

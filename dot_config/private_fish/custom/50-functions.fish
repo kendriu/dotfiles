@@ -30,7 +30,7 @@ function _auto_venv --on-variable PWD -d "Auto-activate Python venv on directory
 
     # Try to activate venv in current or parent directories
     set -l current_dir $PWD
-    while test $current_dir != "/"
+    while test $current_dir != /
         for venv_name in .venv venv env
             if test -f $current_dir/$venv_name/bin/activate.fish
                 # Only activate if not already in this venv
@@ -74,4 +74,15 @@ function rfv
         --preview 'bat --style=full --color=always --highlight-line {2} {1}' \
         --preview-window '~4,+{2}+4/3,<80(up)' \
         --query "$query"
+end
+
+alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"
+
+function chezmoi-add-modified
+    for line in (chezmoi status)
+        if string match -rq "^ M" -- $line
+            set file (string split " " $line)[2]
+            chezmoi add $file
+        end
+    end
 end
