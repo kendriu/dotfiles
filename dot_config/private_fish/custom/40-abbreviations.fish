@@ -16,3 +16,5 @@ abbr cha chezmoi apply
 abbr chu chezmoi update
 abbr cssh "chezmoi edit -a ~/.ssh/config"
 
+# pages
+abbr mrs open "https://git.vastdata.com/dashboard/merge_requests?scope=all&state=opened&author_username=andrzej.skupien"

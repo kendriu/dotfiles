@@ -29,6 +29,9 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldenable = false -- Don't fold by default on file open
 vim.opt.foldlevel = 99 -- High fold level so folds aren't closed by default
 
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "nc"
+
 vim.g.python3_host_prog = "/Users/andrzej.skupien/neovim_python/.venv/bin/python"
 
 local group = vim.api.nvim_create_augroup("", { clear = true })
