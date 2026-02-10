@@ -78,6 +78,7 @@ function upgrade_all --description "Upgrade all Homebrew packages and tools mana
     # Upgrade all tools managed by mise
     mise upgrade --bump --yes
     mise prune --yes
+    nvim --headless -c "Lazy! sync" -c MasonUpdateAll -c qa
 end
 
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"
