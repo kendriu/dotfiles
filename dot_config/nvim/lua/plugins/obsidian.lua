@@ -18,9 +18,10 @@ return {
 	keys = {
 		-- CORE NAVIGATION
 		{ "<leader>on", "<cmd>Obsidian new<CR>", desc = "New note" },
-		{ "<leader>oo", "<cmd>Obsidian quick_switch<CR>", desc = "Find note" },
+		{ "<leader>of", "<cmd>Obsidian quick_switch<CR>", desc = "Find note" },
 		{ "<leader>os", "<cmd>Obsidian search<CR>", desc = "Search notes" },
 		{ "<leader>ob", "<cmd>Obsidian backlinks<CR>", desc = "Backlinks" },
+		{ "<leader>oo", "<cmd>Obsidian open<CR>", desc = "Open in App" },
 
 		-- DAILY NOTES
 		{ "<leader>od", "<cmd>Obsidian today<CR>", desc = "Daily note" },
@@ -66,6 +67,11 @@ return {
 				{
 					name = "work",
 					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/work",
+				},
+
+				{
+					name = "personal",
+					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal",
 				},
 			},
 			note_id_func = function(title)
