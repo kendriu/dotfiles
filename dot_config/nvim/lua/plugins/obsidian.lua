@@ -47,6 +47,17 @@ return {
 	config = function()
 		require("obsidian").setup({
 			legacy_commands = false,
+			daily_notes = {
+				folder = "01-daily-notes",
+				template = "daily",
+				default_tags = { "daily" },
+			},
+			templates = {
+				folder = "5-templates",
+				date_format = "%Y-%m-%d",
+				time_format = "%H:%M",
+				substitutions = {},
+			},
 			ui = {
 				enable = true,
 				hl_groups = {
@@ -74,6 +85,9 @@ return {
 					path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/personal",
 				},
 			},
+			completion = {
+				blink = true,
+			},
 			note_id_func = function(title)
 				-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
 				-- In this case a note with the title 'My new note' will be given an ID that looks
@@ -81,14 +95,14 @@ return {
 				local suffix = ""
 				if title ~= nil then
 					-- If title is given, transform it into valid file name.
-					suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
+					suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", "")
 				else
 					-- If title is nil, just add 4 random uppercase letters to the suffix.
 					for _ = 1, 4 do
 						suffix = suffix .. string.char(math.random(65, 90))
 					end
 				end
-				return tostring(os.time()) .. "-" .. suffix
+				return suffix
 			end,
 		})
 

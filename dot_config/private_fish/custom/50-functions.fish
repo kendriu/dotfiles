@@ -67,4 +67,16 @@ function rfv
     tv text
 end
 
+function upgrade_all --description "Upgrade all Homebrew packages and tools managed by mise, then clean up old versions."
+    # Upgrade Homebrew packages
+    brew upgrade
+    # Remove old versions and clean up Homebrew
+    brew cleanup --scrub
+    # Update mise itself
+    mise self-update --yes
+    # Upgrade all tools managed by mise
+    mise upgrade --bump --yes
+    mise prune
+end
+
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"

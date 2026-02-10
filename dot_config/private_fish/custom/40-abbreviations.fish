@@ -18,3 +18,8 @@ abbr cssh "chezmoi edit -a ~/.ssh/config"
 
 # pages
 abbr mrs open "https://git.vastdata.com/dashboard/merge_requests?scope=all&state=opened&author_username=andrzej.skupien"
+
+# mise
+abbr mr mise run
+abbr mu mise use
+abbr mug mise use -g

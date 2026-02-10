@@ -11,3 +11,4 @@ zoxide = "latest"
 
 [settings]
 color_theme = "catppuccin"
+experimental = false

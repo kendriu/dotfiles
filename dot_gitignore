@@ -5,3 +5,4 @@ nav.md
 codecompanion-workspace.json
 worktrees
 **/my_tests/
+**/mise.local.toml
