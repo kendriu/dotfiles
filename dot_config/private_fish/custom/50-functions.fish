@@ -69,13 +69,9 @@ end
 
 function upgrade_all --description "Upgrade all Homebrew packages and tools managed by mise, then clean up old versions."
     chezmoi update
-    # Upgrade Homebrew packages
     brew upgrade
-    # Remove old versions and clean up Homebrew
     brew cleanup --scrub
-    # Update mise itself
     mise self-update --yes
-    # Upgrade all tools managed by mise
     mise upgrade --bump --yes
     mise prune --yes
 end
