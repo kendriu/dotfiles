@@ -7,6 +7,7 @@ neovim = "latest"
 ripgrep = "latest"
 television = "latest"
 tlrc = "latest"
+uv = "latest"
 zoxide = "latest"
 
 [settings]

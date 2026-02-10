@@ -58,22 +58,6 @@ return {
 				time_format = "%H:%M",
 				substitutions = {},
 			},
-			ui = {
-				enable = true,
-				hl_groups = {
-					ObsidianTodo = { bold = true, fg = "#f78c6c" },
-					ObsidianDone = { bold = true, fg = vim.api.nvim_get_hl(0, { name = "RenderMarkdownChecked" }).fg },
-					ObsidianRightArrow = { bold = true, fg = "#f78c6c" },
-					ObsidianTilde = { bold = true, fg = "#ff5370" },
-					ObsidianImportant = { bold = true, fg = "#d73128" },
-					ObsidianBullet = { bold = true, fg = "#89ddff" },
-					ObsidianRefText = { underline = true, fg = "#c792ea" },
-					ObsidianExtLinkIcon = { fg = "#c792ea" },
-					ObsidianTag = { italic = true, fg = "#89ddff" },
-					ObsidianBlockID = { italic = true, fg = "#89ddff" },
-					ObsidianHighlightText = { bg = "#75662e" },
-				},
-			},
 			workspaces = {
 				{
 					name = "work",
