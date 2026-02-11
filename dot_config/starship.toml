@@ -3,7 +3,14 @@
 
 palette = "catppuccin_macchiato"
 
-format = """$all"""
+format = """\
+$directory\
+$custom\
+$python\
+$line_break\
+$character\
+"""
+
 right_format = """\
 $cmd_duration\
 $time\
@@ -83,10 +90,21 @@ format = '\[[$symbol$branch]($style)\]'
 format = '\[[$symbol$account(@$domain)(\($region\))]($style)\]'
 
 [git_branch]
+disabled = true
 format = '\[[$symbol$branch]($style)\]'
 
 [git_status]
+disabled = true
 format = '([\[$all_status$ahead_behind\]]($style))'
+[git_commit]
+disabled = true
+
+[custom.jj]
+symbol = ''
+command = "jj-starship"
+when = "jj-starship detect"
+format = '\[$output\]'
+shell = ["sh"]
 
 [golang]
 format = '\[[$symbol($version)]($style)\]'

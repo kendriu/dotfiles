@@ -2,6 +2,7 @@
 atuin = "latest"
 bat = "latest"
 carapace = "latest"
+"cargo:jj-starship" = "latest"
 "github:nushell/nushell" = "latest"
 jujutsu = "latest"
 neovim = "latest"
