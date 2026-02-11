@@ -3,6 +3,8 @@
 
 palette = "catppuccin_macchiato"
 
+command_timeout = 1000
+
 format = """\
 $directory\
 $custom\

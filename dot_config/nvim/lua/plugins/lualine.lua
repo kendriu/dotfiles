@@ -50,16 +50,43 @@ return {
 			return ok and lazy.has_updates()
 		end
 
-		local function jj_info()
-			local handle = io.popen("jj-starship --no-color --no-jj-prefix")
-			if not handle then
-				return ""
+		local jj_cache = ""
+		local jj_job_id = nil
+
+		local function jj_update()
+			-- stop previous job if still running
+			if jj_job_id then
+				vim.fn.jobstop(jj_job_id)
+				jj_job_id = nil
 			end
 
-			local result = handle:read("*a")
-			handle:close()
+			-- start new async job
+			jj_job_id = vim.fn.jobstart({ "jj-starship", "--no-color", "--no-jj-prefix" }, {
+				stdout_buffered = true,
+				on_stdout = function(_, data, _)
+					if data then
+						jj_cache = table.concat(data, ""):gsub("\n", "")
+						vim.schedule(function()
+							vim.cmd("redrawstatus") -- refresh statusline
+						end)
+					end
+				end,
+				on_stderr = function(_, data, _)
+					-- ignore errors
+				end,
+			})
+		end
 
-			return result:gsub("\n", "")
+		-- initial update
+		jj_update()
+
+		-- refresh every 2 seconds (optional)
+		local timer = vim.loop.new_timer()
+		timer:start(2000, 2000, vim.schedule_wrap(jj_update))
+
+		-- lualine component
+		local function jj_info()
+			return jj_cache
 		end
 
 		local opts = {
