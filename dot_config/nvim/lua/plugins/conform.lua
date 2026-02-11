@@ -39,7 +39,6 @@ return {
 				"biome", -- Web (JS/TS/JSON) - faster alternative
 				"shfmt", -- Shell
 				"taplo", -- TOML
-				"rustfmt", -- Rust (usually comes with rust toolchain)
 
 				-- Linters (keep shellcheck here)
 				"shellcheck", -- Shell script linter
