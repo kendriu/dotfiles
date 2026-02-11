@@ -50,6 +50,18 @@ return {
 			return ok and lazy.has_updates()
 		end
 
+		local function jj_info()
+			local handle = io.popen("jj-starship --no-color --no-jj-prefix")
+			if not handle then
+				return ""
+			end
+
+			local result = handle:read("*a")
+			handle:close()
+
+			return result:gsub("\n", "")
+		end
+
 		local opts = {
 			options = {
 				icons_enabled = true,
@@ -73,7 +85,7 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = {
-					"branch",
+					jj_info,
 					"diff",
 					{
 						"diagnostics",
@@ -103,12 +115,18 @@ return {
 					{ search_count, color = { fg = "#7dcfff" } },
 					{ lazy_updates, cond = has_lazy_updates, color = { fg = "#ff9e64" } },
 					{ lsp_clients, color = { fg = "#7aa2f7" } },
-					{ "encoding", cond = function()
-						return vim.bo.fenc ~= "" and vim.bo.fenc ~= "utf-8"
-					end },
-					{ "fileformat", cond = function()
-						return vim.bo.fileformat ~= "unix"
-					end },
+					{
+						"encoding",
+						cond = function()
+							return vim.bo.fenc ~= "" and vim.bo.fenc ~= "utf-8"
+						end,
+					},
+					{
+						"fileformat",
+						cond = function()
+							return vim.bo.fileformat ~= "unix"
+						end,
+					},
 					"filetype",
 				},
 				lualine_y = { "progress" },
