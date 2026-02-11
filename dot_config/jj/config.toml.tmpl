@@ -1,0 +1,10 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Andrzej Skupien"
+{{- if ne .chezmoi.hostname "MB-928298" }}
+email = "kendriu@gmail.com"
+{{- end }}
+{{- if eq .chezmoi.hostname "MB-928298" }}
+email = "andrzej.skupien@vastdata.com"
+{{- end }}
