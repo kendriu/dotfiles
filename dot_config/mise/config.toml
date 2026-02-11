@@ -10,7 +10,6 @@ neovim = "latest"
 ripgrep = "latest"
 television = "latest"
 tlrc = "latest"
-usage = "latest"
 uv = "latest"
 zoxide = "latest"
 

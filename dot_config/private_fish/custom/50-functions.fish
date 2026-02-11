@@ -72,6 +72,7 @@ function upgrade_all --description "Upgrade all Homebrew packages and tools mana
     brew upgrade
     brew cleanup --scrub
     mise self-update --yes
+    mise install
     mise upgrade --bump --yes
     mise prune --yes
 end
