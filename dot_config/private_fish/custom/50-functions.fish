@@ -23,7 +23,9 @@ function _auto_venv --on-variable PWD -d "Auto-activate Python venv on directory
         set -l venv_dir (dirname $VIRTUAL_ENV)
         if not string match -q "$venv_dir*" $PWD
             # We've left the venv directory, deactivate
-            deactivate 2>/dev/null
+            if functions -q deactivate
+                deactivate 2>/dev/null
+            end
             set -e VIRTUAL_ENV
         end
     end

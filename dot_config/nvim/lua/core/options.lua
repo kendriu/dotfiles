@@ -20,8 +20,7 @@ vim.opt.undofile = true -- Save undo history
 vim.opt.splitbelow = true -- force all horizontal splits to go below current window
 vim.opt.splitright = true -- force all vertical splits to go to the right of current window
 vim.opt.shortmess:append("S") -- Don't show search count in command line (shown in statusline instead)
--- vim.opt.textwidth = 140
--- Note: Python textwidth is set in after/ftplugin/python.lua (overrides Neovim's default 79)
+vim.opt.textwidth = 140
 
 -- Treesitter-based folding
 vim.opt.foldmethod = "expr"
