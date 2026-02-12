@@ -1,5 +1,4 @@
 [tools]
-atuin = "latest"
 bat = "latest"
 carapace = "latest"
 "cargo:jj-starship" = "latest"
