@@ -69,7 +69,7 @@ function rfv
     tv text
 end
 
-function upgrade_all --description "Upgrade all Homebrew packages and tools managed by mise, then clean up old versions."
+function upgrade-all --description "Upgrade all Homebrew packages and tools managed by mise, then clean up old versions."
     chezmoi update
     brew upgrade
     brew cleanup --scrub
