@@ -10,7 +10,25 @@ return {
 			config = true,
 		}, -- NOTE: Must be loaded before dependants
 		"williamboman/mason-lspconfig.nvim",
-		-- NOTE: mason-tool-installer moved to conform.lua (for formatters/linters)
+		{
+			"owallb/mason-auto-install.nvim",
+			opts = {
+				packages = {
+					-- LSP servers (Mason registry names)
+					-- Keep in sync with lsp_servers list below
+					"bash-language-server",
+					"fish-lsp",
+					"basedpyright",
+					"ruff",
+					"rust-analyzer",
+					"lua-language-server",
+					"taplo",
+					"vtsls",
+					"vue-language-server",
+					"html-lsp",
+				},
+			},
+		},
 
 		-- Useful status updates for LSP.
 		-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`

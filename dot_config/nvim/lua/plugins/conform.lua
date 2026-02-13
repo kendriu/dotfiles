@@ -7,7 +7,22 @@ return {
 			"williamboman/mason.nvim",
 			config = true,
 		},
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
+		{
+			"owallb/mason-auto-install.nvim",
+			opts = {
+				packages = {
+					-- Formatters & linters (Mason registry names)
+					-- Keep in sync with formatters_by_ft below
+					-- Note: fish_indent is built-in, rustfmt installed via rustup
+					"biome",
+					"prettier",
+					"taplo",
+					"stylua",
+					"shfmt",
+					"shellcheck",
+				},
+			},
+		},
 	},
 	keys = {
 		{
@@ -30,24 +45,40 @@ return {
 	},
 
 	config = function()
-		-- Setup mason-tool-installer for formatters (and linters)
-		require("mason-tool-installer").setup({
-			ensure_installed = {
-				-- Formatters
-				"stylua", -- Lua
-				"prettier", -- Web (JS/TS/Vue/HTML/CSS/JSON/YAML/Markdown)
-				"biome", -- Web (JS/TS/JSON) - faster alternative
-				"shfmt", -- Shell
-				"taplo", -- TOML
-
-				-- Linters (keep shellcheck here)
-				"shellcheck", -- Shell script linter
-			},
-			auto_update = true,
-			run_on_start = true,
-		})
-
 		local conform = require("conform")
+
+		-- Extract formatters from formatters_by_ft config
+		local formatters_by_ft = {
+			-- Web development
+			javascript = { "biome", "prettier", stop_after_first = true },
+			javascriptreact = { "biome", "prettier", stop_after_first = true },
+			typescript = { "biome", "prettier", stop_after_first = true },
+			typescriptreact = { "biome", "prettier", stop_after_first = true },
+			vue = { "prettier" },
+			html = { "prettier" },
+			css = { "prettier" },
+			scss = { "prettier" },
+
+			-- Data formats
+			json = { "biome", "prettier", stop_after_first = true },
+			jsonc = { "biome", "prettier", stop_after_first = true },
+			yaml = { "prettier" },
+			toml = { "taplo" },
+
+			-- Documentation
+			markdown = { "prettier" },
+
+			-- Programming languages
+			python = { "ruff_format" },
+			lua = { "stylua" },
+			rust = { "rustfmt" },
+			sh = { "shfmt" },
+			bash = { "shfmt" },
+			fish = { "fish_indent" },
+
+			-- Build/config
+			just = { "just" },
+		}
 
 		local default_format_options = {
 			lsp_fallback = true,
@@ -97,37 +128,7 @@ return {
 		end
 
 		conform.setup({
-			formatters_by_ft = {
-				-- Web development
-				javascript = { "biome", "prettier", stop_after_first = true },
-				javascriptreact = { "biome", "prettier", stop_after_first = true },
-				typescript = { "biome", "prettier", stop_after_first = true },
-				typescriptreact = { "biome", "prettier", stop_after_first = true },
-				vue = { "prettier" },
-				html = { "prettier" },
-				css = { "prettier" },
-				scss = { "prettier" },
-
-				-- Data formats
-				json = { "biome", "prettier", stop_after_first = true },
-				jsonc = { "biome", "prettier", stop_after_first = true },
-				yaml = { "prettier" },
-				toml = { "taplo" },
-
-				-- Documentation
-				markdown = { "prettier" },
-
-				-- Programming languages
-				python = { "ruff_format" },
-				lua = { "stylua" },
-				rust = { "rustfmt" },
-				sh = { "shfmt" },
-				bash = { "shfmt" },
-				fish = { "fish_indent" },
-
-				-- Build/config
-				just = { "just" },
-			},
+			formatters_by_ft = formatters_by_ft,
 
 			-- Custom formatter configurations
 			formatters = {
