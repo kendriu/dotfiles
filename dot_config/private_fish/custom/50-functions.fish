@@ -77,13 +77,8 @@ function upgrade-all --description "Upgrade all Homebrew packages and tools mana
     mise install
     mise upgrade --bump --yes
     mise prune --yes
-
-    # Neovim: Lazy plugins
     echo "Updating Neovim Lazy plugins..."
     nvim --headless -c "Lazy! sync" +qa 2>&1 | rg "^\s*\S+\s+(updated|installed)" || echo "  ✓ All up to date"
-
-    # Neovim: Mason packages
-    echo "To update Mason packages, run: nvim and then :Mason -> press U on packages"
 end
 
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"
