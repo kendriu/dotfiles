@@ -1,0 +1,6 @@
+Nushell
+VIMRUNTIME
+env
+isort
+lsp
+nvim
