@@ -16,16 +16,16 @@ return {
 				packages = {
 					-- LSP servers (Mason registry names)
 					-- Keep in sync with lsp_servers list below
-					"basedpyright",
 					"bash-language-server",
 					"fish-lsp",
-					"html-lsp",
-					"lua-language-server",
+					"basedpyright",
 					"ruff",
 					"rust-analyzer",
+					"lua-language-server",
 					"taplo",
 					"vtsls",
 					"vue-language-server",
+					"html-lsp",
 				},
 			},
 		},
@@ -37,7 +37,30 @@ return {
 		"saghen/blink.cmp",
 	},
 	config = function()
-		require("mason").setup()
+		-- Brief aside: **What is LSP?**
+		--
+		-- LSP is an initialism you've probably heard, but might not understand what it is.
+		--
+		-- LSP stands for Language Server Protocol. It's a protocol that helps editors
+		-- and language tooling communicate in a standardized fashion.
+		--
+		-- In general, you have a "server" which is some tool built to understand a particular
+		-- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
+		-- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
+		-- processes that communicate with some "client" - in this case, Neovim!
+		--
+		-- LSP provides Neovim with features like:
+		--  - Go to definition
+		--  - Find references
+		--  - Autocompletion
+		--  - Symbol Search
+		--  - and more!
+		--
+		-- Thus, Language Servers are external tools that must be installed separately from
+		-- Neovim. This is where `mason` and related plugins come into play.
+		--
+		-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
+		-- and elegantly composed help section, `:help lsp-vs-treesitter`
 
 		-- Get shared LSP capabilities from blink.cmp (configured in blink.lua)
 		-- blink.lua exports capabilities globally after setup
@@ -57,7 +80,7 @@ return {
 				-- to define small helper and utility functions so you don't have to repeat yourself.
 				--
 				-- In this case, we create a function that lets us more easily define mappings specific
-				-- for LSP related items. It sets the mode, buffer, and description for us each time.
+				-- for LSP related items. It sets the mode, buffer and description for us each time.
 				local map = function(keys, func, desc, mode)
 					mode = mode or "n"
 					vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
@@ -271,13 +294,29 @@ return {
 			end,
 		})
 
+		-- Ensure the servers and tools above are installed
+		--  To check the current status of installed tools and/or manually install
+		--  other tools, you can run
+		--    :Mason
+		--
+		--  You can press `g?` for help in this menu.
+		require("mason").setup()
+
 		-- Fish LSP with blink capabilities
 		local fish_lsp_config = { capabilities = capabilities }
 		vim.lsp.config("fish_lsp", fish_lsp_config)
-
-		vim.lsp.config("harper_ls", {})
-		vim.lsp.enable("harper_ls")
-
+		-- vim.api.nvim_create_autocmd("FileType", {
+		-- 	pattern = "fish",
+		-- 	callback = function()
+		-- 		Snacks.notify("sdfsdfsd")
+		-- 		vim.lsp.start({
+		-- 			name = "fish-lsp",
+		-- 			cmd = { "fish-lsp", "start" },
+		-- 			cmd_env = { fish_lsp_show_client_popups = true },
+		-- 		})
+		-- 	end,
+		-- })
+		--
 		-- Define a function to start NuShell LSP
 		local function start_nu_lsp()
 			-- Check if the client is already running
