@@ -1,6 +1,12 @@
+Learnings
+MR
 Nushell
+ORION
+Ofer
 VIMRUNTIME
+easypy
 env
 isort
+linelength
 lsp
 nvim
