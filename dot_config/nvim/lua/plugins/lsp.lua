@@ -305,18 +305,8 @@ return {
 		-- Fish LSP with blink capabilities
 		local fish_lsp_config = { capabilities = capabilities }
 		vim.lsp.config("fish_lsp", fish_lsp_config)
-		-- vim.api.nvim_create_autocmd("FileType", {
-		-- 	pattern = "fish",
-		-- 	callback = function()
-		-- 		Snacks.notify("sdfsdfsd")
-		-- 		vim.lsp.start({
-		-- 			name = "fish-lsp",
-		-- 			cmd = { "fish-lsp", "start" },
-		-- 			cmd_env = { fish_lsp_show_client_popups = true },
-		-- 		})
-		-- 	end,
-		-- })
-		--
+		vim.lsp.config("harper_ls", {})
+		vim.lsp.enable("harper_ls")
 		-- Define a function to start NuShell LSP
 		local function start_nu_lsp()
 			-- Check if the client is already running
