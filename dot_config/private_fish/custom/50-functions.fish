@@ -70,6 +70,7 @@ function rfv
 end
 
 function upgrade-all --description "Upgrade all Homebrew packages and tools managed by mise, then clean up old versions."
+    chezmoi re-add
     chezmoi update
     brew upgrade
     brew cleanup --scrub
