@@ -80,6 +80,10 @@ function upgrade-all --description "Upgrade all Homebrew packages and tools mana
     mise prune --yes
     echo "Updating Neovim Lazy plugins..."
     nvim --headless -c "Lazy! sync" +qa 2>&1 | rg "^\s*\S+\s+(updated|installed)" || echo "  ✓ All up to date"
+    if type -q update-infra
+        echo "Updating infra tools..."
+        update-infra
+    end
 end
 
 alias cb="nvim ~/.local/share/chezmoi/run_onchange_10-install-packages.fish.tmpl"
