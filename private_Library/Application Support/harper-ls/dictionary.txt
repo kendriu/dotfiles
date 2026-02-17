@@ -2,7 +2,9 @@ Learnings
 MR
 Nushell
 ORION
+Ofek
 Ofer
+Ofer's
 VIMRUNTIME
 easypy
 env

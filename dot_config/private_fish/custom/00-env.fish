@@ -6,5 +6,5 @@ set fish_greeting
 
 set -gx EDITOR nvim
 set -gx BAT_THEME "Catppuccin Macchiato"
-set -gx PAGER "bat --paging always"
+set -gx PAGER "bat --paging always --style plain"
 set -gx MANPAGER "nvim +Man!"
