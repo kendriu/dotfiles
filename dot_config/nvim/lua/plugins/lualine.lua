@@ -60,6 +60,11 @@ return {
 				jj_job_id = nil
 			end
 
+			-- check if jj-starship is available
+			if vim.fn.executable("jj-starship") == 0 then
+				return
+			end
+
 			-- start new async job
 			jj_job_id = vim.fn.jobstart({ "jj-starship", "--no-color", "--no-jj-prefix" }, {
 				stdout_buffered = true,
