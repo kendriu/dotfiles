@@ -85,22 +85,36 @@ if string match -q "MB-928298.local" (hostname)
             end
         end
 
-        # Create temp files for logs
-        set timestamp (date +"%Y%m%dT%H%M%S")
-        set web_tmp "/tmp/web-$timestamp.log"
-        set scrub_tmp "/tmp/scrub-$timestamp.log"
+        # Create deterministic filenames based on arguments
+        set args_hash (echo $argv | md5)
+        set web_tmp "/tmp/web-$args_hash.log"
+        set scrub_tmp "/tmp/scrub-$args_hash.log"
+        set web_marker "$web_tmp.done"
+        set scrub_marker "$scrub_tmp.done"
 
-        # Start background log streams
-        AWS_PROFILE=crater just web-logs $argv >$web_tmp &
+        # Check if logs are already downloaded and complete
+        if test -f $web_marker; and test -f $scrub_marker
+            echo "📂 Using cached logs for: $argv"
+            lnav $web_tmp $scrub_tmp
+            return
+        end
+
+        # Download logs and open lnav
+        echo "📥 Downloading logs for: $argv"
+        rm -f $web_marker $scrub_marker
+
+        # Start background downloads using fish -c with properly quoted command
+        fish -c "awslogs get -SG crater-web --profile crater "(string join ' ' -- (string escape -- $argv))" > $web_tmp 2>&1; and test -s $web_tmp; and touch $web_marker" &
         set web_pid $last_pid
 
-        AWS_PROFILE=crater just scrubber-logs $argv >$scrub_tmp &
+        fish -c "awslogs get -SG crater-scrubber --profile crater "(string join ' ' -- (string escape -- $argv))" > $scrub_tmp 2>&1; and test -s $scrub_tmp; and touch $scrub_marker" &
         set scrub_pid $last_pid
 
-        # Open lnav to view both logs
+        # Wait briefly for downloads to start, then open lnav
+        sleep 1
         lnav $web_tmp $scrub_tmp
 
-        # Clean up background jobs after lnav exits
+        # Clean up after lnav exits
         kill $web_pid $scrub_pid 2>/dev/null
     end
 
