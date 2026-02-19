@@ -72,7 +72,7 @@ if string match -q "MB-928298.local" (hostname)
     end
 
     # Crater logs viewer with AWS SSO
-    function clogs -d "View crater logs with AWS SSO and lnav"
+    function clogs -d "View project logs with AWS SSO and lnav (auto-detects project from git root)"
         # Check AWS SSO authentication
         if not aws sts get-caller-identity --profile crater >/dev/null 2>&1
             echo "🔐 AWS SSO not logged in; running aws sso login..."
@@ -85,37 +85,93 @@ if string match -q "MB-928298.local" (hostname)
             end
         end
 
-        # Create deterministic filenames based on arguments
-        set args_hash (echo $argv | md5)
-        set web_tmp "/tmp/web-$args_hash.log"
-        set scrub_tmp "/tmp/scrub-$args_hash.log"
-        set web_marker "$web_tmp.done"
-        set scrub_marker "$scrub_tmp.done"
+        # Find project root by locating .git folder
+        set -l current_dir (pwd)
+        set -l project_root ""
+        
+        while test "$current_dir" != "/"
+            if test -d "$current_dir/.git"
+                set project_root $current_dir
+                break
+            end
+            set current_dir (dirname $current_dir)
+        end
+        
+        # Get project name from root directory
+        if test -z "$project_root"
+            echo "⚠️  Not in a git repository"
+            return 1
+        end
+        
+        set -l project (basename $project_root)
+        
+        # Define log sources per project
+        set -l log_sources
+        switch $project
+            case 'autoscaler'
+                set log_sources 'autoscaler'
+            case 'crater'
+                set log_sources 'crater-web' 'crater-scrubber'
+            case '*'
+                echo "⚠️  Unknown project: $project (no log sources configured)"
+                return 1
+        end
 
-        # Check if logs are already downloaded and complete
-        if test -f $web_marker; and test -f $scrub_marker
-            echo "📂 Using cached logs for: $argv"
-            lnav $web_tmp $scrub_tmp
+        # Hash args for cache
+        set args_hash (echo $argv | md5)
+        
+        # Build file paths and check cache
+        set log_files
+        set markers
+        set all_cached true
+        
+        for source in $log_sources
+            set log_file "/tmp/$source-$args_hash.log"
+            set marker "$log_file.done"
+            set log_files $log_files $log_file
+            set markers $markers $marker
+            
+            if not test -f $marker
+                set all_cached false
+            end
+        end
+
+        # If all cached, open and return
+        if test $all_cached = true
+            echo "📂 Using cached $project logs for: $argv"
+            lnav $log_files
             return
         end
 
-        # Download logs and open lnav
-        echo "📥 Downloading logs for: $argv"
-        rm -f $web_marker $scrub_marker
-
-        # Start background downloads using fish -c with properly quoted command
-        fish -c "awslogs get -SG crater-web --profile crater "(string join ' ' -- (string escape -- $argv))" > $web_tmp 2>&1; and test -s $web_tmp; and touch $web_marker" &
-        set web_pid $last_pid
-
-        fish -c "awslogs get -SG crater-scrubber --profile crater "(string join ' ' -- (string escape -- $argv))" > $scrub_tmp 2>&1; and test -s $scrub_tmp; and touch $scrub_marker" &
-        set scrub_pid $last_pid
+        # Download all sources in background
+        echo "📥 Downloading $project logs for: $argv"
+        rm -f $markers
+        set pids
+        
+        for i in (seq (count $log_sources))
+            set source $log_sources[$i]
+            set log_file $log_files[$i]
+            set marker $markers[$i]
+            
+            # Determine awslogs command based on source naming
+            if string match -q 'crater-*' $source
+                set cmd "awslogs get -SG $source --profile crater"
+            else
+                set cmd "awslogs get $source -SG --profile crater"
+            end
+            
+            fish -c "$cmd "(string join ' ' -- (string escape -- $argv))" > $log_file 2>&1; and test -s $log_file; and touch $marker" &
+            set pids $pids $last_pid
+        end
 
         # Wait briefly for downloads to start, then open lnav
         sleep 1
-        lnav $web_tmp $scrub_tmp
+        lnav $log_files
 
-        # Clean up after lnav exits
-        kill $web_pid $scrub_pid 2>/dev/null
+        # Cleanup
+        for pid in $pids
+            kill $pid 2>/dev/null
+        end
     end
 
     # Crater management functions
