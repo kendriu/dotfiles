@@ -1,3 +1,4 @@
+IPython
 Learnings
 MR
 Nushell
