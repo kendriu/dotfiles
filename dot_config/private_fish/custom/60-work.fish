@@ -175,7 +175,7 @@ if string match -q "MB-928298.local" (hostname)
     end
 
     # Crater management functions
-    function deploy-branch --argument cloud --description "Deploys and restarts current branch on specified cloud (e.g., aws)"
+    function deploy-branch --argument cloud --description "Deploys and restarts current bookmark on specified cloud (e.g., aws)"
         if test -z "$cloud"
             echo "Usage: deploy-branch <cloud-name>"
             echo "Example: deploy-branch aws"
@@ -183,10 +183,10 @@ if string match -q "MB-928298.local" (hostname)
         end
 
         set -l host "andrzej.skupien@crater-$cloud.vstd.int"
-        set -l branch (git rev-parse --abbrev-ref HEAD)
+        set -l bookmark (jj log -r @ -T 'bookmarks' | head -1 | string replace -r '^@\s*' '' | string replace -r '\*$' '')
         
-        echo "Deploying branch '$branch' to crater-dev on $host..."
-        ssh "$host" "restart-crater.sh dev branch-$branch"
+        echo "Deploying bookmark '$bookmark' to crater-dev on $host..."
+        ssh "$host" "restart-crater.sh dev branch-$bookmark"
     end
 
     function crater-ipython --argument cloud script --description "Start iPython shell in crater-dev container on specified cloud"
