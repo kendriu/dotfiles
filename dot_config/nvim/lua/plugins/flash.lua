@@ -261,7 +261,8 @@ return {
   -- stylua: ignore
   keys = {
     -- Basic flash jump (replaces the default 's' which is covered by 'cl')
-    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash: Jump" },
+    -- Note: Removed "x" (visual mode) to avoid potential conflicts with nvim-surround workflow
+    { "s", mode = { "n", "o" }, function() require("flash").jump() end, desc = "Flash: Jump" },
     
     -- Flash treesitter (select treesitter nodes)
     -- Note: Removed "x" (visual mode) to avoid conflict with nvim-surround's visual S
