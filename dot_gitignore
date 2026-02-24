@@ -6,3 +6,6 @@ codecompanion-workspace.json
 worktrees
 **/my_tests/
 **/mise.local.toml
+
+# Avante AI project instructions (user-specific)
+avante.md

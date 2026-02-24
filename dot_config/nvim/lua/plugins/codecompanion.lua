@@ -24,6 +24,7 @@ return {
 		{ "<leader>Av", "<cmd>CodeCompanion /review<CR>", mode = { "n", "v" }, desc = "AI: Code Review (Selection)" },
 		{ "<leader>AR", "<cmd>CodeCompanion /review-changes<CR>", desc = "AI: Review All Changes" },
 		{ "<leader>AC", "<cmd>CodeCompanion /team-commit<CR>", desc = "AI: Team Commit Message" },
+		{ "<leader>Ae", "<cmd>CodeCompanion /explain-diagnostic<CR>", desc = "AI: Explain Error at Cursor" },
 	},
 
 	config = function()
@@ -60,6 +61,7 @@ return {
 				-- Inline completions (inline assistant)
 				inline = {
 					adapter = adapter,
+					layout = "vertical", -- Side-by-side diff
 				},
 				-- Agents
 				agent = {
@@ -83,9 +85,9 @@ return {
 					return require("codecompanion.adapters").extend("copilot", {
 						callbacks = {
 							on_error = function(err)
-								-- Check if rate limit error using centralized function
-								if ai_adapter.is_rate_limit_error(err) then
-									ai_adapter.trigger_fallback("Copilot rate limit hit!")
+								-- Check if fallback error using enhanced detection
+								if ai_adapter.is_fallback_error(err) then
+									ai_adapter.trigger_fallback("Copilot unavailable!")
 								end
 							end,
 						},
@@ -250,14 +252,10 @@ Focus on bugs and correctness, not style. Be thorough but concise.]]
 						{
 							role = "user",
 							content = function()
-								-- Get staged diff
-								local diff = vim.fn.system("git diff --staged")
+								-- Get current diff (jj doesn't have staging)
+								local diff = vim.fn.system("jj diff")
 								if diff == "" then
-									-- If nothing staged, get unstaged diff
-									diff = vim.fn.system("git diff")
-								end
-								if diff == "" then
-									return "No changes detected. Please make some changes or stage them with `git add` first."
+									return "No changes detected. Please make some changes first."
 								end
 								return "Please review all these changes for bugs and issues:\n\n```diff\n" .. diff .. "\n```"
 							end,
@@ -313,7 +311,7 @@ Follow these team guidelines from prefer-early-exit.mdc:
 							role = "system",
 							content = function()
 								local standards = read_cursorfile("infra/commands/commit-changes.md")
-								return [[You are an expert at writing high-quality git commit messages following strict team standards.
+								return [[You are an expert at writing high-quality commit messages following strict team standards.
 
 Follow these team commit standards from commit-changes.md:
 
@@ -325,24 +323,21 @@ Generate a commit message that strictly follows ALL the rules above.]]
 						{
 							role = "user",
 							content = function()
-								-- Get current branch name
-								local branch = vim.fn.system("git rev-parse --abbrev-ref HEAD"):gsub("\n", "")
+								-- Get current bookmark/branch (jj equivalent)
+								local bookmark = vim.fn.system("jj log -r @ --no-graph -T 'bookmarks'"):gsub("\n", "")
 								
 								-- Extract ticket number (ORION-XXXXX or similar pattern)
-								local ticket_id = branch:match("([A-Z]+%-[0-9]+)")
+								local ticket_id = bookmark:match("([A-Z]+%-[0-9]+)")
 								
-								-- Get staged diff
-								local diff = vim.fn.system("git diff --staged")
+								-- Get current diff (jj doesn't have staging)
+								local diff = vim.fn.system("jj diff")
 								if diff == "" then
-									diff = vim.fn.system("git diff")
-								end
-								if diff == "" then
-									return "No changes detected. Please stage your changes with `git add` first."
+									return "No changes detected. Please make some changes first."
 								end
 								
 								-- Extract component/subsection from changed files
 								-- Priority: scrubber > handler > other (skip __init__)
-								local files = vim.fn.system("git diff --staged --name-only 2>/dev/null || git diff --name-only")
+								local files = vim.fn.system("jj diff --summary 2>/dev/null | awk '{print $NF}'")
 								local component_subsection = nil
 								local scrubber_candidate = nil
 								local handler_candidate = nil
@@ -387,16 +382,71 @@ Generate a commit message that strictly follows ALL the rules above.]]
 								end
 								
 								if ticket_id then
-									prompt = prompt .. "**Ticket ID (from branch):** " .. ticket_id .. "\n\n"
+									prompt = prompt .. "**Ticket ID (from bookmark):** " .. ticket_id .. "\n\n"
 									prompt = prompt .. "Make sure to include (" .. ticket_id .. ") at the end of the summary line.\n\n"
 								else
-									prompt = prompt .. "**Note:** Could not find ticket ID in branch name '" .. branch .. "'. "
+									prompt = prompt .. "**Note:** Could not find ticket ID in bookmark '" .. bookmark .. "'. "
 									prompt = prompt .. "Please include the ticket ID in the commit message if available.\n\n"
 								end
 								
 								prompt = prompt .. "```diff\n" .. diff .. "\n```"
 								
 								return prompt
+							end,
+						},
+					},
+				},
+
+				["Explain Diagnostic"] = {
+					strategy = "chat",
+					description = "Explain LSP diagnostic at cursor and suggest fix",
+					opts = {
+						is_slash_cmd = true,
+						alias = "explain-diagnostic",
+						auto_submit = true,
+					},
+					prompts = {
+						{
+							role = "system",
+							content = [[You are an expert code debugger. Your job is to:
+1. Explain the error/warning in simple terms
+2. Show why it's happening in the code
+3. Provide a concrete fix with code example
+
+Be concise and actionable. Focus on the solution.]],
+						},
+						{
+							role = "user",
+							content = function()
+								-- Get diagnostic at cursor position
+								local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line(".") - 1 })
+								if #diagnostics == 0 then
+									return "No diagnostic found at cursor position. Move cursor to a line with an error/warning and try again."
+								end
+								
+								-- Get the first diagnostic on the line
+								local diag = diagnostics[1]
+								
+								-- Get surrounding code context (2 lines before, 2 lines after)
+								local start_line = math.max(0, diag.lnum - 2)
+								local end_line = math.min(vim.api.nvim_buf_line_count(0) - 1, diag.lnum + 2)
+								local context = vim.api.nvim_buf_get_lines(0, start_line, end_line + 1, false)
+								
+								-- Get file type for syntax highlighting
+								local filetype = vim.bo.filetype
+								
+								-- Build severity string
+								local severity = ({"ERROR", "WARN", "INFO", "HINT"})[diag.severity] or "UNKNOWN"
+								
+								return string.format(
+									"**[%s] %s**\n\n**Code context:**\n```%s\n%s\n```\n\n**Line:** %d\n\nPlease explain this %s and how to fix it.",
+									severity,
+									diag.message,
+									filetype,
+									table.concat(context, "\n"),
+									diag.lnum + 1,
+									severity:lower()
+								)
 							end,
 						},
 					},

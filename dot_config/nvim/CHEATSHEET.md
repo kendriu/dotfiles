@@ -807,3 +807,36 @@ Learn these first (highest impact):
 - View all keymaps: `<leader>sk`
 - Toggle harpoon menu: `<leader>e`
 - See this file: `~/.copilot/session-state/.../files/CHEATSHEET.md`
+
+---
+
+## 🤖 AI Workspace Agent
+
+**Core Concept**: Query across multiple related codebases simultaneously.
+
+### Workspace Scope
+- **Autoscaler** (`~/sources/autoscaler`) - Auto-scaling infrastructure
+- **Crater** (`~/sources/crater`) - Storage/orchestration system
+- **ORION Comet** (`~/sources/orion/pysrc/comet`) - Testing framework
+- **ORION Pysrc** (`~/sources/orion/pysrc`) - Various subsystems
+
+Total: ~2GB+ of interconnected code
+
+### Keybinding
+- `<leader>Aw` - Open workspace query (multi-repo search)
+
+### Example Queries
+```
+- "Where is the API endpoint for X implemented?"
+- "How does autoscaler communicate with crater?"
+- "Find all uses of function Y across projects"
+- "What would break if I change this crater interface?"
+- "Show comet tests for crater scrubber"
+```
+
+### Tips
+- First query builds index (~30-60s)
+- Subsequent queries are fast
+- Be specific for better results
+- AI provides file paths + line numbers
+

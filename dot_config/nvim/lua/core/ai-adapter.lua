@@ -48,8 +48,9 @@ function M.trigger_fallback(reason)
 		M.state.fallback_triggered = true
 		
 		vim.notify(
-			"AI: " .. (reason or "Copilot unavailable") .. " - Switching to Ollama (qwen2.5:14b-instruct)",
-			vim.log.levels.WARN
+			"🤖 AI: " .. (reason or "Copilot unavailable") .. " Switching to Ollama (local)",
+			vim.log.levels.WARN,
+			{ title = "AI Adapter", timeout = 3000 }
 		)
 		
 		-- Disable Copilot completions in blink
@@ -68,9 +69,37 @@ function M.trigger_fallback(reason)
 			)
 		end
 		
+		-- Schedule auto-recovery after 10 minutes
+		M.schedule_recovery()
+		
 		return true
 	end
 	return false
+end
+
+-- Schedule automatic recovery attempt
+function M.schedule_recovery()
+	vim.defer_fn(function()
+		if M.state.fallback_triggered then
+			vim.notify(
+				"🔄 AI: Attempting to restore Copilot connection...",
+				vim.log.levels.INFO,
+				{ title = "AI Adapter" }
+			)
+			M.reset()
+			
+			-- Test if Copilot is back by checking if it's enabled
+			vim.defer_fn(function()
+				if M.should_use_copilot() then
+					vim.notify(
+						"✅ AI: Copilot connection restored",
+						vim.log.levels.INFO,
+						{ title = "AI Adapter" }
+					)
+				end
+			end, 2000)
+		end
+	end, 600000) -- 10 minutes = 600,000 ms
 end
 
 -- Check if rate limit error
@@ -84,6 +113,26 @@ function M.is_rate_limit_error(err)
 		or err_str:match("429")
 		or err_str:match("[Qq]uota")
 		or err_str:match("[Tt]hrottl")
+end
+
+-- Enhanced: Check if any fallback-worthy error
+function M.is_fallback_error(err)
+	if not err then
+		return false
+	end
+	
+	local err_str = tostring(err)
+	return err_str:match("[Rr]ate limit")
+		or err_str:match("429")
+		or err_str:match("[Qq]uota")
+		or err_str:match("[Tt]hrottl")
+		or err_str:match("timeout")
+		or err_str:match("timed out")
+		or err_str:match("connection refused")
+		or err_str:match("502") -- Bad gateway
+		or err_str:match("503") -- Service unavailable
+		or err_str:match("ECONNREFUSED")
+		or err_str:match("network error")
 end
 
 -- Reset to preferred adapter (call on restart)
