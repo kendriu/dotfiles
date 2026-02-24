@@ -1,5 +1,4 @@
 [tools]
-awscli = { version = "latest", symlink_bins = "true" }
 bat = "latest"
 carapace = "latest"
 "cargo:jj-starship" = "latest"
