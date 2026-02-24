@@ -24,9 +24,10 @@ return {
 
 		board_ui.create_window = function()
 			-- Create buffer for jira board
-			state.buf = vim.api.nvim_create_buf(false, true)
+			state.buf = vim.api.nvim_create_buf(false, true) -- listed=false, scratch=true
 			vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = state.buf })
 			vim.api.nvim_set_option_value("modifiable", false, { buf = state.buf })
+			vim.api.nvim_buf_set_name(state.buf, "Jira Board")
 
 			-- Use current window instead of creating a float
 			state.win = vim.api.nvim_get_current_win()
@@ -86,10 +87,11 @@ return {
 						issue_state.comments = comments or {}
 
 						-- Create buffer in current split window instead of floating
-						local buf = vim.api.nvim_create_buf(false, true)
+						local buf = vim.api.nvim_create_buf(false, true) -- listed=false, scratch=true
 						vim.api.nvim_set_option_value("filetype", "markdown", { buf = buf })
 						vim.api.nvim_set_option_value("buftype", "nofile", { buf = buf })
 						vim.api.nvim_set_option_value("bufhidden", "wipe", { buf = buf })
+						vim.api.nvim_set_option_value("modifiable", true, { buf = buf })
 						vim.api.nvim_buf_set_name(buf, "Jira: " .. issue.key)
 
 						-- Use current window (the split we created)
@@ -101,8 +103,10 @@ return {
 
 						render.render_content()
 
-						-- Setup keymaps (copied from issue module)
+						-- Setup all keymaps (from issue module)
 						local opts = { noremap = true, silent = true, buffer = buf }
+						
+						-- Quit
 						vim.keymap.set("n", "q", function()
 							if issue_state.win and vim.api.nvim_win_is_valid(issue_state.win) then
 								vim.api.nvim_win_close(issue_state.win, true)
@@ -110,6 +114,42 @@ return {
 									vim.api.nvim_set_current_win(issue_state.prev_win)
 								end
 							end
+						end, opts)
+
+						-- Switch Tabs
+						vim.keymap.set("n", "<Tab>", function()
+							local next_tab = { description = "comments", comments = "help", help = "description" }
+							issue_state.active_tab = next_tab[issue_state.active_tab] or "description"
+							render.render_content()
+						end, opts)
+
+						vim.keymap.set("n", "D", function()
+							issue_state.active_tab = "description"
+							render.render_content()
+						end, opts)
+
+						vim.keymap.set("n", "C", function()
+							issue_state.active_tab = "comments"
+							render.render_content()
+						end, opts)
+
+						vim.keymap.set("n", "H", function()
+							issue_state.active_tab = "help"
+							render.render_content()
+						end, opts)
+
+						-- Edit
+						vim.keymap.set("n", "i", function()
+							if issue_state.active_tab == "description" then
+								require("jira.edit").open(issue_state.issue.key)
+								return
+							end
+							vim.notify("Switch to Comments or Description tab", vim.log.levels.WARN)
+						end, opts)
+
+						-- Refresh
+						vim.keymap.set("n", "r", function()
+							require("jira.issue").refresh()
 						end, opts)
 					end)
 				end)
