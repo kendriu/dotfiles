@@ -101,6 +101,12 @@ vim.keymap.set({ "n", "v" }, "<Leader>y", '"+y', { desc = "Yank to clipboard" })
 -- Map <Leader>p to paste from the system clipboard
 vim.keymap.set({ "n", "v" }, "<Leader>p", '"+p', { desc = "Paste from clipboard" })
 
+-- Copy full file path to clipboard
+vim.keymap.set("n", "<Leader>yp", function()
+	vim.fn.setreg("+", vim.fn.expand("%:p"))
+	vim.notify("Copied: " .. vim.fn.expand("%:p"), vim.log.levels.INFO)
+end, { desc = "Copy file path to clipboard" })
+
 -- Open cheatsheet
 vim.keymap.set("n", "<leader>?", function()
 	vim.cmd("edit " .. vim.fn.stdpath("config") .. "/CHEATSHEET.md")

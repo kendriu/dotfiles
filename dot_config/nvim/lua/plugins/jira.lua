@@ -1,5 +1,9 @@
 return {
 	"letieu/jira.nvim",
+	cmd = { "Jira", "JiraOpen" }, -- Lazy load on these commands
+	keys = {
+		{ "<leader>J", "<cmd>Jira<cr>", desc = "Open Jira board" },
+	},
 	config = function()
 		-- Read from mise environment variables
 		require("jira").setup({
@@ -187,10 +191,5 @@ return {
 		vim.api.nvim_create_user_command("JiraOpen", function()
 			require("jira.board").open()
 		end, { desc = "Open Jira board with ORION project and My Open Issues query" })
-
-		-- Add keymap for <leader>J to open Jira
-		vim.keymap.set("n", "<leader>J", function()
-			require("jira.board").open()
-		end, { noremap = true, silent = true, desc = "Open Jira board" })
 	end,
 }
