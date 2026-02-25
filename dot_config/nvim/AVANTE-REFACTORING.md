@@ -226,3 +226,27 @@ nvim
 - WHAT this project's tech stack is → Project
 - WHAT this project's API does → Project
 - WHAT this project's architecture is → Project
+
+---
+
+## 🐍 Python Virtual Environment Support (Added)
+
+**Location**: Central config (`avante.lua`)
+
+**What it does:**
+- Teaches Avante to look for `.venv/` in project roots
+- Use virtualenv Python instead of system Python
+- Applies to: pytest, mypy, ruff, pip, python scripts
+
+**Example behavior:**
+```
+User: "Run the tests"
+Avante checks: .venv/ exists?
+If yes: `.venv/bin/pytest tests/`
+If no: `pytest tests/`
+```
+
+**Why centralized:**
+- Common pattern across all Python projects
+- Same logic for autoscaler, crater, orion
+- One place to update if conventions change

@@ -146,6 +146,46 @@ Ticket-related work is documented in Obsidian notes:
 If working in ~/sources/crater and a ticket is mentioned, check for notes tagged with #crater.
 If working in ~/sources/autoscaler and a ticket is mentioned, check for notes tagged with #autoscaler.
 
+## Python Virtual Environments
+All Python projects use virtual environments for dependency isolation.
+
+**Standard location**: `.venv/` in the project root directory
+
+**When running Python commands:**
+1. Check if `.venv/` exists in the current project root
+2. If it exists, use the virtualenv Python/tools:
+   - `.venv/bin/python` (NOT system python)
+   - `.venv/bin/pytest` (NOT system pytest)
+   - `.venv/bin/pip` (NOT system pip)
+   - Other tools: `.venv/bin/{tool_name}`
+
+**Examples:**
+```bash
+# Wrong: Uses system Python
+python -m pytest tests/
+
+# Correct: Uses virtualenv Python
+.venv/bin/pytest tests/
+
+# Alternative: Activate first
+source .venv/bin/activate && pytest tests/
+```
+
+**When to use virtualenv:**
+- Running tests (`pytest`, `unittest`)
+- Running Python scripts
+- Installing dependencies (`pip install`)
+- Type checking (`mypy`)
+- Linting (`ruff`, `pylint`, `flake8`)
+- Any Python-related command
+
+**Project roots with .venv:**
+- `~/sources/autoscaler/.venv/`
+- `~/sources/crater/.venv/`
+- `~/sources/orion/.venv/` (if exists)
+
+Always check for `.venv/` before suggesting Python commands.
+
 ## Project Context
 This is a multi-repo project with:
 - autoscaler: Service scaling automation (GitLab runners)

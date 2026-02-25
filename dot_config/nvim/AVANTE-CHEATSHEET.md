@@ -463,3 +463,40 @@ Avante uses JJ commands (not git):
 ---
 
 **Need help?** Check AVANTE-SETUP.md for configuration details.
+
+---
+
+## 🐍 Python Virtual Environments
+
+### Automatic Detection
+Avante knows to check for `.venv/` in project roots before running Python commands.
+
+**What Avante will do:**
+```bash
+# When you ask: "Run the tests"
+# Avante checks for .venv/ and runs:
+.venv/bin/pytest tests/
+
+# NOT:
+pytest tests/  # ❌ Wrong - uses system Python
+```
+
+### Projects with .venv
+- `~/sources/autoscaler/.venv/`
+- `~/sources/crater/.venv/`
+- `~/sources/orion/.venv/` (if exists)
+
+### Commands Using Virtualenv
+- Testing: `.venv/bin/pytest`
+- Type checking: `.venv/bin/mypy`
+- Linting: `.venv/bin/ruff`, `.venv/bin/pylint`
+- Scripts: `.venv/bin/python script.py`
+- Package install: `.venv/bin/pip install`
+
+### Manual Override
+If Avante suggests wrong Python path:
+```
+<leader>Aa
+"Use .venv/bin/pytest not system pytest"
+```
+
