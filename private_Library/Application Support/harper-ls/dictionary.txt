@@ -1,4 +1,5 @@
 Andrzej
+Ctrl
 IPython
 Learnings
 MR
@@ -7,6 +8,7 @@ ORION
 Ofek
 Ofer
 Ofer's
+TODO
 VIMRUNTIME
 autoscaler
 easypy
