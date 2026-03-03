@@ -10,7 +10,10 @@ Ofer
 Ofer's
 TODO
 VIMRUNTIME
+VOC
 autoscaler
+aws
+devvm
 easypy
 env
 gitlab
