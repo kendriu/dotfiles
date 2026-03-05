@@ -37,19 +37,6 @@ return {
 			return "  " .. table.concat(client_names, ", ")
 		end
 
-		local function lazy_updates()
-			local ok, lazy = pcall(require, "lazy.status")
-			if not ok then
-				return ""
-			end
-			return lazy.updates()
-		end
-
-		local function has_lazy_updates()
-			local ok, lazy = pcall(require, "lazy.status")
-			return ok and lazy.has_updates()
-		end
-
 		local jj_cache = ""
 		local jj_job_id = nil
 
@@ -145,7 +132,6 @@ return {
 				lualine_x = {
 					{ macro_recording, color = { fg = "#ff9e64" } },
 					{ search_count, color = { fg = "#7dcfff" } },
-					{ lazy_updates, cond = has_lazy_updates, color = { fg = "#ff9e64" } },
 					{ lsp_clients, color = { fg = "#7aa2f7" } },
 					{
 						"encoding",
