@@ -21,6 +21,9 @@ if string match -q "MB-928298.local" (hostname)
     alias ssh=$kitty_ssh
     set -gx DEVVM_SSH_COMMAND $kitty_ssh
 
+    # Podman settings
+    alias docker="podman"
+
     # Git rebase on main
     function glrm -d "Switch to main, pull, switch back, and rebase"
         git switch $MAIN
