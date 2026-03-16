@@ -11,8 +11,10 @@ Ofer's
 TODO
 VIMRUNTIME
 VOC
+attr
 autoscaler
 aws
+classificator
 devvm
 easypy
 env
