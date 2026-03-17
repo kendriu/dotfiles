@@ -65,3 +65,11 @@ function clean_old_branches --description "Delete local git branches whose last 
         end
     end
 end
+
+## jj part
+function jj-bookmark -a name
+    jj bookmark create $name
+    jj bookmark track $name --remote origin
+end
+
+abbr jjc jj-bookmark

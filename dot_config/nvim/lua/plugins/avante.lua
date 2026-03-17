@@ -208,7 +208,7 @@ Always consider cross-repo impacts when making changes.]]
 				-- Copilot (for work laptop: MB-928298.local)
 				copilot = {
 					endpoint = "https://api.githubcopilot.com",
-					model = "claude-sonnet-4.5", -- Best available
+					model = "gpt-5.3-codex", -- Preferred model
 					timeout = 30000,
 					extra_request_body = {
 						temperature = 0,

@@ -84,7 +84,7 @@ return {
 		local opts = {
 			options = {
 				icons_enabled = true,
-				theme = "catppuccin",
+				theme = require("catppuccin.utils.lualine")("macchiato"),
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				disabled_filetypes = {
