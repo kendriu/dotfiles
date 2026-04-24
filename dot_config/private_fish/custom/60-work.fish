@@ -7,8 +7,8 @@ if string match -q "MB-928298.local" (hostname)
     # Work environment variables
     fish_add_path ~/sources/infra/user-scripts
     set -gx USE_QPIPES yes
-    set -gx MAIN "TEAM/infra-5.5"
-    set -gx NEXT "TEAM/infra-5.5"
+    set -gx MAIN "TEAM/infra-5.6"
+    set -gx NEXT "TEAM/infra-5.6"
 
 
     # Work abbreviations
